@@ -40,7 +40,7 @@ const features = [
     icon: Rocket,
     title: "Project Showcase",
     description:
-      "Share what you're building. Get feedback, testers, and maybe even collaborators from 1100+ engaged developers.",
+      "Share what you're building. Get feedback, testers, and maybe even collaborators from 1800+ engaged developers.",
     color: "#F59E0B",
     tag: "#project-showcase",
   },
@@ -91,7 +91,8 @@ export default function Features() {
             Everything a dev needs
           </h2>
           <p className="text-white/40 text-base md:text-lg max-w-2xl mx-auto">
-            From daily debugging to landing your first job — we have a channel, a community, and a resource for every step.
+            From daily debugging to landing your first job — we have a channel,
+            a community, and a resource for every step.
           </p>
         </div>
 
@@ -119,7 +120,10 @@ export default function Features() {
                 {/* Icon */}
                 <div
                   className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundColor: feature.color + "22", color: feature.color }}
+                  style={{
+                    backgroundColor: feature.color + "22",
+                    color: feature.color,
+                  }}
                 >
                   <Icon className="w-5 h-5" />
                 </div>
@@ -136,7 +140,10 @@ export default function Features() {
                 <div className="mt-4">
                   <span
                     className="text-xs font-mono px-2 py-1 rounded-md opacity-60 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ backgroundColor: feature.color + "15", color: feature.color }}
+                    style={{
+                      backgroundColor: feature.color + "15",
+                      color: feature.color,
+                    }}
                   >
                     {feature.tag}
                   </span>

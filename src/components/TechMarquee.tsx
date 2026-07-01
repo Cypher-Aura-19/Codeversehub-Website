@@ -1,5 +1,7 @@
 "use client";
 
+import ScrollVelocity from "./ScrollVelocity";
+
 const techRow1 = [
   { name: "Python", color: "#3B82F6" },
   { name: "TypeScript", color: "#8B5CF6" },
@@ -34,8 +36,32 @@ const techRow2 = [
   { name: "Bun", color: "#F9F1E1" },
 ];
 
-function MarqueeTrack({ items, reverse = false }: { items: typeof techRow1; reverse?: boolean }) {
-  const duplicated = [...items, ...items];
+function MarqueeTrack({
+  items,
+  reverse = false,
+}: {
+  items: typeof techRow1;
+  reverse?: boolean;
+}) {
+  // Build a single row (one repetition) — ScrollVelocity will duplicate this to create the continuous loop.
+  const row = (
+    <div className="flex gap-3 w-max inline-flex">
+      {items.map((tech, i) => (
+        <div
+          key={i}
+          className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-colors duration-200 cursor-default select-none shrink-0"
+        >
+          <div
+            className="w-2 h-2 rounded-full shrink-0"
+            style={{ backgroundColor: tech.color }}
+          />
+          <span className="text-white/70 text-sm font-medium whitespace-nowrap hover:text-white transition-colors duration-200">
+            {tech.name}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className="relative overflow-hidden py-2">
@@ -43,26 +69,13 @@ function MarqueeTrack({ items, reverse = false }: { items: typeof techRow1; reve
       <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-black to-transparent pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-black to-transparent pointer-events-none" />
 
-      <div
-        className={`flex gap-3 w-max ${
-          reverse ? "animate-marquee-reverse" : "animate-marquee"
-        }`}
-      >
-        {duplicated.map((tech, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-colors duration-200 cursor-default select-none shrink-0"
-          >
-            <div
-              className="w-2 h-2 rounded-full shrink-0"
-              style={{ backgroundColor: tech.color }}
-            />
-            <span className="text-white/70 text-sm font-medium whitespace-nowrap hover:text-white transition-colors duration-200">
-              {tech.name}
-            </span>
-          </div>
-        ))}
-      </div>
+      <ScrollVelocity
+        texts={[row]}
+        velocity={reverse ? -30 : 30}
+        damping={100}
+        scrollerClassName="flex gap-3 w-max"
+        parallaxClassName="relative overflow-hidden"
+      />
     </div>
   );
 }
@@ -78,7 +91,8 @@ export default function TechMarquee() {
           No matter what you code in
         </h2>
         <p className="text-white/40 text-base md:text-lg max-w-xl mx-auto">
-          We have developers who work with every major language and framework. You'll always find someone who gets it.
+          We have developers who work with every major language and framework.
+          You'll always find someone who gets it.
         </p>
       </div>
 

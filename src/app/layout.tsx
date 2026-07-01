@@ -8,7 +8,8 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://thecodeversehub.tech";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://thecodeversehub.tech";
 const siteName = "The Codeverse Hub";
 const siteDescription =
   "CodeVerse Hub is a Discord community built for programmers — code reviews, open source projects, 24/7 help, resources, and people who get it.";
@@ -104,17 +105,20 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={jetbrainsMono.variable}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
-      </head>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
+          }}
+        />
+
         {children}
       </body>
     </html>
