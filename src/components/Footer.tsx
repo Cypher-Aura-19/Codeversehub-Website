@@ -4,18 +4,23 @@ import Link from "next/link";
 import { Github, Mail, Heart, Terminal } from "lucide-react";
 
 const footerLinks = {
-  community: [
-    { name: "Rules", href: "/pages/rules" },
-    { name: "Code of Conduct", href: "/pages/code-of-conduct" },
-  { name: "Hall of Fame", href: "/pages/hall-of-fame" },
-    { name: "Moderation", href: "/pages/moderation-guide" },
+  organization: [
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Team", href: "/team" },
+    { name: "Contributing", href: "/contributing" },
   ],
   resources: [
-    { name: "Guides", href: "/pages/how-to-ask" },
-  { name: "How to Help", href: "/pages/how-to-help" },
-    { name: "Tags", href: "/pages/tags" },
-    { name: "Learning", href: "/resources" },
+    { name: "Learning Resources", href: "/resources" },
+    { name: "Documentation", href: "/pages" },
     { name: "FAQ", href: "/pages/faq" },
+    { name: "Code of Conduct", href: "/pages/code-of-conduct" },
+  ],
+  community: [
+    { name: "Discord", href: "https://discord.gg/3xKFvKhuGR" },
+    { name: "GitHub", href: "https://github.com/TheCodeVerseHub" },
+    { name: "Instagram", href: "https://instagram.com/thecodeversehub" },
+    { name: "Email", href: "mailto:contact@thecodeversehub.tech" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/pages/privacy-policy" },
@@ -70,30 +75,42 @@ export default function Footer() {
                 The Codeverse Hub
               </span>
             </Link>
-            <p className="mt-4 max-w-xs text-white/50 text-sm leading-relaxed">
-              A community for developers to learn, share, and grow together.
-              Join us to build the future.
+            <p className="mt-4 max-w-sm text-white/50 text-sm leading-relaxed">
+              A community-driven open-source organization building real-world software.
+              We maintain projects across Discord bots, Linux systems, developer tools,
+              and more.
             </p>
             <div className="mt-4 flex items-center gap-2">
               <Heart className="w-4 h-4 text-violet-400 fill-violet-400/20" />
               <span className="text-white/40 text-sm">
-                Made with love by the community
+                Open source, built by the community
               </span>
             </div>
           </div>
 
-          {/* Community Links */}
+          {/* Organization Links */}
           <div>
-            <h4 className="text-white font-medium">Community</h4>
+            <h4 className="text-white font-medium text-sm tracking-wider">Organization</h4>
             <ul className="mt-4 space-y-3">
-              {footerLinks.community.map((link) => (
+              {footerLinks.organization.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-white/50 text-sm hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.href.startsWith("http") ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/50 text-sm hover:text-white transition-colors inline-flex items-center gap-1"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-white/50 text-sm hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -101,7 +118,7 @@ export default function Footer() {
 
           {/* Resources Links */}
           <div>
-            <h4 className="text-white font-medium">Resources</h4>
+            <h4 className="text-white font-medium text-sm tracking-wider">Resources</h4>
             <ul className="mt-4 space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
@@ -116,28 +133,47 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal Links */}
-          <div>
-            <h4 className="text-white font-medium">Legal</h4>
-            <ul className="mt-4 space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-white/50 text-sm hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Connect & Legal */}
+          <div className="space-y-8">
+            <div>
+              <h4 className="text-white font-medium text-sm tracking-wider">Connect</h4>
+              <ul className="mt-4 space-y-3">
+                {footerLinks.community.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/50 text-sm hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-medium text-sm tracking-wider">Legal</h4>
+              <ul className="mt-4 space-y-3">
+                {footerLinks.legal.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-white/50 text-sm hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom */}
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
           <p className="text-white/40 text-sm">
-            © 2026 The Codeverse Hub. All rights reserved.
+            © 2026 The Codeverse Hub. Open-source organization.
           </p>
           <div className="flex items-center gap-3">
             {socialLinks.map((link) => {

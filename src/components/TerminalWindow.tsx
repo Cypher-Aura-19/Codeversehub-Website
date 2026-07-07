@@ -84,9 +84,12 @@ export default function TerminalWindow() {
   const snippet = snippets[snippetIdx];
 
   useEffect(() => {
-    setVisibleLines(0);
-    setCharIdx(0);
-    setDisplayedLines([]);
+    const timeout = setTimeout(() => {
+      setVisibleLines(0);
+      setCharIdx(0);
+      setDisplayedLines([]);
+    }, 0);
+    return () => clearTimeout(timeout);
   }, [snippetIdx]);
 
   useEffect(() => {
@@ -225,7 +228,7 @@ export default function TerminalWindow() {
             cvh ~ dev session
           </span>
           <span className="ml-auto text-white/20 text-xs font-mono">
-            1800+ members online
+            cvh ~ dev community
           </span>
         </div>
       </div>

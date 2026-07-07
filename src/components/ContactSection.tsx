@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, ArrowRight, Github, Send, CheckCircle } from "lucide-react";
+import { Mail, Github, Send, CheckCircle } from "lucide-react";
 import GradientText from "./GradientText";
 import ShinyText from "./ShinyText";
 

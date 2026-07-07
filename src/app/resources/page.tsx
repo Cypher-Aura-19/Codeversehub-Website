@@ -8,7 +8,6 @@ import Navbar from "../../components/Navbar";
 import pythonLogo from "../../../assets/python.png";
 import rustLogo from "../../../assets/rust.png";
 import javascriptLogo from "../../../assets/javascript.png";
-import typescriptLogo from "../../../assets/typescript.png";
 import cppLogo from "../../../assets/cpp.png";
 import javaLogo from "../../../assets/java.png";
 import goLogo from "../../../assets/go.png";

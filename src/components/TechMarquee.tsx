@@ -92,7 +92,7 @@ export default function TechMarquee() {
         </h2>
         <p className="text-white/40 text-base md:text-lg max-w-xl mx-auto">
           We have developers who work with every major language and framework.
-          You'll always find someone who gets it.
+          You&apos;ll always find someone who gets it.
         </p>
       </div>
 

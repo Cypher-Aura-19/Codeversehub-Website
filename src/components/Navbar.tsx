@@ -6,25 +6,23 @@ import { ChevronDown, Terminal } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/pages/rules", label: "Rules" },
-  { href: "/pages/faq", label: "FAQ" },
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "About" },
   { href: "/resources", label: "Resources" },
-  { href: "/pages/hall-of-fame", label: "Hall of Fame" },
+  { href: "/pages", label: "Docs" },
 ];
 
 const moreLinks = [
+  { href: "/team", label: "Team & Contributors" },
+  { href: "/contributing", label: "Contribution Guide" },
   { href: "/pages/code-of-conduct", label: "Code of Conduct" },
+  { href: "/pages/faq", label: "FAQ" },
+  { href: "/pages/rules", label: "Server Rules" },
+  { href: "/pages/contributing", label: "Contributing to CVH" },
   { href: "/pages/how-to-ask", label: "How to Ask for Help" },
-  { href: "/pages/how-to-help", label: "How to Help" },
-  { href: "/pages/join", label: "Join Guide" },
-  { href: "/pages/contributing", label: "Contributing" },
   { href: "/pages/moderation-guide", label: "Moderation Guide" },
-  { href: "/pages/server-info", label: "Server Info" },
   { href: "/pages/privacy-policy", label: "Privacy Policy" },
-  { href: "/pages/security-notice", label: "Security Notice" },
-  { href: "/pages/staff-roles", label: "Staff Roles" },
-  { href: "/pages/tags", label: "Tags Reference" },
-  { href: "/pages/acknowledgements", label: "Acknowledgements" },
+  { href: "/ban-appeal", label: "Ban Appeal" },
 ];
 
 export default function Navbar() {
@@ -118,7 +116,7 @@ export default function Navbar() {
 
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-[500px]" : "max-h-0"
+          isOpen ? "max-h-[600px]" : "max-h-0"
         }`}
       >
         <ul className="flex flex-col bg-black border-t border-white/10">

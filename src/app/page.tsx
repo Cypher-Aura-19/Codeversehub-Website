@@ -64,18 +64,18 @@ export default function Home() {
               <div className="flex items-center gap-2 w-fit">
                 <span className="flex items-center gap-2 text-xs font-mono text-violet-200 bg-violet-500/15 border border-violet-400/30 px-3.5 py-1.5 rounded-full shadow-[0_0_30px_rgba(139,92,246,0.18)]">
                   <span className="w-1.5 h-1.5 rounded-full bg-violet-300 animate-pulse" />
-                  1,100+ builders learning together
+                  Open-source organization
                 </span>
               </div>
 
               {/* Main headline */}
               <div className="space-y-3">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold text-white leading-[1.05] tracking-tight">
-                  Build faster with a
+                  Build software with a
                 </h1>
                 <h1>
                   <ShinyText
-                    text="Real Developer Community"
+                    text="Community That Ships"
                     className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-violet-300 via-fuchsia-400 to-indigo-300 bg-clip-text text-transparent"
                     speed={2}
                     delay={0.5}
@@ -90,9 +90,9 @@ export default function Home() {
                 </h1>
 
                 <p className="text-white/70 text-base sm:text-lg md:text-xl leading-relaxed max-w-xl">
-                  CodeVerse Hub is your always-on Discord for code reviews, open
-                  source teams, mentorship, and instant help — designed for
-                  developers who ship.
+                  The Codeverse Hub is a developer community and open-source organization.
+                  We build real projects, review each other&apos;s code, and help developers
+                  grow — from first commit to production maintainer.
                 </p>
               </div>
 
@@ -119,10 +119,10 @@ export default function Home() {
                 </Link>
 
                 <Link
-                  href="/resources"
+                  href="/projects"
                   className="group flex items-center justify-center gap-2 px-8 py-4 border border-white/15 text-white/80 font-medium rounded-full hover:bg-white/8 hover:border-white/30 hover:text-white transition-all duration-300"
                 >
-                  Explore resources
+                  Explore projects
                   <ArrowRight className="w-4 h-4 opacity-50 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
@@ -130,20 +130,20 @@ export default function Home() {
               {/* Metrics strip */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-xs text-white/50">Members</p>
-                  <p className="text-lg font-semibold text-white">1.1k+</p>
+                  <p className="text-xs text-white/50">Community members</p>
+                  <p className="text-lg font-semibold text-white">1.8k+</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-xs text-white/50">Weekly events</p>
-                  <p className="text-lg font-semibold text-white">4+</p>
+                  <p className="text-xs text-white/50">Open-source repos</p>
+                  <p className="text-lg font-semibold text-white">15+</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-xs text-white/50">OSS teams</p>
-                  <p className="text-lg font-semibold text-white">10+</p>
+                  <p className="text-xs text-white/50">Contributors</p>
+                  <p className="text-lg font-semibold text-white">13+</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-xs text-white/50">Always on</p>
-                  <p className="text-lg font-semibold text-white">24/7</p>
+                  <p className="text-xs text-white/50">Countries</p>
+                  <p className="text-lg font-semibold text-white">50+</p>
                 </div>
               </div>
 
@@ -151,15 +151,15 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-white/80">
                 <div className="flex items-center gap-1.5">
                   <Zap className="w-4 h-4 text-yellow-400" />
-                  <span>Fast help</span>
+                  <span>Active community</span>
                 </div>
                 <div className="w-1 h-1 rounded-full bg-white/20" />
                 <div className="flex items-center gap-1.5">
                   <Star className="w-4 h-4 text-violet-400" />
-                  <span>Real feedback</span>
+                  <span>Real projects</span>
                 </div>
                 <div className="w-1 h-1 rounded-full bg-white/40" />
-                <span className="text-white/80">Free forever</span>
+                <span className="text-white/80">Open to all</span>
               </div>
             </div>
 

@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import FuzzyText from "@/components/FuzzyText";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Search } from "lucide-react";
 
 export default function NotFound() {
     return (
@@ -17,43 +16,41 @@ export default function NotFound() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-violet-600/5 blur-[120px] pointer-events-none" />
 
             <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="mb-4">
-                    <FuzzyText
-                        fontSize="clamp(5rem, 15vw, 12rem)"
-                        fontWeight={900}
-                        color="#8b5cf6"
-                        baseIntensity={0.3}
-                        hoverIntensity={0.8}
-                        enableHover={true}
-                        fuzzRange={40}
-                        glitchMode={true}
-                        glitchInterval={3000}
-                        glitchDuration={300}
-                    >
-                        404
-                    </FuzzyText>
+                <span className="text-[8rem] md:text-[12rem] font-bold text-white/5 select-none leading-none">
+                    404
+                </span>
+
+                <div className="-mt-12">
+                    <p className="text-white/70 text-lg mb-2 font-medium">
+                        Page not found
+                    </p>
+
+                    <p className="text-white/35 text-sm mb-10 max-w-md">
+                        The page you are looking for does not exist, has been moved, or is no longer available.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                        <Link
+                            href="/"
+                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300"
+                        >
+                            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+                            Back to Home
+                        </Link>
+                        <Link
+                            href="/projects"
+                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl border border-white/15 text-white/80 font-medium hover:bg-white/5 hover:border-white/30 transition-all duration-300"
+                        >
+                            <Search className="w-4 h-4" />
+                            Browse Projects
+                        </Link>
+                    </div>
                 </div>
-
-                <p className="text-white/50 text-lg mb-2 font-medium">
-                    bro typed a whole URL and it doesn't even exist 💀
-                </p>
-
-                <p className="text-white/25 text-sm mb-10">
-                    this page left and never came back 🥀
-                </p>
-
-                <Link
-                    href="/"
-                    className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-violet-600/10 border border-violet-500/20 text-violet-400 hover:bg-violet-600/20 hover:border-violet-500/30 hover:text-violet-300 transition-all duration-300"
-                >
-                    <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
-                    <span className="font-medium">go back before it gets worse</span>
-                </Link>
             </div>
-            <p className="text-white/15 text-xs mt-12 font-mono">
-                exit code: 1 — segfault in page_loader.c at 0xDUMMY
+
+            <p className="text-white/15 text-xs mt-16 font-mono">
+                HTTP 404 — The requested resource was not found on this server.
             </p>
         </div>
     );
 }
-

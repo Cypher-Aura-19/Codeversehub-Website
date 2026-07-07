@@ -12,7 +12,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://thecodeversehub.tech";
 const siteName = "The Codeverse Hub";
 const siteDescription =
-  "CodeVerse Hub is a Discord community built for programmers — code reviews, open source projects, 24/7 help, resources, and people who get it.";
+  "The Codeverse Hub is a community-driven open-source organization building real-world software. We maintain Discord bots, Linux distributions, developer tools, and more.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -68,6 +68,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
   },
   manifest: "/site.webmanifest",
 };
