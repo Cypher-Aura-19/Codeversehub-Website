@@ -165,20 +165,22 @@ export default function Home() {
 
             {/* ── Right column — Visual stack ── */}
             <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative w-full max-w-xl">
-                <div className="absolute -top-6 -right-6 hidden sm:block rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-xs text-white/60">Today&apos;s activity</p>
-                  <p className="text-lg font-semibold text-white">
-                    124 questions answered
-                  </p>
-                </div>
-                <div className="absolute -bottom-6 -left-6 hidden sm:block rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-xs text-white/60">Mentors online</p>
-                  <p className="text-lg font-semibold text-white">18 now</p>
-                </div>
-                <TerminalWindow />
-              </div>
+            <div className="relative w-full max-w-xl">
+              <TerminalWindow />
             </div>
+            
+            {/* Top right card - matches metrics strip styling */}
+            <div className="absolute -top-20 -right-12 hidden sm:block rounded-2xl border border-white/10 bg-white/5 px-4 py-3 z-10">
+              <p className="text-xs text-white/50">Today&apos;s activity</p>
+              <p className="text-lg font-semibold text-white">124 questions answered</p>
+            </div>
+            
+            {/* Bottom left card - matches metrics strip styling */}
+            <div className="absolute -bottom-20 -left-12 hidden sm:block rounded-2xl border border-white/10 bg-white/5 px-4 py-3 z-10">
+              <p className="text-xs text-white/50">Mentors online</p>
+              <p className="text-lg font-semibold text-white">18 now</p>
+            </div>
+          </div>
           </div>
         </div>
 
