@@ -46,7 +46,7 @@ export default function LoadingScreen() {
           animation: "loading-gradient-swap 2s ease infinite",
         }}
       >
-        welcome to TCVH
+        Welcome to TCVH
       </span>
       <style>{`
         @keyframes loading-gradient-swap {
