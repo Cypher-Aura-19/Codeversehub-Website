@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# ban appeal storage (contains user data + IP hashes)
+/data/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

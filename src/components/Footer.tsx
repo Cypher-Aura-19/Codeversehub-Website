@@ -25,6 +25,7 @@ const footerLinks = {
   legal: [
     { name: "Privacy Policy", href: "/pages/privacy-policy" },
     { name: "Security Notice", href: "/pages/security-notice" },
+    { name: "Ban Appeal", href: "/ban-appeal" },
     { name: "Acknowledgements", href: "/pages/acknowledgements" },
   ],
 };

@@ -1,19 +1,74 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GradientText from "@/components/GradientText";
-import { CheckCircle, Send } from "lucide-react";
+import { CheckCircle, Send, Loader2 } from "lucide-react";
 
 type SubmitState =
   | { status: "idle" }
   | { status: "submitting" }
-  | { status: "success" }
+  | { status: "success"; appealId?: string }
   | { status: "error"; message: string };
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: string | HTMLElement, options: Record<string, unknown>) => string;
+      getResponse: (widgetId: string) => string;
+      reset: (widgetId: string) => void;
+    };
+  }
+}
 
 export default function BanAppealPage() {
   const [state, setState] = useState<SubmitState>({ status: "idle" });
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetId = useRef<string | null>(null);
+
+  const renderTurnstile = useCallback(() => {
+    if (!window.turnstile || !turnstileContainerRef.current) return;
+
+    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+    if (!siteKey) return;
+
+    turnstileContainerRef.current.innerHTML = "";
+    const id = window.turnstile.render(turnstileContainerRef.current, {
+      sitekey: siteKey,
+      theme: "dark",
+    });
+    turnstileWidgetId.current = id;
+  }, []);
+
+  useEffect(() => {
+    if (!turnstileContainerRef.current) return;
+
+    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+    if (!siteKey) return;
+
+    if (document.querySelector('script[src*="turnstile"]')) {
+      renderTurnstile();
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad";
+    script.async = true;
+    script.defer = true;
+
+    (window as unknown as Record<string, unknown>).onTurnstileLoad = () => {
+      renderTurnstile();
+    };
+
+    document.head.appendChild(script);
+
+    return () => {
+      if (turnstileWidgetId.current && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetId.current);
+      }
+    };
+  }, [renderTurnstile]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,6 +79,11 @@ export default function BanAppealPage() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
+    let turnstileToken = "";
+    if (turnstileWidgetId.current && window.turnstile) {
+      turnstileToken = window.turnstile.getResponse(turnstileWidgetId.current);
+    }
+
     const payload = {
       discordUsername: String(formData.get("discordUsername") || "").trim(),
       discordUserId: String(formData.get("discordUserId") || "").trim(),
@@ -32,6 +92,7 @@ export default function BanAppealPage() {
       appeal: String(formData.get("appeal") || "").trim(),
       evidenceLink: String(formData.get("evidenceLink") || "").trim(),
       website: String(formData.get("website") || "").trim(),
+      cfTurnstileToken: turnstileToken,
     };
 
     try {
@@ -41,24 +102,37 @@ export default function BanAppealPage() {
         body: JSON.stringify(payload),
       });
 
+      const data = (await res.json().catch(() => null)) as
+        | { ok?: boolean; error?: string; appealId?: string }
+        | null;
+
       if (!res.ok) {
-        const data = (await res.json().catch(() => null)) as
-          | { error?: string }
-          | null;
         setState({
           status: "error",
           message: data?.error || "Something went wrong. Please try again.",
         });
+        if (turnstileWidgetId.current && window.turnstile) {
+          window.turnstile.reset(turnstileWidgetId.current);
+        }
         return;
       }
 
-      setState({ status: "success" });
+      setState({
+        status: "success",
+        appealId: data?.appealId,
+      });
       form.reset();
+      if (turnstileWidgetId.current && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetId.current);
+      }
     } catch {
       setState({
         status: "error",
         message: "Network error. Please try again.",
       });
+      if (turnstileWidgetId.current && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetId.current);
+      }
     }
   };
 
@@ -91,6 +165,11 @@ export default function BanAppealPage() {
                 <h2 className="text-2xl font-bold text-white mb-2">
                   Appeal submitted
                 </h2>
+                {state.appealId ? (
+                  <p className="text-violet-400 font-mono text-sm mb-2">
+                    {state.appealId}
+                  </p>
+                ) : null}
                 <p className="text-white/50">
                   Thanks — your appeal was sent to the team.
                 </p>
@@ -104,7 +183,7 @@ export default function BanAppealPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Honeypot (spam protection). Keep hidden. */}
+                {/* Honeypot */}
                 <input
                   type="text"
                   name="website"
@@ -135,21 +214,26 @@ export default function BanAppealPage() {
                     htmlFor="discordUserId"
                     className="block text-white/70 text-sm mb-2"
                   >
-                    Discord user ID (optional)
+                    Discord user ID
                   </label>
                   <input
                     type="text"
                     id="discordUserId"
                     name="discordUserId"
                     inputMode="numeric"
+                    required
                     placeholder="e.g. 123456789012345678"
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
                   />
+                  <p className="text-xs text-white/35 mt-1">
+                    Used to identify you. Must be your Discord
+                    user ID (not your username).
+                  </p>
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-white/70 text-sm mb-2">
-                    Email (optional) [May Share Ban Appeal Status]
+                    Email (optional)
                   </label>
                   <input
                     type="email"
@@ -158,6 +242,9 @@ export default function BanAppealPage() {
                     placeholder="you@example.com"
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
                   />
+                  <p className="text-xs text-white/35 mt-1">
+                    May be used to share appeal status updates.
+                  </p>
                 </div>
 
                 <div>
@@ -188,7 +275,8 @@ export default function BanAppealPage() {
                     name="appeal"
                     rows={6}
                     required
-                    placeholder="Explain what happened, what you’ll do differently, and why you should be unbanned."
+                    minLength={20}
+                    placeholder="Explain what happened, what you'll do differently, and why you should be unbanned. (min 20 characters)"
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors resize-none"
                   />
                 </div>
@@ -209,6 +297,12 @@ export default function BanAppealPage() {
                   />
                 </div>
 
+                {/* Turnstile */}
+                <div
+                  ref={turnstileContainerRef}
+                  className="flex justify-center pt-2 min-h-[72px]"
+                />
+
                 {state.status === "error" ? (
                   <p className="text-sm text-red-400">{state.message}</p>
                 ) : null}
@@ -218,12 +312,16 @@ export default function BanAppealPage() {
                   disabled={state.status === "submitting"}
                   className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4" />
+                  {state.status === "submitting" ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
                   {state.status === "submitting" ? "Submitting..." : "Submit appeal"}
                 </button>
 
                 <p className="text-xs text-white/35 leading-relaxed">
-                  This form is sent to the moderation team via Discord webhook.
+                  This form is sent to the moderation team via Discord.
                   Don&apos;t include passwords or sensitive info.
                 </p>
               </form>
