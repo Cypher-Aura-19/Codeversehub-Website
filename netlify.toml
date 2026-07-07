@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
   publish = ".next"
+  environment = { SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SITE_URL NEXT_PUBLIC_TURNSTILE_SITE_KEY" }
 
 # Enable the official Next.js runtime on Netlify
 [[plugins]]
