@@ -34,9 +34,12 @@ export interface GitHubRepoWithContributors extends GitHubRepo {
   primaryLanguage: string;
 }
 
+const token = process.env.GITHUB_TOKEN;
+
 const headers: Record<string, string> = {
   Accept: "application/vnd.github.v3+json",
   "User-Agent": "TheCodeVerseHub-Website",
+  ...(token ? { Authorization: `Bearer ${token}` } : {}),
 };
 
 async function githubFetch<T>(path: string): Promise<T> {

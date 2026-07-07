@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { getOrgProfile, getRepos } from "@/lib/github";
+import { getCached, setCache } from "@/lib/github-storage";
+import { logger } from "@/lib/appeal-logger";
 
 export const revalidate = 600;
 
@@ -16,11 +18,19 @@ export async function GET() {
       {} as Record<string, number>,
     );
 
-    return NextResponse.json(
-      { ...org, totalStars, totalForks, languages, repoCount: repos.length },
-      { headers: { "Cache-Control": "public, max-age=600, s-maxage=600" } },
-    );
+    const data = { ...org, totalStars, totalForks, languages, repoCount: repos.length };
+    setCache("org", data);
+    return NextResponse.json(data, {
+      headers: { "Cache-Control": "public, max-age=600, s-maxage=600" },
+    });
   } catch {
+    const cached = getCached<Record<string, unknown>>("org");
+    if (cached) {
+      logger.info("Serving stale org data from cache");
+      return NextResponse.json(cached, {
+        headers: { "Cache-Control": "public, max-age=60, s-maxage=60" },
+      });
+    }
     return NextResponse.json({ error: "Failed to fetch org data" }, { status: 500 });
   }
 }
