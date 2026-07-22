@@ -3,6 +3,7 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import localGeist from "next/font/local";
 import "./globals.css";
 import LoadingScreen from "@/components/LoadingScreen";
+import SiteBackground from "@/components/SiteBackground";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -153,6 +154,7 @@ export default function RootLayout({
           }}
         />
 
+        <SiteBackground />
         <LoadingScreen />
         {children}
       </body>
