@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Oxanium, Inter } from "next/font/google";
+import { JetBrains_Mono, Inter, Pixelify_Sans } from "next/font/google";
 import "./globals.css";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -8,17 +9,17 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-const oxanium = Oxanium({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-oxanium",
-  weight: ["400", "500", "600", "700"],
-});
-
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
+
+const pixelifySans = Pixelify_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-pixel",
   weight: ["400", "500", "600", "700"],
 });
 
@@ -92,7 +93,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0a0a0a",
+  themeColor: "#09090B",
 };
 
 export default function RootLayout({
@@ -121,8 +122,9 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${jetbrainsMono.variable} ${oxanium.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased bg-black text-white">
+    <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable} ${pixelifySans.variable}`}>
+      <body className="font-sans antialiased bg-[#09090B] text-white">
+        <LoadingScreen />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

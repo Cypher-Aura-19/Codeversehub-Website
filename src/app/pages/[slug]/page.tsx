@@ -162,7 +162,7 @@ export default async function ContentPage({ params }: PageProps) {
                 <div className="flex-1 flex items-center justify-center px-4 py-16">
                     <div className="text-center">
                         <h1 className="text-4xl font-bold text-white mb-4">Page Not Found</h1>
-                        <Link href="/" className="text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150">
+                        <Link href="/" className="text-[#22d3ee] hover:text-[#67e8f9] transition-colors duration-150">
                             Return Home
                         </Link>
                     </div>
@@ -181,7 +181,7 @@ export default async function ContentPage({ params }: PageProps) {
                 <div className="flex items-center justify-between gap-4 mb-6">
                     <Link
                         href="/"
-                        className="inline-flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150"
+                        className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-[#67e8f9] transition-colors duration-150"
                     >
                         <ArrowLeft className="w-4 h-4" />
                         Back to Home
@@ -193,7 +193,7 @@ export default async function ContentPage({ params }: PageProps) {
                     >
                         <Link
                             href="/pages"
-                            className="text-[#a78bfa] hover:text-[#c4b5fd] font-medium transition-colors duration-150"
+                            className="text-[#22d3ee] hover:text-[#67e8f9] font-medium transition-colors duration-150"
                         >
                             Pages
                         </Link>
@@ -214,7 +214,7 @@ export default async function ContentPage({ params }: PageProps) {
                             <div className="flex items-start gap-4">
                                 {IconComponent && (
                                     <div className="doc-icon-badge flex-shrink-0">
-                                        <IconComponent className="w-6 h-6 text-[#a78bfa]" />
+                                        <IconComponent className="w-6 h-6 text-[#22d3ee]" />
                                     </div>
                                 )}
                                 <div className="flex-1">

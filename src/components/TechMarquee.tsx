@@ -2,7 +2,7 @@
 
 const techRow1 = [
   { name: "Python", color: "#3B82F6" },
-  { name: "TypeScript", color: "#8B5CF6" },
+  { name: "TypeScript", color: "#06b6d4" },
   { name: "Rust", color: "#F97316" },
   { name: "Go", color: "#06B6D4" },
   { name: "React", color: "#61DAFB" },
@@ -34,23 +34,14 @@ const techRow2 = [
   { name: "Bun", color: "#F9F1E1" },
 ];
 
-function MarqueeTrack({
-  items,
-  reverse = false,
-}: {
-  items: typeof techRow1;
-  reverse?: boolean;
-}) {
+function MarqueeTrack({ items, reverse = false }: { items: typeof techRow1; reverse?: boolean }) {
   const chips = items.map((tech, i) => (
     <div
       key={i}
-      className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.12] transition-colors duration-200 cursor-default select-none shrink-0"
+      className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/[0.1] transition-colors duration-200 cursor-default select-none shrink-0"
     >
-      <div
-        className="w-2 h-2 rounded-full shrink-0"
-        style={{ backgroundColor: tech.color }}
-      />
-      <span className="text-white/60 text-sm font-medium whitespace-nowrap hover:text-white/80 transition-colors duration-200">
+      <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: tech.color }} />
+      <span className="text-white/50 text-xs font-medium whitespace-nowrap hover:text-white/70 transition-colors duration-200">
         {tech.name}
       </span>
     </div>
@@ -58,8 +49,8 @@ function MarqueeTrack({
 
   return (
     <div className="relative overflow-hidden py-2">
-      <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-black to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-black to-transparent pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none" />
       <div className="flex gap-3 w-max">
         <div className={`flex gap-3 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
           {chips}
@@ -76,20 +67,16 @@ function MarqueeTrack({
 
 export default function TechMarquee() {
   return (
-    <section className="bg-black py-20 md:py-24 px-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto mb-10 text-center">
-        <span className="cvh-label mb-5">
-          Languages and tools
-        </span>
+    <section className="section-padding px-5 md:px-8 overflow-hidden">
+      <div className="max-w-6xl mx-auto mb-10 text-center">
+        <span className="cvh-label mb-5">Languages & tools</span>
         <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
           Pick your stack
         </h2>
         <p className="text-white/40 text-base md:text-lg max-w-xl mx-auto">
-          Python, Rust, Go, TypeScript. We have developers who work in every major language.
-          You will always find someone who speaks your stack.
+          Python, Rust, Go, TypeScript. Whatever you work in, you will find your people.
         </p>
       </div>
-
       <div className="space-y-3 max-w-[100vw]">
         <MarqueeTrack items={techRow1} />
         <MarqueeTrack items={techRow2} reverse />

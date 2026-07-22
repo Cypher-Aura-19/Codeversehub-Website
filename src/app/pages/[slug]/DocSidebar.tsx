@@ -68,7 +68,7 @@ export default function DocSidebar({ toc }: DocSidebarProps) {
         <>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="doc-sidebar-toggle lg:hidden fixed bottom-6 right-6 z-50 w-11 h-11 rounded-lg bg-[#7c3aed] text-white flex items-center justify-center shadow-lg hover:bg-[#6d28d9] transition-colors duration-150"
+                className="doc-sidebar-toggle lg:hidden fixed bottom-6 right-6 z-50 w-11 h-11 rounded-lg bg-[#0891b2] text-white flex items-center justify-center shadow-lg hover:bg-[#0e7490] transition-colors duration-150"
                 aria-label="Table of Contents"
             >
                 <List className="w-5 h-5" />
@@ -86,7 +86,7 @@ export default function DocSidebar({ toc }: DocSidebarProps) {
             >
                 <div className="doc-sidebar-inner">
                     <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/[0.06]">
-                        <List className="w-4 h-4 text-[#a78bfa]" />
+                        <List className="w-4 h-4 text-[#22d3ee]" />
                         <span className="text-xs font-semibold text-white/50 uppercase tracking-wider">
                             Docs navigation
                         </span>

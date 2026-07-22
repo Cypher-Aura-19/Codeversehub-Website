@@ -2,51 +2,30 @@
 
 export default function About() {
   return (
-    <section className="min-h-screen bg-black flex flex-col items-center justify-center py-20 md:py-24 px-4">
-      <span className="cvh-label mb-8">
-        Who we are
-      </span>
+    <section className="section-padding px-5 md:px-8 border-t border-white/[0.04]">
+      <div className="max-w-4xl mx-auto text-center">
+        <span className="cvh-label mb-6">Who we are</span>
 
-      <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-12 md:mb-16 tracking-tight leading-tight">
-        Builders. Maintainers. <br className="hidden sm:block" />
-        <span className="cvh-gradient-text">Open Source.</span>
-      </h2>
+        <h2 className="cvh-heading text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-10 md:mb-14 tracking-tight leading-tight">
+          Builders. Maintainers.{" "}
+          <span className="cvh-gradient-text">Open Source.</span>
+        </h2>
 
-      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8 text-center">
-        <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
-          We are a community of developers who actually{" "}
-          <span className="cvh-gradient-text font-semibold">
-            build real software
-          </span>
-          .
+        <div className="space-y-4 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/25 leading-relaxed">
+            We are developers who actually build real software. Discord bots used by thousands. Linux distributions. Developer tools.
+          </p>
+          <p className="text-lg sm:text-xl md:text-2xl text-white/25 leading-relaxed">
+            Beginners ship their first PR. Seniors maintain production projects. Developers from 50+ countries, one shared mission: build things that matter.
+          </p>
         </div>
-        <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
-          Discord bots used by thousands.{" "}
-          <span className="cvh-gradient-text font-semibold">
-            Linux distributions
-          </span>
-          . Developer tools. Web platforms.
-        </div>
-        <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
-          Beginners ship their{" "}
-          <span className="cvh-gradient-text font-semibold">
-            first PR
-          </span>
-          . Seniors maintain production projects.
-        </div>
-        <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
-          Developers from{" "}
-          <span className="cvh-gradient-text font-semibold">
-            50+ countries
-          </span>
-          . One shared mission: build things that matter.
+
+        <div className="mt-14">
+          <p className="text-white/15 text-sm font-mono tracking-[0.15em]">
+            {"// open source, open to all"}
+          </p>
         </div>
       </div>
-
-      <div className="mt-16" />
-      <p className="text-white/20 text-sm md:text-base font-mono tracking-[0.15em] text-center px-4">
-        {"// open source, open to all"}
-      </p>
     </section>
   );
 }

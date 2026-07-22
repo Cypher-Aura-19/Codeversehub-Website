@@ -9,14 +9,6 @@ interface OrgData {
   totalForks: number;
 }
 
-interface StatItemProps {
-  value: number;
-  suffix: string;
-  label: string;
-  inView: boolean;
-  prefix?: string;
-}
-
 function useCountUp(end: number, inView: boolean, duration: number = 2000) {
   const [count, setCount] = useState(0);
   const hasAnimated = useRef(false);
@@ -31,33 +23,13 @@ function useCountUp(end: number, inView: boolean, duration: number = 2000) {
       const progress = Math.min((currentTime - startTime) / duration, 1);
       const easeOut = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(easeOut * end));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
+      if (progress < 1) requestAnimationFrame(animate);
+      else setCount(end);
     };
-
     requestAnimationFrame(animate);
   }, [end, inView, duration]);
 
   return count;
-}
-
-function StatItem({ value, suffix, label, inView, prefix = "" }: StatItemProps) {
-  const count = useCountUp(value, inView);
-
-  return (
-    <div className="flex flex-col items-center">
-      <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight">
-        {prefix}{count}{suffix}
-      </span>
-      <span className="text-xs sm:text-sm text-white/50 uppercase tracking-widest mt-2 text-center font-medium">
-        {label}
-      </span>
-    </div>
-  );
 }
 
 export default function Stats() {
@@ -72,50 +44,53 @@ export default function Stats() {
 
   useEffect(() => {
     fetch("/api/github/org")
-      .then((res) => res.ok ? res.json() : null)
-      .then((data) => {
-        if (data) setOrgData(data);
-      })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => { if (data) setOrgData(data); })
       .catch(() => {});
   }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        }
-      },
-      { threshold: 0.3 },
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { threshold: 0.3 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
+  const items = [
+    { value: orgData.public_repos, suffix: "+", label: "Repositories" },
+    { value: orgData.totalStars, suffix: "+", label: "Stars" },
+    { value: orgData.totalForks, suffix: "+", label: "Forks" },
+    { value: orgData.followers, suffix: "+", label: "Followers" },
+  ];
+
   return (
-    <section
-      ref={sectionRef}
-      className="bg-black py-20 md:py-24 px-4"
-    >
-      <div className="max-w-6xl mx-auto text-center">
-        <span className="cvh-label mb-5">
-          By the Numbers
-        </span>
-        <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-          Our Impact
-        </h2>
-        <p className="text-white/40 text-base md:text-lg mb-12 md:mb-16">
-          Open-source metrics from GitHub
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-20">
-          <StatItem value={orgData.public_repos} suffix="+" label="Repositories" inView={inView} />
-          <StatItem value={orgData.totalStars} suffix="+" label="Stars" inView={inView} />
-          <StatItem value={orgData.totalForks} suffix="+" label="Forks" inView={inView} />
-          <StatItem value={orgData.followers} suffix="+" label="Followers" inView={inView} />
+    <section ref={sectionRef} className="section-padding px-5 md:px-8 border-t border-white/[0.04]">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="cvh-label mb-5">By the numbers</span>
+          <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+            Our impact
+          </h2>
+          <p className="text-white/40 text-base md:text-lg mt-3">
+            Open-source metrics from GitHub
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
+          {items.map((item) => {
+            const count = useCountUp(item.value, inView);
+            return (
+              <div key={item.label} className="flex flex-col items-center gap-2">
+                <span className="cvh-heading text-5xl sm:text-6xl md:text-7xl font-bold text-white tracking-tighter">
+                  {count}{item.suffix}
+                </span>
+                <span className="text-[11px] text-white/50 uppercase tracking-[0.12em] font-medium">
+                  {item.label}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

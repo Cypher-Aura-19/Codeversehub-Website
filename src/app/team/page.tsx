@@ -62,7 +62,7 @@ export default async function TeamPage() {
     <div className="min-h-screen bg-black flex flex-col">
       <Navbar />
       <main className="flex-1 max-w-7xl mx-auto px-4 py-16 w-full">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] mb-8 transition-colors duration-150 text-sm">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-[#67e8f9] mb-8 transition-colors duration-150 text-sm">
           <ArrowLeft className="w-4 h-4" />
           Back to Home
         </Link>
@@ -94,12 +94,12 @@ export default async function TeamPage() {
                   className="w-12 h-12 rounded-full"
                 />
                 <div className="min-w-0">
-                  <p className="text-white font-semibold group-hover:text-[#a78bfa] transition-colors duration-150 truncate">
+                  <p className="text-white font-semibold group-hover:text-[#22d3ee] transition-colors duration-150 truncate">
                     {m.login}
                   </p>
                   <p className="text-white/40 text-sm">{m.role}</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-white/20 group-hover:text-[#a78bfa] ml-auto shrink-0 transition-colors duration-150" />
+                <ExternalLink className="w-4 h-4 text-white/20 group-hover:text-[#22d3ee] ml-auto shrink-0 transition-colors duration-150" />
               </a>
             ))}
           </div>
@@ -113,7 +113,7 @@ export default async function TeamPage() {
               href="https://github.com/TheCodeVerseHub"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150"
+              className="flex items-center gap-2 text-sm text-[#22d3ee] hover:text-[#67e8f9] transition-colors duration-150"
             >
               <Github className="w-4 h-4" />
               View all on GitHub
@@ -136,12 +136,12 @@ export default async function TeamPage() {
                     className="w-9 h-9 rounded-full"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="text-white text-sm font-medium group-hover:text-[#a78bfa] transition-colors duration-150 truncate">
+                    <p className="text-white text-sm font-medium group-hover:text-[#22d3ee] transition-colors duration-150 truncate">
                       {c.login}
                     </p>
                     <p className="text-white/30 text-xs">{c.contributions} contributions</p>
                   </div>
-                  <ExternalLink className="w-3 h-3 text-white/15 group-hover:text-[#a78bfa] shrink-0 transition-colors duration-150" />
+                  <ExternalLink className="w-3 h-3 text-white/15 group-hover:text-[#22d3ee] shrink-0 transition-colors duration-150" />
                 </a>
               ))}
             </div>
@@ -154,7 +154,7 @@ export default async function TeamPage() {
           <div className="mt-8 text-center">
             <Link
               href="/contributing"
-              className="inline-flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150"
+              className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-[#67e8f9] transition-colors duration-150"
             >
               Learn how to contribute →
             </Link>

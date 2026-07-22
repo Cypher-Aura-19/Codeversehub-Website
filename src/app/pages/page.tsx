@@ -105,10 +105,10 @@ export default function PagesIndex() {
               className="cvh-card px-5 py-4 md:px-6 md:py-5 group"
             >
               <div className="flex items-center gap-3 mb-1">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#8b5cf6]/10 text-[#a78bfa] group-hover:bg-[#8b5cf6]/20 group-hover:text-[#c4b5fd] transition-colors duration-150">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#06b6d4]/10 text-[#22d3ee] group-hover:bg-[#06b6d4]/20 group-hover:text-[#67e8f9] transition-colors duration-150">
                   <Icon className="h-4 w-4" />
                 </span>
-                <h2 className="text-lg md:text-xl font-semibold text-white group-hover:text-[#a78bfa] transition-colors duration-150">
+                <h2 className="text-lg md:text-xl font-semibold text-white group-hover:text-[#22d3ee] transition-colors duration-150">
                   {title}
                 </h2>
               </div>
