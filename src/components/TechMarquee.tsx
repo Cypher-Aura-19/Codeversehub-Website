@@ -1,12 +1,12 @@
 "use client";
 
 const techRow1 = [
-  { name: "Python", color: "#3B82F6" },
-  { name: "TypeScript", color: "#06b6d4" },
-  { name: "Rust", color: "#F97316" },
-  { name: "Go", color: "#06B6D4" },
+  { name: "Python", color: "#3572A5" },
+  { name: "TypeScript", color: "#3178C6" },
+  { name: "Rust", color: "#DEA584" },
+  { name: "Go", color: "#00ADD8" },
   { name: "React", color: "#61DAFB" },
-  { name: "Next.js", color: "#FFFFFF" },
+  { name: "Next.js", color: "#e4e4e7" },
   { name: "Node.js", color: "#22C55E" },
   { name: "Django", color: "#10B981" },
   { name: "FastAPI", color: "#009688" },
@@ -27,21 +27,30 @@ const techRow2 = [
   { name: "Prisma", color: "#2D3748" },
   { name: "Linux", color: "#FCC624" },
   { name: "AWS", color: "#FF9900" },
-  { name: "GitHub", color: "#FFFFFF" },
+  { name: "GitHub", color: "#e4e4e7" },
   { name: "CI/CD", color: "#6366F1" },
   { name: "Terraform", color: "#7B42BC" },
   { name: "Tauri", color: "#FFC131" },
   { name: "Bun", color: "#F9F1E1" },
 ];
 
-function MarqueeTrack({ items, reverse = false }: { items: typeof techRow1; reverse?: boolean }) {
+function MarqueeTrack({
+  items,
+  reverse = false,
+}: {
+  items: typeof techRow1;
+  reverse?: boolean;
+}) {
   const chips = items.map((tech, i) => (
     <div
       key={i}
-      className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/[0.1] transition-colors duration-200 cursor-default select-none shrink-0"
+      className="flex items-center gap-2 px-3 py-1.5 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.1)] transition-colors duration-200 cursor-default select-none shrink-0"
     >
-      <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: tech.color }} />
-      <span className="text-white/50 text-xs font-medium whitespace-nowrap hover:text-white/70 transition-colors duration-200">
+      <span
+        className="w-1.5 h-1.5 rounded-full shrink-0"
+        style={{ backgroundColor: tech.color }}
+      />
+      <span className="text-[#a1a1aa] text-[0.75rem] font-medium whitespace-nowrap hover:text-[#e4e4e7] transition-colors duration-200">
         {tech.name}
       </span>
     </div>
@@ -49,14 +58,22 @@ function MarqueeTrack({ items, reverse = false }: { items: typeof techRow1; reve
 
   return (
     <div className="relative overflow-hidden py-2">
-      <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#09090b] to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#09090b] to-transparent pointer-events-none" />
       <div className="flex gap-3 w-max">
-        <div className={`flex gap-3 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
+        <div
+          className={`flex gap-3 ${
+            reverse ? "animate-marquee-reverse" : "animate-marquee"
+          }`}
+        >
           {chips}
           {chips}
         </div>
-        <div className={`flex gap-3 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
+        <div
+          className={`flex gap-3 ${
+            reverse ? "animate-marquee-reverse" : "animate-marquee"
+          }`}
+        >
           {chips}
           {chips}
         </div>
@@ -67,14 +84,15 @@ function MarqueeTrack({ items, reverse = false }: { items: typeof techRow1; reve
 
 export default function TechMarquee() {
   return (
-    <section className="section-padding px-5 md:px-8 overflow-hidden">
-      <div className="max-w-6xl mx-auto mb-10 text-center">
-        <span className="cvh-label mb-5">Languages & tools</span>
-        <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+    <section className="section-spacing overflow-hidden">
+      <div className="section-container mb-12 text-center">
+        <span className="section-label mb-6">Languages & Tools</span>
+        <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7] mb-4">
           Pick your stack
         </h2>
-        <p className="text-white/40 text-base md:text-lg max-w-xl mx-auto">
-          Python, Rust, Go, TypeScript. Whatever you work in, you will find your people.
+        <p className="text-[#a1a1aa] text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+          Python, Rust, Go, TypeScript. Whatever you build in, you will find
+          your people.
         </p>
       </div>
       <div className="space-y-3 max-w-[100vw]">

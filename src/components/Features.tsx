@@ -1,79 +1,77 @@
 "use client";
 
-import {
-  MessageSquare,
-  GitPullRequest,
-  BookOpen,
-  Rocket,
-  Code2,
-  Users,
-} from "lucide-react";
-
 const features = [
   {
-    icon: MessageSquare,
-    title: "Help when you need it",
-    description: "Stuck at 2am? Someone in our community is awake. Post your question and get answers from developers who actually know the stack.",
+    number: "01",
+    title: "Code Reviews",
+    description:
+      "Submit your code and get honest, actionable feedback from developers who actually know the stack. No rubber stamps. No ego.",
   },
   {
-    icon: GitPullRequest,
-    title: "Real code reviews",
-    description: "Submit your code and get honest feedback. Senior devs will tell you what works and what does not. No rubber stamps.",
+    number: "02",
+    title: "Open Source",
+    description:
+      "We maintain Discord bots, developer tools, and a Linux distribution. Real projects you can contribute to and put on your resume.",
   },
   {
-    icon: BookOpen,
-    title: "Curated resources",
-    description: "Hand-picked docs, tutorials, and roadmaps that actually helped someone get better at their stack. No blog spam.",
+    number: "03",
+    title: "Study Groups",
+    description:
+      "Learning DSA or picking up a new framework? Find people at your level and work through it together. Structured, focused, consistent.",
   },
   {
-    icon: Rocket,
-    title: "Project showcase",
-    description: "Building something? Share it. Get feedback, find collaborators, maybe even a co-maintainer who cares about the same thing.",
+    number: "04",
+    title: "Project Showcase",
+    description:
+      "Building something? Share it. Get feedback, find collaborators, maybe even a co-maintainer who cares about the same problem.",
   },
   {
-    icon: Code2,
-    title: "Open source",
-    description: "We maintain bots, tools, and a Linux distro. Real projects you can contribute to and put on your resume.",
+    number: "05",
+    title: "Curated Resources",
+    description:
+      "Hand-picked documentation, tutorials, and roadmaps that helped someone get better at their stack. No blog spam, no fluff.",
   },
   {
-    icon: Users,
-    title: "Study groups",
-    description: "Learning DSA or a new framework? Find people at your level and work through it together. No awkward silence.",
+    number: "06",
+    title: "24/7 Community",
+    description:
+      "Stuck at 2 AM? Someone in our community is awake. Post your question and get answers from developers across every time zone.",
   },
 ];
 
 export default function Features() {
   return (
-    <section className="section-padding px-5 md:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="cvh-label mb-5">What we offer</span>
-          <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
-            Everything a dev needs
+    <section className="section-spacing">
+      <div className="section-container">
+        <div className="text-center mb-16">
+          <span className="section-label mb-6">Community Pillars</span>
+          <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7] mb-4">
+            Built by developers,
+            <br />
+            for developers
           </h2>
-          <p className="text-white/40 text-base md:text-lg max-w-xl mx-auto">
-            Debugging at midnight, prepping for interviews, or shipping your first
-            open-source PR. We have a space for it.
+          <p className="text-[#a1a1aa] text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+            Every feature, every channel, every project exists to help you grow as an engineer.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {features.map((feature, i) => {
-            const Icon = feature.icon;
-            return (
-              <div key={i} className="cvh-card p-6 md:p-7 group">
-                <div className="w-10 h-10 rounded-lg bg-[#06b6d4]/10 text-[#06b6d4] flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5" />
-                </div>
-                <h3 className="text-white font-semibold text-base mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-white/45 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(255,255,255,0.04)]">
+          {features.map((feature) => (
+            <div
+              key={feature.number}
+              className="card p-7 md:p-8 group bg-[#09090b] hover:bg-[#0e0e12] transition-colors duration-200"
+            >
+              <span className="font-mono text-[0.6875rem] text-[#52525b] tracking-wider mb-4 block">
+                {feature.number}
+              </span>
+              <h3 className="font-heading text-base font-medium text-[#e4e4e7] mb-2 group-hover:text-white transition-colors duration-150">
+                {feature.title}
+              </h3>
+              <p className="text-[0.8125rem] text-[#a1a1aa] leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

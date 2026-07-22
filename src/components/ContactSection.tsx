@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Github, ExternalLink, Send, Loader2, CheckCircle } from "lucide-react";
+import { Mail, Github, ExternalLink } from "lucide-react";
 
 const contactMethods = [
   {
@@ -29,135 +28,44 @@ const contactMethods = [
 ];
 
 export default function ContactSection() {
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    try {
-      await fetch("https://formspree.io/f/mdkvwgln", {
-        method: "POST", body: formData,
-        headers: { Accept: "application/json" },
-      });
-      setSubmitted(true);
-      form.reset();
-    } catch {
-      console.error("Form submission error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <section className="section-padding px-5 md:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="section-spacing">
+      <div className="section-container">
         <div className="text-center mb-14">
-          <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
-            Get in <span className="cvh-gradient-text">touch</span>
+          <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7] mb-4">
+            Get in touch
           </h2>
-          <p className="text-white/40 text-base md:text-lg max-w-lg mx-auto">
+          <p className="text-[#a1a1aa] text-base md:text-lg max-w-lg mx-auto leading-relaxed">
             Questions, collaborations, or just want to say hi.
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] max-w-4xl mx-auto">
-          {/* Contact methods */}
-          <div className="space-y-3">
-            {contactMethods.map((method) => {
-              const Icon = method.icon;
-              return (
-                <a
-                  key={method.label}
-                  href={method.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cvh-card p-5 flex items-center gap-4 group"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-[#06b6d4]/10 text-[#06b6d4] flex items-center justify-center shrink-0 group-hover:bg-[#06b6d4]/15 transition-colors duration-150">
-                    <Icon />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="text-white font-semibold text-sm">
-                      {method.label}
-                    </h3>
-                    <p className="text-white/40 text-xs mt-0.5 truncate">
-                      {method.value}
-                    </p>
-                  </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-white/20 group-hover:text-[#06b6d4] ml-auto shrink-0 transition-colors duration-150" />
-                </a>
-              );
-            })}
-          </div>
-
-          {/* Form */}
-          <div className="cvh-card p-6 md:p-7">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center text-center py-8">
-                <CheckCircle className="w-12 h-12 text-green-400 mb-4" />
-                <h3 className="text-white font-semibold text-lg mb-1">Message sent</h3>
-                <p className="text-white/40 text-sm">We will get back to you soon.</p>
-                <button
-                  type="button"
-                  onClick={() => setSubmitted(false)}
-                  className="mt-5 text-sm text-[#22d3ee] hover:text-[#67e8f9] transition-colors duration-150"
-                >
-                  Send another message
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-3.5">
-                <div>
-                  <label htmlFor="name" className="block text-white/60 text-xs font-medium mb-1.5">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Your name"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150"
-                  />
+        <div className="grid gap-3 max-w-lg mx-auto">
+          {contactMethods.map((method) => {
+            const Icon = method.icon;
+            return (
+              <a
+                key={method.label}
+                href={method.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card p-4 flex items-center gap-4 group"
+              >
+                <div className="w-10 h-10 flex items-center justify-center text-[#06b6d4] shrink-0">
+                  <Icon />
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-white/60 text-xs font-medium mb-1.5">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="you@example.com"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150"
-                  />
+                <div className="min-w-0">
+                  <h3 className="text-[0.8125rem] font-medium text-[#e4e4e7] group-hover:text-white transition-colors duration-150">
+                    {method.label}
+                  </h3>
+                  <p className="text-[0.75rem] text-[#52525b] mt-0.5 truncate">
+                    {method.value}
+                  </p>
                 </div>
-                <div>
-                  <label htmlFor="message" className="block text-white/60 text-xs font-medium mb-1.5">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={4}
-                    placeholder="What is on your mind?"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150 resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="cvh-btn-primary w-full"
-                >
-                  {isSubmitting ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <Send className="w-4 h-4" />
-                  )}
-                  {isSubmitting ? "Sending..." : "Send message"}
-                </button>
-              </form>
-            )}
-          </div>
+                <ExternalLink className="w-4 h-4 text-[#52525b] ml-auto shrink-0 transition-colors duration-150 group-hover:text-[#a1a1aa]" />
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

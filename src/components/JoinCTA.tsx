@@ -5,15 +5,17 @@ import { ArrowRight } from "lucide-react";
 
 export default function JoinCTA() {
   return (
-    <section className="section-padding px-5 md:px-8 border-t border-white/[0.04]">
-      <div className="max-w-6xl mx-auto">
-        <div className="rounded-2xl border border-white/[0.06] bg-[#0d0d0d] p-10 md:p-16 text-center">
-          <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+    <section className="section-spacing">
+      <div className="section-divider mb-0" />
+      <div className="section-container pt-16 md:pt-20">
+        <div className="max-w-2xl mx-auto text-center">
+          <span className="section-label mb-6">Get Involved</span>
+          <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7] mb-5">
             Ready to ship?
           </h2>
-          <p className="text-white/45 text-base md:text-lg max-w-lg mx-auto mb-8 leading-relaxed">
-            No gatekeeping. No fake guru culture. Just developers building open-source
-            software and helping each other get better.
+          <p className="text-[#a1a1aa] text-base md:text-lg max-w-lg mx-auto leading-relaxed mb-10">
+            No gatekeeping. No fake guru culture. Just developers building
+            open-source software and helping each other improve.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -21,24 +23,24 @@ export default function JoinCTA() {
               href="https://discord.gg/3xKFvKhuGR"
               target="_blank"
               rel="noopener noreferrer"
-              className="cvh-btn-primary h-12 px-8 text-base group"
+              className="btn-primary h-11 px-7 text-[0.8125rem] group"
             >
               Join Discord
-              <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5" />
             </a>
             <Link
               href="/projects"
-              className="cvh-btn-secondary h-12 px-8 text-base"
+              className="btn-secondary h-11 px-7 text-[0.8125rem]"
             >
               Browse projects
             </Link>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-6 text-sm text-white/30">
+          <div className="mt-8 flex items-center justify-center gap-6 text-[0.75rem] text-[#52525b]">
             <span>No application required</span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <span className="w-1 h-1 rounded-full bg-[rgba(255,255,255,0.12)]" />
             <span>All skill levels welcome</span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <span className="w-1 h-1 rounded-full bg-[rgba(255,255,255,0.12)]" />
             <span>Active 24/7</span>
           </div>
         </div>

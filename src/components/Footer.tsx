@@ -36,6 +36,33 @@ const socialLinks = [
     icon: <Github className="w-4 h-4" />,
   },
   {
+    name: "Discord",
+    href: "https://discord.gg/3xKFvKhuGR",
+    icon: (
+      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+      </svg>
+    ),
+  },
+  {
+    name: "Matrix",
+    href: "https://matrix.to/#/#the-codeverse-hub:matrix.org",
+    icon: (
+      <span className="font-mono text-sm font-bold tracking-tight leading-none">
+        [m]
+      </span>
+    ),
+  },
+  {
+    name: "Fluxer",
+    href: "https://fluxer.gg/RbLwebqH",
+    icon: (
+      <span className="font-mono text-sm font-bold tracking-tight leading-none">
+        {'{F}'}
+      </span>
+    ),
+  },
+  {
     name: "Instagram",
     href: "https://instagram.com/thecodeversehub",
     icon: (
@@ -45,34 +72,11 @@ const socialLinks = [
     ),
   },
   {
-    name: "Fluxer",
-    href: "https://fluxer.gg/RbLwebqH",
-    icon: (
-      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 6v6l4 2" />
-      </svg>
-    ),
-  },
-  {
-    name: "Matrix",
-    href: "https://matrix.to/#/#the-codeverse-hub:matrix.org",
-    icon: (
-      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-        <rect x="2" y="2" width="20" height="20" rx="3" />
-        <path d="M8 7v10M16 7v10M8 12h8" stroke="#0a0a0a" strokeWidth="2" fill="none" />
-      </svg>
-    ),
-  },
-  {
     name: "Reddit",
     href: "https://www.reddit.com/r/CodeVerseHub/",
     icon: (
       <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="9" cy="10" r="1.5" fill="#0a0a0a" />
-        <circle cx="15" cy="10" r="1.5" fill="#0a0a0a" />
-        <path d="M9 14s1.5 2 3 2 3-2 3-2" stroke="#0a0a0a" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.5 7.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-11 0c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5S5 11.33 5 10.5s.67-1.5 1.5-1.5zm3.5 6.5c0-1.5 1.5-3 4-3s4 1.5 4 3-1.5 3-4 3-4-1.5-4-3zm2-5.5c-2.5 0-4.5.5-5.5 1.2-.3.2-.5.5-.5.8 0 .6.5 1 1 1h10c.6 0 1-.4 1-1 0-.3-.2-.6-.5-.8-1-.7-3-1.2-5.5-1.2z" />
       </svg>
     ),
   },
@@ -80,39 +84,44 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-black">
-      <div className="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16">
+    <footer className="border-t border-[rgba(255,255,255,0.04)] bg-[#09090b]">
+      <div className="section-container py-14 md:py-18">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5">
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 group"
+            >
               <Image
                 src="/logo.png"
-                alt="The Codeverse Hub"
-                width={26}
-                height={26}
-                className="rounded object-contain"
+                alt="The CodeVerse Hub"
+                width={24}
+                height={24}
+                className="rounded-sm object-contain"
               />
-              <span className="text-white font-semibold text-sm tracking-tight">
-                The Codeverse Hub
+              <span className="font-heading text-sm font-medium text-[#e4e4e7] group-hover:text-white transition-colors duration-150">
+                The CodeVerse Hub
               </span>
             </Link>
-            <p className="mt-3 max-w-sm text-white/35 text-sm leading-relaxed">
-              A developer community that builds real open-source software. Discord bots,
-              Linux distributions, developer tools, and more.
-            </p>
-            <p className="mt-5 text-white/25 text-sm">
-              Built by developers, for developers.
+            <p className="mt-3 max-w-sm text-[0.8125rem] text-[#52525b] leading-relaxed">
+              A developer community that builds real open-source software.
+              Discord bots, Linux distributions, developer tools, and more.
             </p>
           </div>
 
           {/* Link groups */}
           <div>
-            <h4 className="text-white/40 text-[11px] font-semibold tracking-widest uppercase">Organization</h4>
+            <h4 className="text-[0.6875rem] text-[#52525b] font-semibold tracking-widest uppercase">
+              Organization
+            </h4>
             <ul className="mt-3.5 space-y-2.5">
               {footerLinks.organization.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-white/35 text-sm hover:text-white/70 transition-colors duration-150">
+                  <Link
+                    href={link.href}
+                    className="text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] transition-colors duration-150"
+                  >
                     {link.name}
                   </Link>
                 </li>
@@ -121,11 +130,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white/40 text-[11px] font-semibold tracking-widest uppercase">Resources</h4>
+            <h4 className="text-[0.6875rem] text-[#52525b] font-semibold tracking-widest uppercase">
+              Resources
+            </h4>
             <ul className="mt-3.5 space-y-2.5">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-white/35 text-sm hover:text-white/70 transition-colors duration-150">
+                  <Link
+                    href={link.href}
+                    className="text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] transition-colors duration-150"
+                  >
                     {link.name}
                   </Link>
                 </li>
@@ -135,11 +149,18 @@ export default function Footer() {
 
           <div className="space-y-6">
             <div>
-              <h4 className="text-white/40 text-[11px] font-semibold tracking-widest uppercase">Community</h4>
+              <h4 className="text-[0.6875rem] text-[#52525b] font-semibold tracking-widest uppercase">
+                Community
+              </h4>
               <ul className="mt-3.5 space-y-2.5">
                 {footerLinks.community.map((link) => (
                   <li key={link.name}>
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/35 text-sm hover:text-white/70 transition-colors duration-150">
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] transition-colors duration-150"
+                    >
                       {link.name}
                     </a>
                   </li>
@@ -147,11 +168,16 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="text-white/40 text-[11px] font-semibold tracking-widest uppercase">Legal</h4>
+              <h4 className="text-[0.6875rem] text-[#52525b] font-semibold tracking-widest uppercase">
+                Legal
+              </h4>
               <ul className="mt-3.5 space-y-2.5">
                 {footerLinks.legal.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-white/35 text-sm hover:text-white/70 transition-colors duration-150">
+                    <Link
+                      href={link.href}
+                      className="text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] transition-colors duration-150"
+                    >
                       {link.name}
                     </Link>
                   </li>
@@ -161,8 +187,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-white/[0.06] pt-6 sm:flex-row sm:items-center">
-          <p className="text-white/25 text-sm">&copy; 2026 The Codeverse Hub.</p>
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-[rgba(255,255,255,0.04)] pt-6 sm:flex-row sm:items-center">
+          <p className="text-[0.75rem] text-[#52525b]">
+            &copy; 2026 The CodeVerse Hub. All rights reserved.
+          </p>
           <div className="flex items-center gap-3">
             {socialLinks.map((link) => (
               <a
@@ -170,7 +198,7 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/35 hover:text-[#22d3ee] transition-colors duration-150"
+                className="text-[#52525b] hover:text-[#06b6d4] transition-colors duration-150"
                 title={link.name}
               >
                 {link.icon}
