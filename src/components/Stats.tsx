@@ -1,5 +1,7 @@
 "use client";
 
+import ShinyText from "@/components/ShinyText";
+
 export default function Stats() {
   const stats = [
     { value: "15+", label: "Repositories" },
@@ -11,6 +13,20 @@ export default function Stats() {
   return (
     <section className="section-spacing">
       <div className="section-container">
+        <div className="text-center mb-14">
+          <span className="section-label mb-6">By the Numbers</span>
+          <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7]">
+            <ShinyText
+              text="Our Stats"
+              shineColor="#22d3ee"
+              color="#e4e4e7"
+              speed={5}
+              spread={150}
+              direction="left"
+              yoyo={true}
+            />
+          </h2>
+        </div>
         <div className="flex flex-wrap justify-center gap-x-16 gap-y-10">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-1.5">

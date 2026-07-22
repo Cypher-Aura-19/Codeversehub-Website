@@ -21,10 +21,10 @@ export default function Home() {
     <div className="bg-[#09090b]">
       {/* ─── FULL-PAGE BACKGROUND LAYER ──────────────── */}
       {/* Ambient starfield */}
-      <div className="fixed inset-0 bg-stars pointer-events-none -z-10" />
+      <div className="fixed inset-0 bg-stars pointer-events-none -z-20" />
 
       {/* GradientBlinds animated shader */}
-      <div className="fixed inset-0 pointer-events-none -z-10">
+      <div className="fixed inset-0 pointer-events-none -z-20">
         <GradientBlinds
           gradientColors={["#09090b", "#0a1a1e", "#09090b", "#0c2228"]}
           blindCount={24}
@@ -40,7 +40,7 @@ export default function Home() {
       </div>
 
       {/* Waves animated shader - subtle wave motion across entire page */}
-      <div className="fixed inset-0 pointer-events-none -z-10 opacity-40">
+      <div className="fixed inset-0 pointer-events-none -z-20 opacity-40">
         <Waves
           colorFront="#06b6d4"
           colorBack="#09090b"
@@ -53,7 +53,7 @@ export default function Home() {
       </div>
 
       {/* DotOrbit moving particles - across entire page */}
-      <div className="fixed inset-0 pointer-events-none -z-10 opacity-25">
+      <div className="fixed inset-0 pointer-events-none -z-20 opacity-25">
         <DotOrbit
           colors={["#06b6d4", "#22d3ee", "#0891b2", "#67e8f9"]}
           colorBack="#09090b"
