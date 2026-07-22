@@ -1,4 +1,5 @@
 "use client";
+import ShinyText from "@/components/ShinyText";
 
 const features = [
   {
@@ -46,7 +47,15 @@ export default function Features() {
         <div className="text-center mb-16">
           <span className="section-label mb-6">Community Pillars</span>
           <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7] mb-4">
-            Built by developers,
+            <ShinyText
+              text="Built by developers,"
+              shineColor="#22d3ee"
+              color="#e4e4e7"
+              speed={5}
+              spread={150}
+              direction="left"
+              yoyo={true}
+            />
             <br />
             for developers
           </h2>

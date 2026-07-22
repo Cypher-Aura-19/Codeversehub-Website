@@ -1,4 +1,5 @@
 "use client";
+import ShinyText from "@/components/ShinyText";
 
 export default function About() {
   return (
@@ -11,7 +12,15 @@ export default function About() {
           <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7] mb-8 leading-tight">
             Builders, maintainers,
             <br />
-            <span className="text-[#06b6d4]">open source.</span>
+            <ShinyText
+              text="open source."
+              shineColor="#22d3ee"
+              color="#06b6d4"
+              speed={4}
+              spread={120}
+              direction="left"
+              yoyo={true}
+            />
           </h2>
 
           <div className="space-y-5 max-w-2xl mx-auto">

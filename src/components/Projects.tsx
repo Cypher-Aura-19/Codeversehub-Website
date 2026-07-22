@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ShinyText from "@/components/ShinyText";
 import Link from "next/link";
 import { ArrowRight, Star, GitFork } from "lucide-react";
 
@@ -105,7 +106,15 @@ export default function Projects() {
         <div className="text-center mb-16">
           <span className="section-label mb-6">Open Source</span>
           <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7] mb-4">
-            What we build
+            <ShinyText
+              text="What we build"
+              shineColor="#22d3ee"
+              color="#e4e4e7"
+              speed={5}
+              spread={150}
+              direction="left"
+              yoyo={true}
+            />
           </h2>
           <p className="text-[#a1a1aa] text-base md:text-lg max-w-xl mx-auto leading-relaxed">
             Every project accepts contributions. Pick one, open a PR.

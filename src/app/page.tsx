@@ -5,32 +5,78 @@ import Navbar from "@/components/Navbar";
 import Stats from "@/components/Stats";
 import Features from "@/components/Features";
 import Projects from "@/components/Projects";
-import TechMarquee from "@/components/TechMarquee";
 import About from "@/components/About";
 import JoinCTA from "@/components/JoinCTA";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import GradientBlinds from "@/components/GradientBlinds";
+import ShinyText from "@/components/ShinyText";
+import TechMarquee from "@/components/TechMarquee";
+import { Waves, DotOrbit } from "@paper-design/shaders-react";
 import { ChevronDown } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="bg-[#09090b]">
-      {/* Ambient starfield background - spans entire page */}
-      <div className="fixed inset-0 bg-stars pointer-events-none z-0" />
+      {/* ─── FULL-PAGE BACKGROUND LAYER ──────────────── */}
+      {/* Ambient starfield */}
+      <div className="fixed inset-0 bg-stars pointer-events-none -z-10" />
+
+      {/* GradientBlinds animated shader */}
+      <div className="fixed inset-0 pointer-events-none -z-10">
+        <GradientBlinds
+          gradientColors={["#09090b", "#0a1a1e", "#09090b", "#0c2228"]}
+          blindCount={24}
+          blindMinWidth={40}
+          noise={0.15}
+          angle={90}
+          spotlightRadius={0.6}
+          spotlightSoftness={0.8}
+          spotlightOpacity={0.3}
+          mirrorGradient={true}
+          mouseDampening={0.1}
+        />
+      </div>
+
+      {/* Waves animated shader - subtle wave motion across entire page */}
+      <div className="fixed inset-0 pointer-events-none -z-10 opacity-40">
+        <Waves
+          colorFront="#06b6d4"
+          colorBack="#09090b"
+          amplitude={0.15}
+          frequency={1.5}
+          shape={0.5}
+          spacing={2}
+          softness={0.6}
+        />
+      </div>
+
+      {/* DotOrbit moving particles - across entire page */}
+      <div className="fixed inset-0 pointer-events-none -z-10 opacity-25">
+        <DotOrbit
+          colors={["#06b6d4", "#22d3ee", "#0891b2", "#67e8f9"]}
+          colorBack="#09090b"
+          size={2.5}
+          sizeRange={3}
+          spreading={2}
+          stepsPerColor={60}
+        />
+      </div>
+
+      {/* Grid + dot pattern - across entire page */}
+      <div className="fixed inset-0 bg-grid pointer-events-none -z-10" />
+      <div className="fixed inset-0 bg-dots pointer-events-none -z-10" />
 
       {/* ─── HERO ──────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-10">
-        {/* Dot grid background */}
-        <div className="absolute inset-0 bg-grid pointer-events-none" />
-        <div className="absolute inset-0 bg-dots pointer-events-none" />
 
         {/* Cyan glow orbs */}
-        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(6,182,212,0.03)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(6,182,212,0.02)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(6,182,212,0.06)_0%,transparent_70%)] pointer-events-none z-[1]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(6,182,212,0.04)_0%,transparent_70%)] pointer-events-none z-[1]" />
 
         {/* Gradient line accent at top */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-px bg-gradient-to-r from-transparent via-[rgba(6,182,212,0.3)] to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-px bg-gradient-to-r from-transparent via-[rgba(6,182,212,0.4)] to-transparent pointer-events-none z-[1]" />
 
         {/* Navbar */}
         <Navbar />
@@ -39,11 +85,29 @@ export default function Home() {
         <div className="relative z-10 w-full section-container py-28 md:py-0 flex flex-col items-center text-center">
           {/* Heading */}
           <h1 className="heading-xl text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] text-[#e4e4e7] max-w-5xl">
-            Write Code.
+            <ShinyText
+              text="Write Code."
+              shineColor="#ffffff"
+              color="#e4e4e7"
+              speed={4}
+              spread={120}
+              direction="left"
+              yoyo={true}
+              pauseOnHover={true}
+            />
             <br />
             Review PRs.
             <br />
-            <span className="text-[#06b6d4]">Ship</span> Together.
+            <ShinyText
+              text="Ship"
+              shineColor="#22d3ee"
+              color="#06b6d4"
+              speed={3}
+              spread={90}
+              direction="left"
+              yoyo={true}
+            />{" "}
+            Together.
           </h1>
 
           {/* Description */}
@@ -76,7 +140,7 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10">
           <span className="text-[0.625rem] text-[#52525b] font-mono tracking-wider animate-bounce">
             SCROLL
           </span>
@@ -97,9 +161,11 @@ export default function Home() {
       <ScrollReveal delay={200}>
         <Projects />
       </ScrollReveal>
+
       <ScrollReveal delay={250}>
         <TechMarquee />
       </ScrollReveal>
+
       <ScrollReveal delay={300}>
         <About />
       </ScrollReveal>
