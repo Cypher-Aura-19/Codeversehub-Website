@@ -30,47 +30,47 @@ export default function Navbar() {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-md border-b border-white/5">
-      <div className="flex items-center justify-between w-full h-16 px-4 md:px-6 max-w-7xl mx-auto">
-        <Link href="/" className="flex items-center gap-2 md:gap-3 group">
-          <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center transition-transform group-hover:scale-110">
-            <Terminal className="w-5 h-5 text-white" />
+    <nav className="sticky top-0 z-50 w-full bg-[#0a0a0a] border-b border-white/[0.06]">
+      <div className="flex items-center justify-between w-full h-14 px-4 md:px-6 max-w-7xl mx-auto">
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 rounded-md bg-[#7c3aed] flex items-center justify-center transition-transform duration-150 group-hover:scale-105">
+            <Terminal className="w-4 h-4 text-white" />
           </div>
-          <span className="text-white font-semibold text-lg md:text-xl hidden sm:block">
+          <span className="text-white font-semibold text-base tracking-tight hidden sm:block">
             CodeVerse Hub
           </span>
         </Link>
 
-        <ul className="hidden md:flex items-center h-16">
+        <ul className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
-            <li key={link.label} className="h-full">
+            <li key={link.label}>
               <Link
                 href={link.href}
-                className="relative overflow-hidden h-full flex items-center text-white text-sm font-medium px-4 lg:px-5 before:absolute before:inset-0 before:bg-white before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100 hover:text-black transition-colors duration-300"
+                className="flex items-center h-10 px-3.5 text-sm font-medium text-white/70 hover:text-white rounded-md transition-colors duration-150"
               >
-                <span className="relative z-10">{link.label}</span>
+                {link.label}
               </Link>
             </li>
           ))}
           {/* More dropdown */}
-          <li className="relative h-full">
+          <li className="relative">
             <button
               type="button"
               onClick={() => setIsMoreOpen((prev) => !prev)}
-              className="relative overflow-hidden h-full flex items-center gap-1.5 text-white text-sm font-medium px-4 lg:px-5 before:absolute before:inset-0 before:bg-white before:origin-left before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100 hover:text-black transition-colors duration-300"
+              className="flex items-center h-10 gap-1 px-3.5 text-sm font-medium text-white/70 hover:text-white rounded-md transition-colors duration-150"
             >
-              <span className="relative z-10">More</span>
+              More
               <ChevronDown
-                className={`relative z-10 w-3.5 h-3.5 transition-transform duration-200 ${isMoreOpen ? "rotate-180" : ""}`}
+                className={`w-3.5 h-3.5 transition-transform duration-150 ${isMoreOpen ? "rotate-180" : ""}`}
               />
             </button>
             {isMoreOpen && (
-              <div className="absolute right-0 top-full mt-1 w-64 rounded-lg border border-white/15 bg-black/95 backdrop-blur-md shadow-xl py-2 z-[60]">
+              <div className="absolute right-0 top-full mt-1.5 w-56 rounded-lg border border-white/[0.08] bg-[#0d0d0d] shadow-xl py-1.5 z-[60]">
                 {moreLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                    className="block px-4 py-2 text-sm text-white/60 hover:text-white hover:bg-white/[0.04] transition-colors duration-150"
                     onClick={() => setIsMoreOpen(false)}
                   >
                     {link.label}
@@ -79,60 +79,62 @@ export default function Navbar() {
               </div>
             )}
           </li>
-          <li className="h-full">
+          <li className="ml-2">
             <a
               href="https://discord.gg/3xKFvKhuGR"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-full flex items-center px-5 text-sm font-bold text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300"
+              className="flex items-center h-9 px-4 text-sm font-bold text-white bg-[#7c3aed] hover:bg-[#6d28d9] rounded-md transition-colors duration-150"
             >
               Join Discord
             </a>
           </li>
         </ul>
 
+        {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+          className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1"
           aria-label="Toggle menu"
         >
           <span
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-              isOpen ? "rotate-45 translate-y-2" : ""
+            className={`w-5 h-[1.5px] bg-white transition-all duration-200 ${
+              isOpen ? "rotate-45 translate-y-[3.5px]" : ""
             }`}
           />
           <span
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+            className={`w-5 h-[1.5px] bg-white transition-all duration-200 ${
               isOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-              isOpen ? "-rotate-45 -translate-y-2" : ""
+            className={`w-5 h-[1.5px] bg-white transition-all duration-200 ${
+              isOpen ? "-rotate-45 -translate-y-[3.5px]" : ""
             }`}
           />
         </button>
       </div>
 
+      {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-[600px]" : "max-h-0"
+        className={`md:hidden overflow-hidden transition-all duration-200 ease-in-out ${
+          isOpen ? "max-h-[700px]" : "max-h-0"
         }`}
       >
-        <ul className="flex flex-col bg-black border-t border-white/10">
+        <ul className="flex flex-col bg-[#0a0a0a] border-t border-white/[0.06]">
           {navLinks.map((link) => (
             <li key={link.label}>
               <Link
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-white text-base font-medium px-6 py-4 border-b border-white/5 hover:bg-white/5 transition-colors"
+                className="block w-full text-white/80 text-sm font-medium px-5 py-3.5 border-b border-white/[0.04] hover:bg-white/[0.03] transition-colors duration-150"
               >
                 {link.label}
               </Link>
             </li>
           ))}
           {/* Mobile: More section */}
-          <li className="pt-2 pb-1 px-6 text-xs font-semibold tracking-widest text-white/40 uppercase">
+          <li className="pt-3 pb-1 px-5 text-[11px] font-semibold tracking-widest text-white/30 uppercase">
             More
           </li>
           {moreLinks.map((link) => (
@@ -140,19 +142,19 @@ export default function Navbar() {
               <Link
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-white/80 text-base px-6 py-3 border-b border-white/5 hover:bg-white/5 transition-colors"
+                className="block w-full text-white/60 text-sm px-5 py-3 border-b border-white/[0.04] hover:bg-white/[0.03] transition-colors duration-150"
               >
                 {link.label}
               </Link>
             </li>
           ))}
-          <li>
+          <li className="px-5 py-3">
             <a
               href="https://discord.gg/3xKFvKhuGR"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-white text-base font-bold px-6 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600"
+              className="block w-full text-center text-sm font-bold text-white bg-[#7c3aed] hover:bg-[#6d28d9] rounded-md px-4 py-3 transition-colors duration-150"
             >
               Join Discord
             </a>

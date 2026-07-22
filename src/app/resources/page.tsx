@@ -2,15 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, ExternalLink, Wrench } from "lucide-react";
 import Navbar from "../../components/Navbar";
-import pythonLogo from "../../../assets/python.png";
-import rustLogo from "../../../assets/rust.png";
-import javascriptLogo from "../../../assets/javascript.png";
-import cppLogo from "../../../assets/cpp.png";
-import javaLogo from "../../../assets/java.png";
-import goLogo from "../../../assets/go.png";
 
 interface Resource {
     title: string;
@@ -23,7 +16,6 @@ interface Category {
     id: string;
     label: string;
     icon: React.ReactNode;
-    color: string;
     description: string;
     sections: {
         heading: string;
@@ -31,18 +23,44 @@ interface Category {
     }[];
 }
 
+const logos: Record<string, React.ReactNode> = {
+    python: (
+        <span className="text-white font-bold font-mono text-xs tracking-tight" aria-label="Python">
+            Py
+        </span>
+    ),
+    rust: (
+        <span className="text-white font-bold font-mono text-xs" aria-label="Rust">
+            Rs
+        </span>
+    ),
+    javascript: (
+        <span className="text-white font-bold font-mono text-xs" aria-label="JavaScript">
+            JS
+        </span>
+    ),
+    cpp: (
+        <span className="text-white font-bold font-mono text-xs" aria-label="C++">
+            C++
+        </span>
+    ),
+    java: (
+        <span className="text-white font-bold font-mono text-xs" aria-label="Java">
+            Ja
+        </span>
+    ),
+    go: (
+        <span className="text-white font-bold font-mono text-xs" aria-label="Go">
+            Go
+        </span>
+    ),
+};
+
 const categories: Category[] = [
     {
         id: "python",
         label: "Python",
-        icon: (
-            <Image
-                src={pythonLogo}
-                alt="Python logo"
-                className="w-5 h-5 object-contain"
-            />
-        ),
-        color: "from-violet-500 to-fuchsia-500",
+        icon: logos.python,
         description:
             "From automating scripts to machine learning — the most beginner-friendly powerhouse.",
         sections: [
@@ -167,14 +185,7 @@ const categories: Category[] = [
     {
         id: "rust",
         label: "Rust",
-        icon: (
-            <Image
-                src={rustLogo}
-                alt="Rust logo"
-                className="w-5 h-5 object-contain"
-            />
-        ),
-        color: "from-violet-500 to-fuchsia-500",
+        icon: logos.rust,
         description:
             "Memory safety without garbage collection — blazingly fast, reliable, and productive.",
         sections: [
@@ -301,14 +312,7 @@ const categories: Category[] = [
     {
         id: "javascript",
         label: "JavaScript / TypeScript",
-        icon: (
-            <Image
-                src={javascriptLogo}
-                alt="JavaScript logo"
-                className="w-5 h-5 object-contain"
-            />
-        ),
-        color: "from-violet-500 to-fuchsia-500",
+        icon: logos.javascript,
         description:
             "The language of the web — from interactive UIs to full-stack servers and beyond.",
         sections: [
@@ -442,14 +446,7 @@ const categories: Category[] = [
     {
         id: "cpp",
         label: "C / C++",
-        icon: (
-            <Image
-                src={cppLogo}
-                alt="C and C++ logo"
-                className="w-5 h-5 object-contain"
-            />
-        ),
-        color: "from-violet-500 to-fuchsia-500",
+        icon: logos.cpp,
         description:
             "Low-level power for systems, game engines, and performance-critical applications.",
         sections: [
@@ -536,14 +533,7 @@ const categories: Category[] = [
     {
         id: "java",
         label: "Java",
-        icon: (
-            <Image
-                src={javaLogo}
-                alt="Java logo"
-                className="w-5 h-5 object-contain"
-            />
-        ),
-        color: "from-violet-500 to-fuchsia-500",
+        icon: logos.java,
         description:
             "Battle-tested language for backend services, Android apps, and enterprise systems.",
         sections: [
@@ -630,14 +620,7 @@ const categories: Category[] = [
     {
         id: "go",
         label: "Go (Golang)",
-        icon: (
-            <Image
-                src={goLogo}
-                alt="Go logo"
-                className="w-5 h-5 object-contain"
-            />
-        ),
-        color: "from-violet-500 to-fuchsia-500",
+        icon: logos.go,
         description:
             "Simple, fast, and concurrent — ideal for microservices, tooling, and cloud-native apps.",
         sections: [
@@ -731,8 +714,7 @@ const categories: Category[] = [
     {
         id: "tools",
         label: "Tools & General",
-        icon: <Wrench className="w-5 h-5" />,
-        color: "from-violet-500 to-fuchsia-500",
+        icon: <Wrench className="w-5 h-5 text-white" />,
         description:
             "Editors, version control, regex, and cross-language resources every developer needs.",
         sections: [
@@ -832,20 +814,6 @@ const categories: Category[] = [
     },
 ];
 
-const tagColors: Record<string, string> = {
-    "Free Book": "bg-white/10 text-violet-300",
-    Book: "bg-white/10 text-violet-300",
-    Course: "bg-white/10 text-violet-300",
-    Tutorials: "bg-white/10 text-violet-300",
-    Docs: "bg-white/10 text-violet-300",
-    Interactive: "bg-white/10 text-violet-300",
-    Exercises: "bg-white/10 text-violet-300",
-    Article: "bg-white/10 text-violet-300",
-    YouTube: "bg-white/10 text-violet-300",
-    Tool: "bg-white/10 text-violet-300",
-    Guide: "bg-white/10 text-violet-300",
-};
-
 export default function ResourcesPage() {
     const [activeCategory, setActiveCategory] = useState("python");
 
@@ -857,14 +825,14 @@ export default function ResourcesPage() {
             <div className="max-w-7xl mx-auto px-4 py-12">
                 <Link
                     href="/"
-                    className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 mb-8 transition-colors"
+                    className="inline-flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] mb-8 transition-colors duration-150"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Home
                 </Link>
 
                 <div className="mb-10">
-                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-3">
+                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">
                         Learning Resources
                     </h1>
                     <p className="text-white/50 text-base md:text-lg max-w-2xl">
@@ -880,14 +848,13 @@ export default function ResourcesPage() {
                                 <button
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id)}
-                                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-left whitespace-nowrap transition-all duration-200 ${activeCategory === cat.id
-                                        ? "bg-white/10 text-white border border-white/20 shadow-lg shadow-violet-500/10"
-                                        : "text-white/50 hover:text-white hover:bg-white/5 border border-transparent"
-                                        }`}
+                                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-left whitespace-nowrap transition-all duration-150 ${
+                                        activeCategory === cat.id
+                                            ? "bg-white/[0.08] text-white border border-white/[0.12]"
+                                            : "text-white/50 hover:text-white hover:bg-white/[0.03] border border-transparent"
+                                    }`}
                                 >
-                                    <span
-                                        className="p-1.5 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-sm shadow-violet-500/40"
-                                    >
+                                    <span className="p-1.5 rounded-lg bg-[#7c3aed] text-white">
                                         {cat.icon}
                                     </span>
                                     <span className="font-medium text-sm">{cat.label}</span>
@@ -897,14 +864,12 @@ export default function ResourcesPage() {
                     </nav>
 
                     <main className="flex-1 min-w-0">
-                        <div className="mb-8 p-6 rounded-2xl border border-white/10 bg-white/5">
+                        <div className="mb-8 p-6 rounded-xl border border-white/[0.08] bg-white/[0.02]">
                             <div className="flex items-center gap-3 mb-2">
-                                <span
-                                    className={`p-2 rounded-lg bg-gradient-to-br ${active.color} text-white`}
-                                >
+                                <span className="p-2 rounded-lg bg-[#7c3aed] text-white">
                                     {active.icon}
                                 </span>
-                                <h2 className="text-2xl font-bold text-white">
+                                <h2 className="text-2xl font-bold text-white tracking-tight">
                                     {active.label}
                                 </h2>
                             </div>
@@ -915,7 +880,7 @@ export default function ResourcesPage() {
                             {active.sections.map((section) => (
                                 <div key={section.heading}>
                                     <h3 className="text-lg font-semibold text-white/80 mb-4 flex items-center gap-2">
-                                        <div className="w-1 h-5 rounded-full bg-gradient-to-b from-violet-500 to-fuchsia-500" />
+                                        <div className="w-0.5 h-5 rounded-full bg-[#8b5cf6]" />
                                         {section.heading}
                                     </h3>
                                     <div className="grid gap-3 sm:grid-cols-2">
@@ -925,23 +890,19 @@ export default function ResourcesPage() {
                                                 href={resource.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="group p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-violet-500/30 transition-all duration-200"
+                                                className="cvh-card p-4 group"
                                             >
                                                 <div className="flex items-start justify-between gap-2 mb-2">
-                                                    <h4 className="font-semibold text-white text-sm group-hover:text-violet-300 transition-colors">
+                                                    <h4 className="font-semibold text-white text-sm group-hover:text-[#a78bfa] transition-colors duration-150">
                                                         {resource.title}
                                                     </h4>
-                                                    <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-violet-400 shrink-0 mt-0.5 transition-colors" />
+                                                    <ExternalLink className="w-3.5 h-3.5 text-white/20 group-hover:text-[#a78bfa] shrink-0 mt-0.5 transition-colors duration-150" />
                                                 </div>
                                                 <p className="text-white/40 text-xs leading-relaxed mb-3">
                                                     {resource.description}
                                                 </p>
                                                 {resource.tag && (
-                                                    <span
-                                                        className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${tagColors[resource.tag] ||
-                                                            "bg-white/10 text-white/60"
-                                                            }`}
-                                                    >
+                                                    <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/[0.06] text-white/50">
                                                         {resource.tag}
                                                     </span>
                                                 )}
@@ -954,14 +915,14 @@ export default function ResourcesPage() {
                     </main>
                 </div>
 
-                <div className="mt-16 pt-8 border-t border-white/10 text-center">
+                <div className="mt-16 pt-8 border-t border-white/[0.06] text-center">
                     <p className="text-white/30 text-sm">
                         This list is curated by the CodeVerse Hub community. Want to suggest
                         a resource?{" "}
                         <Link
                             href="https://discord.gg/3xKFvKhuGR"
                             target="_blank"
-                            className="text-violet-400 hover:text-violet-300"
+                            className="text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150"
                         >
                             Join our Discord
                         </Link>

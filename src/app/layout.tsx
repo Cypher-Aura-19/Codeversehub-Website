@@ -1,12 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono } from "next/font/google";
-import LoadingScreen from "@/components/LoadingScreen";
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-jetbrains-mono",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
 });
 
 const siteUrl =
@@ -79,7 +85,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#000000",
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
@@ -108,8 +114,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={jetbrainsMono.variable}>
-      <body className="font-sans antialiased">
+    <html lang="en" className={`${jetbrainsMono.variable} ${spaceGrotesk.variable}`}>
+      <body className="font-sans antialiased bg-black text-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -122,8 +128,6 @@ export default function RootLayout({
             __html: JSON.stringify(websiteJsonLd),
           }}
         />
-
-        <LoadingScreen />
 
         {children}
       </body>

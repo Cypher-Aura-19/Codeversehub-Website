@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { Mail, Github, Send, CheckCircle } from "lucide-react";
-import GradientText from "./GradientText";
-import ShinyText from "./ShinyText";
 
 const contactMethods = [
   {
@@ -65,189 +63,176 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="min-h-screen bg-black flex flex-col items-center justify-center py-16 md:py-20 px-4">
-      <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white text-center mb-4 md:mb-6">
-        Get in{" "}
-        <GradientText
-          colors={["#8B5CF6", "#EC4899", "#8B5CF6"]}
-          className="inline"
-        >
-          <ShinyText
-            text="Touch"
-            className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-violet-300 via-fuchsia-400 to-indigo-300 bg-clip-text text-transparent"
-            speed={2}
-            delay={0.5}
-            color="#ea73ff"
-            shineColor="#c4b5ff"
-            spread={120}
-            direction="left"
-            yoyo={false}
-            pauseOnHover={false}
-            disabled={false}
-          />
-        </GradientText>
-      </h2>
-      <p className="text-white/40 text-base md:text-lg lg:text-xl tracking-wide mb-6 md:mb-8 text-center max-w-2xl">
-        Have a question, want to collaborate, or interested in contributing to
-        our open-source projects? Our inbox is always open.
-      </p>
+    <section className="bg-black py-20 md:py-24 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            Get in{" "}
+            <span className="cvh-gradient-text">Touch</span>
+          </h2>
+          <p className="text-white/40 text-base md:text-lg max-w-2xl mx-auto">
+            Have a question, want to collaborate, or interested in contributing to
+            our open-source projects? Our inbox is always open.
+          </p>
+        </div>
 
-      <div className="w-full max-w-4xl grid gap-4 mb-8 md:mb-12 md:grid-cols-3">
-        <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left">
-          <p className="text-xs font-semibold tracking-widest text-violet-300/80 uppercase mb-1">
-            Community Support
-          </p>
-          <p className="text-sm text-white/70">
-            Get help with CodeVerse Hub, bots, and community tools.
-          </p>
-        </div>
-        <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left">
-          <p className="text-xs font-semibold tracking-widest text-fuchsia-300/80 uppercase mb-1">
-            Partnerships
-          </p>
-          <p className="text-sm text-white/70">
-            Reach out for events, collaborations, and sponsorships.
-          </p>
-        </div>
-        <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left">
-          <p className="text-xs font-semibold tracking-widest text-sky-300/80 uppercase mb-1">
-            Open Source
-          </p>
-          <p className="text-sm text-white/70">
-            Ask about contributing to our GitHub projects, including this site.
-          </p>
-        </div>
-      </div>
-
-      <div className="w-full max-w-5xl grid gap-8 lg:grid-cols-2">
-        <div className="p-6 rounded-2xl border border-white/10 bg-white/5 h-full flex flex-col">
-          <div className="space-y-4 flex-1">
-            {contactMethods.map((method, index) => {
-              const Icon = method.icon;
-              return (
-                <a
-                  key={index}
-                  href={method.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-black/40 hover:border-violet-500/50 hover:bg-black/60 transition-all duration-300 group"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors">
-                    <span className="text-violet-400">
-                      <Icon />
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-white/50 text-xs uppercase tracking-wider">
-                      {method.label}
-                    </p>
-                    <p className="text-white font-medium">{method.value}</p>
-                  </div>
-                </a>
-              );
-            })}
+        <div className="w-full max-w-4xl mx-auto grid gap-3 mb-8 md:grid-cols-3">
+          <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+            <p className="text-[11px] font-semibold tracking-widest text-[#a78bfa]/80 uppercase mb-1">
+              Community Support
+            </p>
+            <p className="text-sm text-white/60">
+              Get help with CodeVerse Hub, bots, and community tools.
+            </p>
+          </div>
+          <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+            <p className="text-[11px] font-semibold tracking-widest text-[#a78bfa]/80 uppercase mb-1">
+              Partnerships
+            </p>
+            <p className="text-sm text-white/60">
+              Reach out for events, collaborations, and sponsorships.
+            </p>
+          </div>
+          <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+            <p className="text-[11px] font-semibold tracking-widest text-[#a78bfa]/80 uppercase mb-1">
+              Open Source
+            </p>
+            <p className="text-sm text-white/60">
+              Ask about contributing to our GitHub projects, including this site.
+            </p>
           </div>
         </div>
 
-        <div className="p-6 rounded-2xl border border-white/10 bg-white/5 h-full flex flex-col justify-center">
-          {submitted ? (
-            <div className="h-full flex flex-col items-center justify-center text-center py-8">
-              <CheckCircle className="w-16 h-16 text-green-400 mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">
-                Message Sent!
-              </h3>
-              <p className="text-white/50">
-                We&apos;ll get back to you as soon as possible.
-              </p>
-              <button
-                onClick={() => setSubmitted(false)}
-                className="mt-6 text-violet-400 hover:text-violet-300 transition-colors"
-              >
-                Send another message
-              </button>
+        <div className="w-full max-w-5xl mx-auto grid gap-6 lg:grid-cols-2">
+          <div className="p-6 rounded-xl border border-white/[0.08] bg-white/[0.02] h-full flex flex-col">
+            <div className="space-y-3 flex-1">
+              {contactMethods.map((method, index) => {
+                const Icon = method.icon;
+                return (
+                  <a
+                    key={index}
+                    href={method.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-lg border border-white/[0.06] bg-white/[0.01] hover:border-[#8b5cf6]/30 hover:bg-[#8b5cf6]/[0.03] transition-all duration-200 group"
+                  >
+                    <div className="w-11 h-11 rounded-lg bg-[#8b5cf6]/10 flex items-center justify-center group-hover:bg-[#8b5cf6]/20 transition-colors duration-200">
+                      <span className="text-[#8b5cf6]">
+                        <Icon />
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-white/40 text-[11px] uppercase tracking-wider font-medium">
+                        {method.label}
+                      </p>
+                      <p className="text-white font-medium text-sm">{method.value}</p>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-white/70 text-sm mb-2"
+          </div>
+
+          <div className="p-6 rounded-xl border border-white/[0.08] bg-white/[0.02] h-full flex flex-col justify-center">
+            {submitted ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-8">
+                <CheckCircle className="w-14 h-14 text-green-400 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Message Sent!
+                </h3>
+                <p className="text-white/50 text-sm">
+                  We&apos;ll get back to you as soon as possible.
+                </p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="mt-6 text-sm text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150"
                 >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Your full name"
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
-                />
+                  Send another message
+                </button>
               </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-white/70 text-sm mb-2"
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-3.5">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Your full name"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="your@email.com"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="subject"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
+                  >
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    placeholder="What is this about?"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    required
+                    placeholder="How can we help you?"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150 resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="cvh-btn-primary w-full text-sm"
                 >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="your@email.com"
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-white/70 text-sm mb-2"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  placeholder="What is this about?"
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-white/70 text-sm mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  placeholder="How can we help you?"
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-4 rounded-lg bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold text-base flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="w-4 h-4" />
-                  </>
-                )}
-              </button>
-            </form>
-          )}
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>

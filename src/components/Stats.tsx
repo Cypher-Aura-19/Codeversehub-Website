@@ -50,10 +50,10 @@ function StatItem({ value, suffix, label, inView, prefix = "" }: StatItemProps) 
 
   return (
     <div className="flex flex-col items-center">
-      <span className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter">
+      <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight">
         {prefix}{count}{suffix}
       </span>
-      <span className="text-xs sm:text-sm md:text-base text-white/60 uppercase tracking-widest mt-2 text-center">
+      <span className="text-xs sm:text-sm text-white/50 uppercase tracking-widest mt-2 text-center font-medium">
         {label}
       </span>
     </div>
@@ -99,22 +99,24 @@ export default function Stats() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen bg-black flex flex-col items-center justify-center py-16 md:py-20 px-4"
+      className="bg-black py-20 md:py-24 px-4"
     >
-      <span className="inline-block text-violet-400 text-xs font-mono uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10">
-        By the Numbers
-      </span>
-      <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white text-center mb-4 md:mb-6">
-        Our Impact
-      </h2>
-      <p className="text-white/40 text-base md:text-lg lg:text-xl tracking-widest mb-10 md:mb-16 text-center">
-        Open-source metrics from GitHub
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-20 max-w-6xl">
-        <StatItem value={orgData.public_repos} suffix="+" label="Repositories" inView={inView} />
-        <StatItem value={orgData.totalStars} suffix="+" label="Stars" inView={inView} />
-        <StatItem value={orgData.totalForks} suffix="+" label="Forks" inView={inView} />
-        <StatItem value={orgData.followers} suffix="+" label="Followers" inView={inView} />
+      <div className="max-w-6xl mx-auto text-center">
+        <span className="cvh-label mb-5">
+          By the Numbers
+        </span>
+        <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+          Our Impact
+        </h2>
+        <p className="text-white/40 text-base md:text-lg mb-12 md:mb-16">
+          Open-source metrics from GitHub
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-20">
+          <StatItem value={orgData.public_repos} suffix="+" label="Repositories" inView={inView} />
+          <StatItem value={orgData.totalStars} suffix="+" label="Stars" inView={inView} />
+          <StatItem value={orgData.totalForks} suffix="+" label="Forks" inView={inView} />
+          <StatItem value={orgData.followers} suffix="+" label="Followers" inView={inView} />
+        </div>
       </div>
     </section>
   );

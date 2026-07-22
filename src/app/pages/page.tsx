@@ -15,7 +15,7 @@ const pages = [
   {
     slug: "rules",
     title: "Server Rules",
-    description: "What is and isn’t allowed in CodeVerse Hub.",
+    description: "What is and isn't allowed in CodeVerse Hub.",
     icon: Shield,
   },
   {
@@ -89,32 +89,30 @@ export default function PagesIndex() {
       <Navbar />
       <main className="flex-1 max-w-5xl mx-auto px-4 md:px-6 py-16">
         <header className="mb-10">
-          <p className="text-xs font-mono uppercase tracking-[0.2em] text-violet-300/70 mb-2">
-            Docs
-          </p>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Pages</h1>
+          <p className="cvh-label mb-4">Docs</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">Pages</h1>
           <p className="text-sm md:text-base text-white/50 max-w-2xl">
             Browse all server guides and reference pages in one place. Pick a
             topic below to jump into the detailed documentation.
           </p>
         </header>
 
-        <section className="grid gap-4 md:gap-5">
+        <section className="grid gap-3 md:gap-4">
           {pages.map(({ slug, title, description, icon: Icon }) => (
             <Link
               key={slug}
               href={`/pages/${slug}`}
-              className="group block rounded-2xl border border-white/10 bg-white/5/5 hover:bg-white/5 hover:border-violet-500/40 transition-colors duration-200 px-4 py-4 md:px-6 md:py-5 shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+              className="cvh-card px-5 py-4 md:px-6 md:py-5 group"
             >
               <div className="flex items-center gap-3 mb-1">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-violet-500/15 text-violet-300 group-hover:bg-violet-500/25 group-hover:text-violet-200 transition-colors">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#8b5cf6]/10 text-[#a78bfa] group-hover:bg-[#8b5cf6]/20 group-hover:text-[#c4b5fd] transition-colors duration-150">
                   <Icon className="h-4 w-4" />
                 </span>
-                <h2 className="text-lg md:text-xl font-semibold text-white group-hover:text-violet-50">
+                <h2 className="text-lg md:text-xl font-semibold text-white group-hover:text-[#a78bfa] transition-colors duration-150">
                   {title}
                 </h2>
               </div>
-              <p className="text-sm md:text-base text-white/55">
+              <p className="text-sm md:text-base text-white/50">
                 {description}
               </p>
             </Link>

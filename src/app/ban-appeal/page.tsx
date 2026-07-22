@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import GradientText from "@/components/GradientText";
 import { CheckCircle, Send, Loader2 } from "lucide-react";
 
 type SubmitState =
@@ -142,14 +141,8 @@ export default function BanAppealPage() {
 
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 md:px-6 py-16 md:py-20">
         <header className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white">
-            Ban{" "}
-            <GradientText
-              colors={["#8B5CF6", "#EC4899", "#8B5CF6"]}
-              className="inline"
-            >
-              Appeal
-            </GradientText>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+            Ban <span className="cvh-gradient-text">Appeal</span>
           </h1>
           <p className="mt-4 text-white/50 max-w-2xl mx-auto">
             Fill out the form below. After you submit, it will be sent to our
@@ -158,15 +151,15 @@ export default function BanAppealPage() {
         </header>
 
         <section className="w-full max-w-3xl mx-auto">
-          <div className="p-6 md:p-8 rounded-2xl border border-white/10 bg-white/5">
+          <div className="p-6 md:p-8 rounded-xl border border-white/[0.08] bg-white/[0.02]">
             {state.status === "success" ? (
               <div className="flex flex-col items-center justify-center text-center py-10">
-                <CheckCircle className="w-16 h-16 text-green-400 mb-4" />
-                <h2 className="text-2xl font-bold text-white mb-2">
+                <CheckCircle className="w-14 h-14 text-green-400 mb-4" />
+                <h2 className="text-2xl font-bold text-white mb-2 tracking-tight">
                   Appeal submitted
                 </h2>
                 {state.appealId ? (
-                  <p className="text-violet-400 font-mono text-sm mb-2">
+                  <p className="text-[#a78bfa] font-mono text-sm mb-2">
                     {state.appealId}
                   </p>
                 ) : null}
@@ -176,7 +169,7 @@ export default function BanAppealPage() {
                 <button
                   type="button"
                   onClick={() => setState({ status: "idle" })}
-                  className="mt-6 text-violet-400 hover:text-violet-300 transition-colors"
+                  className="mt-6 text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150"
                 >
                   Submit another appeal
                 </button>
@@ -195,7 +188,7 @@ export default function BanAppealPage() {
                 <div>
                   <label
                     htmlFor="discordUsername"
-                    className="block text-white/70 text-sm mb-2"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
                   >
                     Discord username
                   </label>
@@ -205,14 +198,14 @@ export default function BanAppealPage() {
                     name="discordUsername"
                     required
                     placeholder="e.g. aditya or aditya#1234"
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="discordUserId"
-                    className="block text-white/70 text-sm mb-2"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
                   >
                     Discord user ID
                   </label>
@@ -223,16 +216,16 @@ export default function BanAppealPage() {
                     inputMode="numeric"
                     required
                     placeholder="e.g. 123456789012345678"
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
                   />
-                  <p className="text-xs text-white/35 mt-1">
+                  <p className="text-xs text-white/30 mt-1">
                     Used to identify you. Must be your Discord
                     user ID (not your username).
                   </p>
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-white/70 text-sm mb-2">
+                  <label htmlFor="email" className="block text-white/60 text-sm mb-1.5 font-medium">
                     Email (optional)
                   </label>
                   <input
@@ -240,9 +233,9 @@ export default function BanAppealPage() {
                     id="email"
                     name="email"
                     placeholder="you@example.com"
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
                   />
-                  <p className="text-xs text-white/35 mt-1">
+                  <p className="text-xs text-white/30 mt-1">
                     May be used to share appeal status updates.
                   </p>
                 </div>
@@ -250,7 +243,7 @@ export default function BanAppealPage() {
                 <div>
                   <label
                     htmlFor="banReason"
-                    className="block text-white/70 text-sm mb-2"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
                   >
                     Why do you think you were banned? (optional)
                   </label>
@@ -259,14 +252,14 @@ export default function BanAppealPage() {
                     id="banReason"
                     name="banReason"
                     placeholder="If you know, summarize it"
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="appeal"
-                    className="block text-white/70 text-sm mb-2"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
                   >
                     Your appeal
                   </label>
@@ -277,14 +270,14 @@ export default function BanAppealPage() {
                     required
                     minLength={20}
                     placeholder="Explain what happened, what you'll do differently, and why you should be unbanned. (min 20 characters)"
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150 resize-none"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="evidenceLink"
-                    className="block text-white/70 text-sm mb-2"
+                    className="block text-white/60 text-sm mb-1.5 font-medium"
                   >
                     Evidence link (optional)
                   </label>
@@ -293,7 +286,7 @@ export default function BanAppealPage() {
                     id="evidenceLink"
                     name="evidenceLink"
                     placeholder="https://..."
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
                   />
                 </div>
 
@@ -310,7 +303,7 @@ export default function BanAppealPage() {
                 <button
                   type="submit"
                   disabled={state.status === "submitting"}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="cvh-btn-primary w-full"
                 >
                   {state.status === "submitting" ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -320,7 +313,7 @@ export default function BanAppealPage() {
                   {state.status === "submitting" ? "Submitting..." : "Submit appeal"}
                 </button>
 
-                <p className="text-xs text-white/35 leading-relaxed">
+                <p className="text-xs text-white/30 leading-relaxed">
                   This form is sent to the moderation team via Discord.
                   Don&apos;t include passwords or sensitive info.
                 </p>

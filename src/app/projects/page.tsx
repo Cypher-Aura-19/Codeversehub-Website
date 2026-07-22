@@ -50,19 +50,19 @@ function RepoCard({ repo, contributors }: { repo: GitHubRepo; contributors: GitH
       href={repo.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block p-5 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-violet-500/30 transition-all duration-300"
+      className="cvh-card p-5 group"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="w-2.5 h-2.5 rounded-full shrink-0 mt-0.5" style={{ backgroundColor: langColor(repo.language) }} />
-          <h3 className="font-semibold text-white text-base truncate group-hover:text-violet-300 transition-colors">
+          <h3 className="font-semibold text-white text-sm truncate group-hover:text-[#a78bfa] transition-colors duration-150">
             {repo.name}
           </h3>
         </div>
-        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-violet-400 shrink-0 transition-colors" />
+        <ExternalLink className="w-3.5 h-3.5 text-white/20 group-hover:text-[#a78bfa] shrink-0 transition-colors duration-150" />
       </div>
 
-      <p className="text-white/45 text-sm leading-relaxed mb-4 line-clamp-2">
+      <p className="text-white/40 text-sm leading-relaxed mb-4 line-clamp-2">
         {repo.description || "No description provided."}
       </p>
 
@@ -93,7 +93,7 @@ function RepoCard({ repo, contributors }: { repo: GitHubRepo; contributors: GitH
       </div>
 
       {contributors.length > 0 && (
-        <div className="mt-4 pt-3 border-t border-white/5 flex items-center gap-2">
+        <div className="mt-4 pt-3 border-t border-white/[0.05] flex items-center gap-2">
           <div className="flex -space-x-2">
             {contributors.slice(0, 5).map((c) => (
               <img
@@ -140,21 +140,21 @@ export default async function ProjectsPage() {
     <div className="min-h-screen bg-black flex flex-col">
       <Navbar />
       <main className="flex-1 max-w-7xl mx-auto px-4 py-16 w-full">
-        <Link href="/" className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 mb-8 transition-colors text-sm">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] mb-8 transition-colors duration-150 text-sm">
           <ArrowLeft className="w-4 h-4" />
           Back to Home
         </Link>
 
         <header className="mb-12">
-          <p className="text-xs font-mono uppercase tracking-[0.2em] text-violet-300/70 mb-3">Open Source</p>
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">Projects</h1>
+          <p className="cvh-label mb-4">Open Source</p>
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Projects</h1>
           <p className="text-white/50 text-base md:text-lg max-w-2xl">
             We build and maintain open-source software across multiple domains — from Discord bots and developer tools to Linux distributions. Every project is open for contributions.
           </p>
         </header>
 
         {error ? (
-          <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-8 text-center">
+          <div className="rounded-xl border border-red-500/15 bg-red-500/[0.03] p-8 text-center">
             <p className="text-red-400">{error}</p>
             <p className="text-white/40 text-sm mt-2">
               The data should load automatically once the GitHub API is available.
@@ -165,12 +165,12 @@ export default async function ProjectsPage() {
             {Object.entries(categories).map(([category, categoryRepos]) => (
               <section key={category}>
                 <div className="flex items-center gap-3 mb-6">
-                  <h2 className="text-xl md:text-2xl font-bold text-white">{category}</h2>
-                  <span className="text-xs text-white/30 font-mono bg-white/5 px-2 py-0.5 rounded-full">
+                  <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">{category}</h2>
+                  <span className="text-xs text-white/30 font-mono bg-white/[0.04] px-2 py-0.5 rounded-full">
                     {categoryRepos.length}
                   </span>
                 </div>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {categoryRepos.map((repo) => (
                     <RepoCard key={repo.id} repo={repo} contributors={contributorsMap[repo.name] || []} />
                   ))}

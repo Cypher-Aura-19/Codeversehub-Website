@@ -68,7 +68,7 @@ export default function DocSidebar({ toc }: DocSidebarProps) {
         <>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="doc-sidebar-toggle lg:hidden fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-violet-600 text-white flex items-center justify-center shadow-lg shadow-violet-500/25 hover:bg-violet-500 transition-colors"
+                className="doc-sidebar-toggle lg:hidden fixed bottom-6 right-6 z-50 w-11 h-11 rounded-lg bg-[#7c3aed] text-white flex items-center justify-center shadow-lg hover:bg-[#6d28d9] transition-colors duration-150"
                 aria-label="Table of Contents"
             >
                 <List className="w-5 h-5" />
@@ -76,7 +76,7 @@ export default function DocSidebar({ toc }: DocSidebarProps) {
 
             {isOpen && (
                 <div
-                    className="lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+                    className="lg:hidden fixed inset-0 z-40 bg-black/60"
                     onClick={() => setIsOpen(false)}
                 />
             )}
@@ -85,15 +85,15 @@ export default function DocSidebar({ toc }: DocSidebarProps) {
                 className={`doc-sidebar ${isOpen ? "doc-sidebar-open" : ""}`}
             >
                 <div className="doc-sidebar-inner">
-                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/10">
-                        <List className="w-4 h-4 text-violet-400" />
-                        <span className="text-xs font-semibold text-white/60 uppercase tracking-wider">
+                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/[0.06]">
+                        <List className="w-4 h-4 text-[#a78bfa]" />
+                        <span className="text-xs font-semibold text-white/50 uppercase tracking-wider">
                             Docs navigation
                         </span>
                     </div>
                     <nav className="space-y-6 text-sm">
                         <div>
-                            <p className="text-[11px] font-semibold text-white/40 uppercase tracking-widest mb-2">
+                            <p className="text-[11px] font-semibold text-white/30 uppercase tracking-widest mb-2">
                                 All pages
                             </p>
                             <ul className="space-y-1">
@@ -101,7 +101,7 @@ export default function DocSidebar({ toc }: DocSidebarProps) {
                                     <li key={page.href}>
                                         <Link
                                             href={page.href}
-                                            className="block w-full text-left text-white/70 hover:text-white hover:bg-white/5 rounded-md px-2 py-1.5 transition-colors"
+                                            className="block w-full text-left text-white/60 hover:text-white hover:bg-white/[0.03] rounded-md px-2 py-1.5 transition-colors duration-150"
                                             onClick={() => setIsOpen(false)}
                                         >
                                             {page.label}
@@ -113,7 +113,7 @@ export default function DocSidebar({ toc }: DocSidebarProps) {
 
                         {toc.length > 0 && (
                             <div>
-                                <p className="text-[11px] font-semibold text-white/40 uppercase tracking-widest mb-2">
+                                <p className="text-[11px] font-semibold text-white/30 uppercase tracking-widest mb-2">
                                     On this page
                                 </p>
                                 <ul className="space-y-1">

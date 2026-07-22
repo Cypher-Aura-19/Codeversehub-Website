@@ -6,17 +6,12 @@ import { ArrowLeft, Search } from "lucide-react";
 export default function NotFound() {
     return (
         <div className="min-h-screen bg-black flex flex-col items-center justify-center px-4 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-[0.03]"
-                style={{
-                    backgroundImage: `linear-gradient(rgba(139,92,246,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.5) 1px, transparent 1px)`,
-                    backgroundSize: "60px 60px",
-                }}
-            />
+            <div className="absolute inset-0 cvh-grid-bg opacity-50" />
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-violet-600/5 blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#7c3aed]/5 blur-[120px] pointer-events-none" />
 
             <div className="relative z-10 flex flex-col items-center text-center">
-                <span className="text-[8rem] md:text-[12rem] font-bold text-white/5 select-none leading-none">
+                <span className="text-[8rem] md:text-[12rem] font-bold text-white/[0.04] select-none leading-none tracking-tight">
                     404
                 </span>
 
@@ -32,14 +27,14 @@ export default function NotFound() {
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                         <Link
                             href="/"
-                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold hover:from-violet-500 hover:to-fuchsia-500 transition-all duration-300"
+                            className="cvh-btn-primary"
                         >
-                            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+                            <ArrowLeft className="w-4 h-4" />
                             Back to Home
                         </Link>
                         <Link
                             href="/projects"
-                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl border border-white/15 text-white/80 font-medium hover:bg-white/5 hover:border-white/30 transition-all duration-300"
+                            className="cvh-btn-secondary"
                         >
                             <Search className="w-4 h-4" />
                             Browse Projects

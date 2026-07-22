@@ -53,7 +53,7 @@ export async function generateStaticParams() {
     return files
         .filter((file) => file.endsWith(".md"))
         .map((file) => ({
-            slug: file.replace(/\.md$/, ""),
+            slug: file.replace(/\\.md$/, ""),
         }));
 }
 
@@ -162,7 +162,7 @@ export default async function ContentPage({ params }: PageProps) {
                 <div className="flex-1 flex items-center justify-center px-4 py-16">
                     <div className="text-center">
                         <h1 className="text-4xl font-bold text-white mb-4">Page Not Found</h1>
-                        <Link href="/" className="text-violet-400 hover:text-violet-300">
+                        <Link href="/" className="text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150">
                             Return Home
                         </Link>
                     </div>
@@ -181,7 +181,7 @@ export default async function ContentPage({ params }: PageProps) {
                 <div className="flex items-center justify-between gap-4 mb-6">
                     <Link
                         href="/"
-                        className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 transition-colors"
+                        className="inline-flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150"
                     >
                         <ArrowLeft className="w-4 h-4" />
                         Back to Home
@@ -193,7 +193,7 @@ export default async function ContentPage({ params }: PageProps) {
                     >
                         <Link
                             href="/pages"
-                            className="text-violet-300 hover:text-violet-200 font-medium transition-colors"
+                            className="text-[#a78bfa] hover:text-[#c4b5fd] font-medium transition-colors duration-150"
                         >
                             Pages
                         </Link>
@@ -214,11 +214,11 @@ export default async function ContentPage({ params }: PageProps) {
                             <div className="flex items-start gap-4">
                                 {IconComponent && (
                                     <div className="doc-icon-badge flex-shrink-0">
-                                        <IconComponent className="w-7 h-7 text-violet-400" />
+                                        <IconComponent className="w-6 h-6 text-[#a78bfa]" />
                                     </div>
                                 )}
                                 <div className="flex-1">
-                                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
                                         {page.title}
                                     </h1>
                                     {page.description && (
@@ -238,7 +238,7 @@ export default async function ContentPage({ params }: PageProps) {
                         </div>
 
                         <div
-                            className="content-body text-white/80 leading-relaxed [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:pt-4 [&_h2]:border-t [&_h2]:border-white/5 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3 [&_h4]:text-lg [&_h4]:font-medium [&_h4]:text-white/90 [&_h4]:mt-4 [&_h4]:mb-2 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_li]:mb-2 [&_a]:text-violet-400 [&_a]:underline [&_a:hover]:text-violet-300 [&_strong]:text-white [&_strong]:font-semibold [&_code]:bg-white/10 [&_code]:px-2 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-violet-300 [&_code]:text-sm [&_pre]:bg-white/5 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:border [&_pre]:border-white/5 [&_blockquote]:border-l-4 [&_blockquote]:border-violet-500 [&_blockquote]:pl-4 [&_blockquote]:py-1 [&_blockquote]:my-6 [&_blockquote]:italic [&_blockquote]:text-white/60 [&_blockquote]:bg-violet-500/5 [&_blockquote]:rounded-r-lg [&_blockquote]:pr-4 [&_hr]:border-white/10 [&_hr]:my-8"
+                            className="content-body"
                             dangerouslySetInnerHTML={{ __html: page.contentHtml }}
                         />
                     </article>

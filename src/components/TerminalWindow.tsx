@@ -12,7 +12,7 @@ const snippets = [
       { text: "def join_community(developer):", type: "code" },
       { text: '    skills = developer["skills"]', type: "code" },
       {
-        text: "    return f\"Welcome, {developer['name']}! 🚀\"",
+        text: "    return f\\\"Welcome, {developer['name']}! 🚀\\\"",
         type: "code",
       },
       { text: "", type: "blank" },
@@ -94,7 +94,6 @@ export default function TerminalWindow() {
 
   useEffect(() => {
     if (visibleLines >= snippet.lines.length) {
-      // Pause then move to next snippet
       const timeout = setTimeout(() => {
         setSnippetIdx((prev) => (prev + 1) % snippets.length);
       }, 2800);
@@ -133,22 +132,16 @@ export default function TerminalWindow() {
 
   return (
     <div className="relative w-full max-w-lg">
-      {/* Glow effect behind terminal */}
-      <div
-        className="absolute inset-0 rounded-2xl blur-3xl opacity-20 transition-all duration-1000"
-        style={{ backgroundColor: snippet.color }}
-      />
-
       {/* Terminal window */}
-      <div className="relative rounded-2xl border border-white/10 bg-[#0d0d0d] overflow-hidden shadow-2xl">
+      <div className="relative rounded-xl border border-white/[0.08] bg-[#0a0a0a] overflow-hidden shadow-xl">
         {/* Title bar */}
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/5">
-          <div className="w-3 h-3 rounded-full bg-red-500/80" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-          <div className="w-3 h-3 rounded-full bg-green-500/80" />
+        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/[0.06] bg-white/[0.02]">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
           <div className="flex-1 flex items-center justify-center gap-2">
             <span
-              className="text-xs font-mono px-3 py-0.5 rounded-full"
+              className="text-[11px] font-mono px-2.5 py-0.5 rounded"
               style={{
                 backgroundColor: snippet.color + "22",
                 color: snippet.color,
@@ -157,24 +150,20 @@ export default function TerminalWindow() {
               {snippet.label}
             </span>
           </div>
-          <div className="flex gap-1.5">
+          <div className="flex gap-1">
             {snippets.map((s, i) => (
               <button
                 key={i}
                 onClick={() => setSnippetIdx(i)}
-                className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-mono cursor-pointer transition-all duration-200 hover:opacity-100"
+                className="flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-mono cursor-pointer transition-all duration-200"
                 style={{
                   backgroundColor:
-                    i === snippetIdx
-                      ? s.color + "30"
-                      : "rgba(255,255,255,0.07)",
+                    i === snippetIdx ? s.color + "30" : "rgba(255,255,255,0.05)",
                   color: i === snippetIdx ? s.color : "rgba(255,255,255,0.35)",
-                  border: `1px solid ${i === snippetIdx ? s.color + "60" : "transparent"}`,
-                  opacity: i === snippetIdx ? 1 : 0.7,
                 }}
               >
                 <span
-                  className="w-1.5 h-1.5 rounded-full shrink-0"
+                  className="w-1 h-1 rounded-full shrink-0"
                   style={{
                     backgroundColor:
                       i === snippetIdx ? s.color : "rgba(255,255,255,0.3)",
@@ -187,12 +176,12 @@ export default function TerminalWindow() {
         </div>
 
         {/* Code area */}
-        <div className="p-5 font-mono text-xs sm:text-sm leading-relaxed min-h-[280px] sm:min-h-[320px]">
+        <div className="p-4 font-mono text-xs sm:text-sm leading-relaxed min-h-[260px] sm:min-h-[300px]">
           {displayedLines.map((line, i) => {
             const lineData = snippet.lines[i];
             return (
               <div key={i} className="flex gap-3">
-                <span className="text-white/20 select-none w-5 text-right shrink-0">
+                <span className="text-white/15 select-none w-5 text-right shrink-0">
                   {i + 1}
                 </span>
                 <span
@@ -205,7 +194,7 @@ export default function TerminalWindow() {
           })}
           {currentLineText !== null && (
             <div className="flex gap-3">
-              <span className="text-white/20 select-none w-5 text-right shrink-0">
+              <span className="text-white/15 select-none w-5 text-right shrink-0">
                 {displayedLines.length + 1}
               </span>
               <span
@@ -215,20 +204,17 @@ export default function TerminalWindow() {
                 )}
               >
                 {currentLineText}
-                <span className="animate-pulse inline-block w-2 h-4 bg-white/70 ml-0.5 align-middle" />
+                <span className="animate-pulse inline-block w-2 h-3.5 bg-white/50 ml-0.5 align-middle" />
               </span>
             </div>
           )}
         </div>
 
         {/* Bottom bar */}
-        <div className="px-5 py-2 border-t border-white/10 flex items-center gap-3 bg-white/3">
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-white/40 text-xs font-mono">
+        <div className="px-4 py-2 border-t border-white/[0.06] flex items-center gap-3 bg-white/[0.01]">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span className="text-white/30 text-[11px] font-mono">
             cvh ~ dev session
-          </span>
-          <span className="ml-auto text-white/20 text-xs font-mono">
-            cvh ~ dev community
           </span>
         </div>
       </div>

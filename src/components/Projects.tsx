@@ -58,13 +58,13 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="bg-black py-24 px-4">
+    <section className="bg-black py-24 md:py-28 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <span className="inline-block text-violet-400 text-xs font-mono uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10">
+          <span className="cvh-label mb-5">
             Open Source
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+          <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Our Projects on GitHub
           </h2>
           <p className="text-white/40 text-base md:text-lg max-w-2xl mx-auto">
@@ -72,28 +72,28 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto mb-8">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto mb-8">
           {repos.map((repo) => (
             <a
               key={repo.id}
               href={repo.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-5 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-violet-500/30 transition-all duration-300"
+              className="cvh-card p-5 group"
             >
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2.5 mb-3">
                 {repo.language && (
                   <span
-                    className="w-2 h-2 rounded-full shrink-0"
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
                     style={{ backgroundColor: langColor(repo.language) }}
                   />
                 )}
-                <h3 className="font-semibold text-white text-sm truncate group-hover:text-violet-300 transition-colors">
+                <h3 className="font-semibold text-white text-sm truncate group-hover:text-[#a78bfa] transition-colors duration-150">
                   {repo.name}
                 </h3>
-                <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-violet-400 ml-auto shrink-0 transition-colors" />
+                <ExternalLink className="w-3 h-3 text-white/20 group-hover:text-[#a78bfa] ml-auto shrink-0 transition-colors duration-150" />
               </div>
-              <p className="text-white/40 text-xs leading-relaxed line-clamp-2 mb-3">
+              <p className="text-white/40 text-xs leading-relaxed line-clamp-2 mb-3.5">
                 {repo.description || "No description"}
               </p>
               <div className="flex items-center gap-3 text-xs text-white/40">
@@ -113,7 +113,7 @@ export default function Projects() {
         <div className="text-center">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 transition-colors font-medium"
+            className="inline-flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150 text-sm font-medium"
           >
             View all projects
             <ArrowRight className="w-4 h-4" />
