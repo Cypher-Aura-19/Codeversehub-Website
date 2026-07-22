@@ -8,24 +8,22 @@ export default function LoadingScreen() {
   const fullText = "Welcome to TCVH";
 
   useEffect(() => {
-    // Typing effect
     let charIndex = 0;
     const typeInterval = setInterval(() => {
       charIndex++;
       setDisplayText(fullText.slice(0, charIndex));
       if (charIndex >= fullText.length) {
         clearInterval(typeInterval);
-        setTimeout(() => setPhase("complete"), 400);
+        setTimeout(() => setPhase("complete"), 300);
       }
-    }, 80);
-
+    }, 65);
     return () => clearInterval(typeInterval);
   }, []);
 
   useEffect(() => {
     if (phase === "complete") {
-      const fadeTimer = setTimeout(() => setPhase("fade"), 800);
-      const hideTimer = setTimeout(() => setPhase("hidden"), 1400);
+      const fadeTimer = setTimeout(() => setPhase("fade"), 500);
+      const hideTimer = setTimeout(() => setPhase("hidden"), 1000);
       return () => {
         clearTimeout(fadeTimer);
         clearTimeout(hideTimer);
@@ -37,57 +35,47 @@ export default function LoadingScreen() {
 
   return (
     <div
-      className="fixed inset-0 z-[99999] flex items-center justify-center bg-[#09090b]"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-[#050505]"
       style={{
         opacity: phase === "fade" ? 0 : 1,
-        transition: "opacity 0.6s ease-in-out",
+        transition: "opacity 0.5s ease-in-out",
         pointerEvents: "none",
       }}
     >
-      <div className="flex flex-col items-center gap-8">
-        {/* Terminal-style welcome */}
-        <div className="font-mono text-center">
-          <div className="flex items-center justify-center gap-2 text-sm text-[#52525b] mb-4">
-            <span className="text-[#06b6d4]">$</span>
-            <span className="text-[#a1a1aa]">./startup.sh --env production</span>
-          </div>
-
-          <div className="relative">
-            <span className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#e4e4e7] tracking-tight">
-              {displayText}
-            </span>
-            {phase === "typing" && (
-              <span className="inline-block w-[3px] h-[1.1em] bg-[#06b6d4] ml-1 align-middle animate-pulse" />
-            )}
-          </div>
+      <div className="font-mono text-center">
+        <div className="flex items-center justify-center gap-2 text-sm mb-5">
+          <span className="text-[#ffffff]">$</span>
+          <span className="text-[#666666]">./init --env prod</span>
         </div>
-
-        {/* Loading bar */}
-        <div className="w-48 h-[2px] bg-[rgba(255,255,255,0.06)] overflow-hidden">
+        <div className="relative">
+          <span className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-white tracking-tight">
+            {displayText}
+          </span>
+          {phase === "typing" && (
+            <span
+              className="inline-block w-[2px] h-[1em] bg-[#ffffff] ml-0.5 align-middle"
+              style={{ animation: "cursor-blink 1s step-end infinite" }}
+            />
+          )}
+        </div>
+        <div className="mt-6 w-48 h-px bg-[#1a1a1a] mx-auto overflow-hidden">
           <div
-            className="h-full bg-[#06b6d4]"
+            className="h-full bg-[#ffffff]"
             style={{
-              animation: phase === "typing"
-                ? "loading-progress 2.5s ease-in-out forwards"
-                : "none",
+              animation: phase === "typing" ? "loading-progress 2s ease-in-out forwards" : "none",
               width: phase === "complete" ? "100%" : undefined,
-              transition: "width 0.5s ease",
+              transition: "width 0.4s ease",
             }}
           />
         </div>
-
-        {/* Status text */}
-        <div className="flex items-center gap-2 font-mono text-[0.6875rem] text-[#52525b]">
+        <div className="mt-4 flex items-center justify-center gap-2 font-mono text-[0.625rem] text-[#666666]">
           <span
-            className="inline-block w-1.5 h-1.5 rounded-full bg-[#06b6d4]"
+            className="inline-block w-1.5 h-1.5 rounded-full bg-[#ffffff]"
             style={{
               animation: phase === "typing" ? "loading-pulse 1s ease-in-out infinite" : "none",
-              opacity: phase === "complete" ? 1 : undefined,
             }}
           />
-          <span>
-            {phase === "typing" ? "initializing environment..." : "ready"}
-          </span>
+          <span>{phase === "typing" ? "initializing..." : "ready"}</span>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -34,37 +34,37 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#09090b] border-b border-[rgba(255,255,255,0.04)]"
+          ? "bg-[#050505]/90 backdrop-blur-md border-b border-[#1a1a1a]"
           : "bg-transparent"
       }`}
     >
-      <div className="section-container flex h-14 md:h-16 items-center justify-between">
+      <div className="section-container flex h-14 md:h-15 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
           <Image
             src="/logo.png"
             alt="The CodeVerse Hub"
-            width={22}
-            height={22}
-            className="rounded-sm object-contain"
+            width={20}
+            height={20}
+            className="object-contain"
             priority
           />
-          <span className="font-heading text-sm font-medium tracking-tight text-[#e4e4e7] group-hover:text-white transition-colors duration-150">
+          <span className="font-heading text-sm font-semibold tracking-tight text-white group-hover:text-white transition-colors duration-200">
             CodeVerse Hub
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0.5">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -73,8 +73,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`flex items-center h-8 px-3 text-[0.8125rem] font-medium transition-colors duration-150 ${
                   isActive
-                    ? "text-[#e4e4e7]"
-                    : "text-[#a1a1aa] hover:text-[#e4e4e7]"
+                    ? "text-white"
+                    : "text-[#666666] hover:text-[#afafaf]"
                 }`}
               >
                 {link.label}
@@ -93,7 +93,7 @@ export default function Navbar() {
                 }
               }}
               className={`flex items-center h-8 gap-1 px-3 text-[0.8125rem] font-medium transition-colors duration-150 ${
-                moreOpen ? "text-[#e4e4e7]" : "text-[#a1a1aa] hover:text-[#e4e4e7]"
+                moreOpen ? "text-white" : "text-[#666666] hover:text-[#afafaf]"
               }`}
             >
               More
@@ -104,12 +104,12 @@ export default function Navbar() {
               />
             </button>
             {moreOpen && (
-              <div className="absolute right-0 top-full mt-1 w-40 border border-[rgba(255,255,255,0.06)] bg-[#0c0c0f] py-1 z-[60]">
+              <div className="absolute right-0 top-full mt-1 w-40 border border-[#1a1a1a] bg-[#090909] py-1 z-[60]">
                 {moreLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="block px-3.5 py-1.5 text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] hover:bg-[rgba(255,255,255,0.03)] transition-colors duration-150"
+                    className="block px-3.5 py-1.5 text-[0.8125rem] text-[#666666] hover:text-[#afafaf] hover:bg-[rgba(255,255,255,0.03)] transition-colors duration-150"
                   >
                     {link.label}
                   </Link>
@@ -134,24 +134,14 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen((v) => !v)}
-          className="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-[3px]"
+          className="md:hidden flex items-center justify-center w-8 h-8"
           aria-label="Toggle menu"
         >
-          <span
-            className={`w-4 h-px bg-[#a1a1aa] transition-all duration-200 ${
-              mobileOpen ? "rotate-45 translate-y-[3.5px]" : ""
-            }`}
-          />
-          <span
-            className={`w-4 h-px bg-[#a1a1aa] transition-all duration-200 ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`w-4 h-px bg-[#a1a1aa] transition-all duration-200 ${
-              mobileOpen ? "-rotate-45 -translate-y-[3.5px]" : ""
-            }`}
-          />
+          {mobileOpen ? (
+            <X className="w-4 h-4 text-[#afafaf]" />
+          ) : (
+            <Menu className="w-4 h-4 text-[#afafaf]" />
+          )}
         </button>
       </div>
 
@@ -161,7 +151,7 @@ export default function Navbar() {
           mobileOpen ? "max-h-[600px]" : "max-h-0"
         }`}
       >
-        <div className="border-t border-[rgba(255,255,255,0.04)] bg-[#09090b]/95 navbar-blur px-5 pb-4 pt-2 space-y-0.5">
+        <div className="border-t border-[#1a1a1a] bg-[#050505] px-5 pb-4 pt-2 space-y-0.5">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -170,27 +160,27 @@ export default function Navbar() {
                 href={link.href}
                 className={`block w-full px-3 py-2 text-[0.8125rem] font-medium transition-colors duration-150 ${
                   isActive
-                    ? "text-[#e4e4e7] bg-[rgba(255,255,255,0.04)]"
-                    : "text-[#a1a1aa] hover:text-[#e4e4e7] hover:bg-[rgba(255,255,255,0.03)]"
+                    ? "text-white"
+                    : "text-[#666666] hover:text-[#afafaf]"
                 }`}
               >
                 {link.label}
               </Link>
             );
           })}
-          <div className="pt-2 pb-1 px-3 text-[0.6875rem] font-medium tracking-wider text-[#52525b] uppercase">
+          <div className="pt-2 pb-1 px-3 text-[0.625rem] font-medium tracking-wider text-[#666666] uppercase">
             More
           </div>
           {moreLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="block w-full px-3 py-2 text-[0.8125rem] font-medium text-[#a1a1aa] hover:text-[#e4e4e7] hover:bg-[rgba(255,255,255,0.03)] transition-colors duration-150"
+              className="block w-full px-3 py-2 text-[0.8125rem] font-medium text-[#666666] hover:text-[#afafaf] transition-colors duration-150"
             >
               {link.label}
             </Link>
           ))}
-          <div className="pt-2 mt-2 border-t border-[rgba(255,255,255,0.04)]">
+          <div className="pt-2 mt-2 border-t border-[#1a1a1a]">
             <a
               href="https://discord.gg/3xKFvKhuGR"
               target="_blank"

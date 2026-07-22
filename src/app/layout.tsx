@@ -1,7 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Inter } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import localGeist from "next/font/local";
 import "./globals.css";
 import LoadingScreen from "@/components/LoadingScreen";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+  weight: ["400", "500", "600", "700"],
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -9,11 +17,18 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
+const geist = localGeist({
+  src: "../../public/fonts/GeistVF.woff2",
   display: "swap",
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
+  weight: "100 900",
+});
+
+const geistPixel = localGeist({
+  src: "../../public/fonts/GeistPixel-Square.woff2",
+  display: "swap",
+  variable: "--font-pixel",
+  weight: "100 900",
 });
 
 const siteUrl =
@@ -94,7 +109,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#09090B",
+  themeColor: "#050505",
 };
 
 export default function RootLayout({
@@ -123,7 +138,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${geist.variable} ${jetbrainsMono.variable} ${geistPixel.variable}`}>
       <body>
         <script
           type="application/ld+json"

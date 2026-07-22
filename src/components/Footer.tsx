@@ -48,7 +48,7 @@ const socialLinks = [
     name: "Matrix",
     href: "https://matrix.to/#/#the-codeverse-hub:matrix.org",
     icon: (
-      <span className="font-mono text-sm font-bold tracking-tight leading-none">
+      <span className="font-mono text-xs font-bold tracking-tight leading-none">
         [m]
       </span>
     ),
@@ -57,7 +57,7 @@ const socialLinks = [
     name: "Fluxer",
     href: "https://fluxer.gg/RbLwebqH",
     icon: (
-      <span className="font-mono text-sm font-bold tracking-tight leading-none">
+      <span className="font-mono text-xs font-bold tracking-tight leading-none">
         {'{F}'}
       </span>
     ),
@@ -84,27 +84,24 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[rgba(255,255,255,0.04)] bg-[#09090b]">
+    <footer className="border-t border-[#1a1a1a] bg-[#050505]">
       <div className="section-container py-14 md:py-18">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 group"
-            >
+            <Link href="/" className="flex items-center gap-2.5 group">
               <Image
                 src="/logo.png"
                 alt="The CodeVerse Hub"
-                width={24}
-                height={24}
-                className="rounded-sm object-contain"
+                width={22}
+                height={22}
+                className="object-contain"
               />
-              <span className="font-heading text-sm font-medium text-[#e4e4e7] group-hover:text-white transition-colors duration-150">
+              <span className="font-heading text-sm font-semibold text-white group-hover:text-white transition-colors duration-200">
                 The CodeVerse Hub
               </span>
             </Link>
-            <p className="mt-3 max-w-sm text-[0.8125rem] text-[#52525b] leading-relaxed">
+            <p className="mt-3 max-w-sm text-[0.8125rem] text-[#666666] leading-relaxed">
               A developer community that builds real open-source software.
               Discord bots, Linux distributions, developer tools, and more.
             </p>
@@ -112,7 +109,7 @@ export default function Footer() {
 
           {/* Link groups */}
           <div>
-            <h4 className="text-[0.6875rem] text-[#52525b] font-semibold tracking-widest uppercase">
+            <h4 className="text-[0.625rem] text-[#666666] font-semibold tracking-widest uppercase font-mono">
               Organization
             </h4>
             <ul className="mt-3.5 space-y-2.5">
@@ -120,7 +117,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] transition-colors duration-150"
+                    className="text-[0.8125rem] text-[#666666] hover:text-[#afafaf] transition-colors duration-150"
                   >
                     {link.name}
                   </Link>
@@ -130,7 +127,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-[0.6875rem] text-[#52525b] font-semibold tracking-widest uppercase">
+            <h4 className="text-[0.625rem] text-[#666666] font-semibold tracking-widest uppercase font-mono">
               Resources
             </h4>
             <ul className="mt-3.5 space-y-2.5">
@@ -138,7 +135,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] transition-colors duration-150"
+                    className="text-[0.8125rem] text-[#666666] hover:text-[#afafaf] transition-colors duration-150"
                   >
                     {link.name}
                   </Link>
@@ -149,7 +146,7 @@ export default function Footer() {
 
           <div className="space-y-6">
             <div>
-              <h4 className="text-[0.6875rem] text-[#52525b] font-semibold tracking-widest uppercase">
+              <h4 className="text-[0.625rem] text-[#666666] font-semibold tracking-widest uppercase font-mono">
                 Community
               </h4>
               <ul className="mt-3.5 space-y-2.5">
@@ -159,7 +156,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] transition-colors duration-150"
+                      className="text-[0.8125rem] text-[#666666] hover:text-[#afafaf] transition-colors duration-150"
                     >
                       {link.name}
                     </a>
@@ -168,7 +165,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="text-[0.6875rem] text-[#52525b] font-semibold tracking-widest uppercase">
+              <h4 className="text-[0.625rem] text-[#666666] font-semibold tracking-widest uppercase font-mono">
                 Legal
               </h4>
               <ul className="mt-3.5 space-y-2.5">
@@ -176,7 +173,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-[0.8125rem] text-[#a1a1aa] hover:text-[#e4e4e7] transition-colors duration-150"
+                      className="text-[0.8125rem] text-[#666666] hover:text-[#afafaf] transition-colors duration-150"
                     >
                       {link.name}
                     </Link>
@@ -187,8 +184,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-[rgba(255,255,255,0.04)] pt-6 sm:flex-row sm:items-center">
-          <p className="text-[0.75rem] text-[#52525b]">
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-[#1a1a1a] pt-6 sm:flex-row sm:items-center">
+          <p className="text-[0.75rem] text-[#666666]">
             &copy; 2026 The CodeVerse Hub. All rights reserved.
           </p>
           <div className="flex items-center gap-3">
@@ -198,7 +195,7 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#52525b] hover:text-[#06b6d4] transition-colors duration-150"
+                className="text-[#666666] hover:text-white transition-colors duration-150"
                 title={link.name}
               >
                 {link.icon}

@@ -32,15 +32,16 @@ export default function ContactSection() {
     <section className="section-spacing">
       <div className="section-container">
         <div className="text-center mb-14">
-          <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl text-[#e4e4e7] mb-4">
+          <span className="section-label mb-6">Contact</span>
+          <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl mb-4 mt-5 text-white">
             Get in touch
           </h2>
-          <p className="text-[#a1a1aa] text-base md:text-lg max-w-lg mx-auto leading-relaxed">
+          <p className="text-[#666666] text-base md:text-lg max-w-lg mx-auto leading-relaxed">
             Questions, collaborations, or just want to say hi.
           </p>
         </div>
 
-        <div className="grid gap-3 max-w-lg mx-auto">
+        <div className="grid gap-4 max-w-lg mx-auto">
           {contactMethods.map((method) => {
             const Icon = method.icon;
             return (
@@ -49,20 +50,20 @@ export default function ContactSection() {
                 href={method.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card p-4 flex items-center gap-4 group"
+                className="card p-5 flex items-center gap-4 group"
               >
-                <div className="w-10 h-10 flex items-center justify-center text-[#06b6d4] shrink-0">
-                  <Icon />
+                <div className="w-11 h-11 flex items-center justify-center shrink-0 border border-[#1a1a1a] bg-[rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-110">
+                  <Icon className="w-5 h-5 text-[#ffffff]" />
                 </div>
-                <div className="min-w-0">
-                  <h3 className="text-[0.8125rem] font-medium text-[#e4e4e7] group-hover:text-white transition-colors duration-150">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-[0.8125rem] font-semibold text-white group-hover:text-[#ffffff] transition-colors duration-200">
                     {method.label}
                   </h3>
-                  <p className="text-[0.75rem] text-[#52525b] mt-0.5 truncate">
+                  <p className="text-[0.75rem] text-[#666666] mt-0.5 truncate font-mono">
                     {method.value}
                   </p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-[#52525b] ml-auto shrink-0 transition-colors duration-150 group-hover:text-[#a1a1aa]" />
+                <ExternalLink className="w-4 h-4 text-[#666666] ml-auto shrink-0 transition-all duration-200 group-hover:text-[#ffffff] group-hover:translate-x-0.5" />
               </a>
             );
           })}

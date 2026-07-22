@@ -56,7 +56,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-black flex flex-col">
       <Navbar />
       <main className="flex-1 max-w-7xl mx-auto px-4 py-16 w-full">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-[#67e8f9] mb-8 transition-colors duration-150 text-sm">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#ffffff] hover:text-[#ffffff] mb-8 transition-colors duration-150 text-sm">
           <ArrowLeft className="w-4 h-4" /> Back to Home
         </Link>
 
@@ -75,8 +75,8 @@ export default function AboutPage() {
 
         <div className="grid md:grid-cols-2 gap-4 mb-20">
           <div className="cvh-card p-8">
-            <div className="w-11 h-11 rounded-lg bg-[#06b6d4]/10 flex items-center justify-center mb-4">
-              <Target className="w-5 h-5 text-[#06b6d4]" />
+            <div className="w-11 h-11 rounded-lg bg-[rgba(255,255,255,0.06)] flex items-center justify-center mb-4">
+              <Target className="w-5 h-5 text-[#ffffff]" />
             </div>
             <h2 className="text-xl font-bold text-white mb-3">Mission</h2>
             <p className="text-white/50 leading-relaxed">
@@ -85,8 +85,8 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="cvh-card p-8">
-            <div className="w-11 h-11 rounded-lg bg-[#06b6d4]/10 flex items-center justify-center mb-4">
-              <Eye className="w-5 h-5 text-[#06b6d4]" />
+            <div className="w-11 h-11 rounded-lg bg-[rgba(255,255,255,0.06)] flex items-center justify-center mb-4">
+              <Eye className="w-5 h-5 text-[#ffffff]" />
             </div>
             <h2 className="text-xl font-bold text-white mb-3">Vision</h2>
             <p className="text-white/50 leading-relaxed">
@@ -103,7 +103,7 @@ export default function AboutPage() {
               const Icon = v.icon;
               return (
                 <div key={v.title} className="cvh-card p-6 group">
-                  <div className="w-10 h-10 rounded-lg bg-[#06b6d4]/10 text-[#06b6d4] flex items-center justify-center mb-3.5 transition-transform duration-150 group-hover:scale-105">
+                  <div className="w-10 h-10 rounded-lg bg-[rgba(255,255,255,0.06)] text-[#ffffff] flex items-center justify-center mb-3.5 transition-transform duration-150 group-hover:scale-105">
                     <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-white font-semibold mb-1.5">{v.title}</h3>

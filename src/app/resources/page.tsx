@@ -825,7 +825,7 @@ export default function ResourcesPage() {
             <div className="max-w-7xl mx-auto px-4 py-12">
                 <Link
                     href="/"
-                    className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-[#67e8f9] mb-8 transition-colors duration-150"
+                    className="inline-flex items-center gap-2 text-[#ffffff] hover:text-[#ffffff] mb-8 transition-colors duration-150"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Home
@@ -854,7 +854,7 @@ export default function ResourcesPage() {
                                             : "text-white/50 hover:text-white hover:bg-white/[0.03] border border-transparent"
                                     }`}
                                 >
-                                    <span className="p-1.5 rounded-lg bg-[#0891b2] text-white">
+                                    <span className="p-1.5 rounded-lg bg-[#333333] text-white">
                                         {cat.icon}
                                     </span>
                                     <span className="font-medium text-sm">{cat.label}</span>
@@ -866,7 +866,7 @@ export default function ResourcesPage() {
                     <main className="flex-1 min-w-0">
                         <div className="mb-8 p-6 rounded-xl border border-white/[0.08] bg-white/[0.02]">
                             <div className="flex items-center gap-3 mb-2">
-                                <span className="p-2 rounded-lg bg-[#0891b2] text-white">
+                                <span className="p-2 rounded-lg bg-[#333333] text-white">
                                     {active.icon}
                                 </span>
                                 <h2 className="text-2xl font-bold text-white tracking-tight">
@@ -880,7 +880,7 @@ export default function ResourcesPage() {
                             {active.sections.map((section) => (
                                 <div key={section.heading}>
                                     <h3 className="text-lg font-semibold text-white/80 mb-4 flex items-center gap-2">
-                                        <div className="w-0.5 h-5 rounded-full bg-[#06b6d4]" />
+                                        <div className="w-0.5 h-5 rounded-full bg-[#ffffff]" />
                                         {section.heading}
                                     </h3>
                                     <div className="grid gap-3 sm:grid-cols-2">
@@ -893,10 +893,10 @@ export default function ResourcesPage() {
                                                 className="cvh-card p-4 group"
                                             >
                                                 <div className="flex items-start justify-between gap-2 mb-2">
-                                                    <h4 className="font-semibold text-white text-sm group-hover:text-[#22d3ee] transition-colors duration-150">
+                                                    <h4 className="font-semibold text-white text-sm group-hover:text-[#ffffff] transition-colors duration-150">
                                                         {resource.title}
                                                     </h4>
-                                                    <ExternalLink className="w-3.5 h-3.5 text-white/20 group-hover:text-[#22d3ee] shrink-0 mt-0.5 transition-colors duration-150" />
+                                                    <ExternalLink className="w-3.5 h-3.5 text-white/20 group-hover:text-[#ffffff] shrink-0 mt-0.5 transition-colors duration-150" />
                                                 </div>
                                                 <p className="text-white/40 text-xs leading-relaxed mb-3">
                                                     {resource.description}
@@ -922,7 +922,7 @@ export default function ResourcesPage() {
                         <Link
                             href="https://discord.gg/3xKFvKhuGR"
                             target="_blank"
-                            className="text-[#22d3ee] hover:text-[#67e8f9] transition-colors duration-150"
+                            className="text-[#ffffff] hover:text-[#ffffff] transition-colors duration-150"
                         >
                             Join our Discord
                         </Link>

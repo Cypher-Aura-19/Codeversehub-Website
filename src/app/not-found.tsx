@@ -5,8 +5,9 @@ import { ArrowLeft, Search } from "lucide-react";
 
 export default function NotFound() {
     return (
-        <div className="min-h-screen bg-black flex flex-col items-center justify-center px-4 relative overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#06b6d4]/5 blur-[120px] pointer-events-none" />
+        <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center px-4 relative overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-white/5 blur-[120px] pointer-events-none" />
+            <div className="absolute inset-0 bg-grid pointer-events-none opacity-30" />
 
             <div className="relative z-10 flex flex-col items-center text-center">
                 <span className="text-[8rem] md:text-[12rem] font-bold text-white/[0.04] select-none leading-none tracking-tight">

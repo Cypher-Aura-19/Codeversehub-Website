@@ -67,7 +67,7 @@ export default function ContributingPage() {
     <div className="min-h-screen bg-black flex flex-col">
       <Navbar />
       <main className="flex-1 max-w-7xl mx-auto px-4 py-16 w-full">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-[#67e8f9] mb-8 transition-colors duration-150 text-sm">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#ffffff] hover:text-[#ffffff] mb-8 transition-colors duration-150 text-sm">
           <ArrowLeft className="w-4 h-4" />
           Back to Home
         </Link>
@@ -94,7 +94,7 @@ export default function ContributingPage() {
                   <span className="absolute top-4 right-4 text-3xl font-bold text-white/[0.04] select-none">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div className="w-10 h-10 rounded-lg bg-[#06b6d4]/10 text-[#06b6d4] flex items-center justify-center mb-3.5 transition-transform duration-150 group-hover:scale-105">
+                  <div className="w-10 h-10 rounded-lg bg-[rgba(255,255,255,0.06)] text-white flex items-center justify-center mb-3.5 transition-transform duration-150 group-hover:scale-105">
                     <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-white font-semibold mb-1.5">{step.title}</h3>
@@ -111,7 +111,7 @@ export default function ContributingPage() {
           <div className="grid sm:grid-cols-2 gap-3">
             {tips.map((tip) => (
               <div key={tip.title} className="cvh-card p-6">
-                <div className="w-0.5 h-8 rounded-full bg-[#06b6d4] mb-4" />
+                <div className="w-0.5 h-8 rounded-full bg-[#ffffff] mb-4" />
                 <h3 className="text-white font-semibold mb-1.5">{tip.title}</h3>
                 <p className="text-white/40 text-sm leading-relaxed">{tip.description}</p>
               </div>

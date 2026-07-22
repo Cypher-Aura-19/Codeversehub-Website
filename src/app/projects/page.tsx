@@ -28,7 +28,7 @@ const languageColors: Record<string, string> = {
 
 function langColor(lang: string | null): string {
   if (!lang) return "#666";
-  return languageColors[lang] || "#8B5CF6";
+  return languageColors[lang] || "#ffffff";
 }
 
 function timeAgo(date: string): string {
@@ -55,11 +55,11 @@ function RepoCard({ repo, contributors }: { repo: GitHubRepo; contributors: GitH
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="w-2.5 h-2.5 rounded-full shrink-0 mt-0.5" style={{ backgroundColor: langColor(repo.language) }} />
-          <h3 className="font-semibold text-white text-sm truncate group-hover:text-[#22d3ee] transition-colors duration-150">
+          <h3 className="font-semibold text-white text-sm truncate group-hover:text-[#ffffff] transition-colors duration-150">
             {repo.name}
           </h3>
         </div>
-        <ExternalLink className="w-3.5 h-3.5 text-white/20 group-hover:text-[#22d3ee] shrink-0 transition-colors duration-150" />
+        <ExternalLink className="w-3.5 h-3.5 text-white/20 group-hover:text-[#ffffff] shrink-0 transition-colors duration-150" />
       </div>
 
       <p className="text-white/40 text-sm leading-relaxed mb-4 line-clamp-2">
@@ -140,7 +140,7 @@ export default async function ProjectsPage() {
     <div className="min-h-screen bg-black flex flex-col">
       <Navbar />
       <main className="flex-1 max-w-7xl mx-auto px-4 py-16 w-full">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-[#67e8f9] mb-8 transition-colors duration-150 text-sm">
+        <Link href="/" className="inline-flex items-center gap-2 text-[#ffffff] hover:text-[#ffffff] mb-8 transition-colors duration-150 text-sm">
           <ArrowLeft className="w-4 h-4" />
           Back to Home
         </Link>

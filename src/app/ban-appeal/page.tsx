@@ -159,7 +159,7 @@ export default function BanAppealPage() {
                   Appeal submitted
                 </h2>
                 {state.appealId ? (
-                  <p className="text-[#22d3ee] font-mono text-sm mb-2">
+                  <p className="text-[#ffffff] font-mono text-sm mb-2">
                     {state.appealId}
                   </p>
                 ) : null}
@@ -169,7 +169,7 @@ export default function BanAppealPage() {
                 <button
                   type="button"
                   onClick={() => setState({ status: "idle" })}
-                  className="mt-6 text-[#22d3ee] hover:text-[#67e8f9] transition-colors duration-150"
+                  className="mt-6 text-[#ffffff] hover:text-[#ffffff] transition-colors duration-150"
                 >
                   Submit another appeal
                 </button>
@@ -198,7 +198,7 @@ export default function BanAppealPage() {
                     name="discordUsername"
                     required
                     placeholder="e.g. aditya or aditya#1234"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#ffffff]/50 focus:ring-1 focus:ring-[#ffffff]/30 outline-none transition-colors duration-150"
                   />
                 </div>
 
@@ -216,7 +216,7 @@ export default function BanAppealPage() {
                     inputMode="numeric"
                     required
                     placeholder="e.g. 123456789012345678"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#ffffff]/50 focus:ring-1 focus:ring-[#ffffff]/30 outline-none transition-colors duration-150"
                   />
                   <p className="text-xs text-white/30 mt-1">
                     Used to identify you. Must be your Discord
@@ -233,7 +233,7 @@ export default function BanAppealPage() {
                     id="email"
                     name="email"
                     placeholder="you@example.com"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#ffffff]/50 focus:ring-1 focus:ring-[#ffffff]/30 outline-none transition-colors duration-150"
                   />
                   <p className="text-xs text-white/30 mt-1">
                     May be used to share appeal status updates.
@@ -252,7 +252,7 @@ export default function BanAppealPage() {
                     id="banReason"
                     name="banReason"
                     placeholder="If you know, summarize it"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#ffffff]/50 focus:ring-1 focus:ring-[#ffffff]/30 outline-none transition-colors duration-150"
                   />
                 </div>
 
@@ -270,7 +270,7 @@ export default function BanAppealPage() {
                     required
                     minLength={20}
                     placeholder="Explain what happened, what you'll do differently, and why you should be unbanned. (min 20 characters)"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150 resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#ffffff]/50 focus:ring-1 focus:ring-[#ffffff]/30 outline-none transition-colors duration-150 resize-none"
                   />
                 </div>
 
@@ -286,7 +286,7 @@ export default function BanAppealPage() {
                     id="evidenceLink"
                     name="evidenceLink"
                     placeholder="https://..."
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 outline-none transition-colors duration-150"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#ffffff]/50 focus:ring-1 focus:ring-[#ffffff]/30 outline-none transition-colors duration-150"
                   />
                 </div>
 

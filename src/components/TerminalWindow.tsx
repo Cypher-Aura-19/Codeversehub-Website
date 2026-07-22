@@ -36,7 +36,7 @@ export default function TerminalWindow() {
         </div>
         <div className="flex items-start gap-2 pt-1">
           <span className="text-green-400/70 shrink-0">$</span>
-          <span className="text-[#22d3ee]/70">Welcome to The Codeverse Hub.</span>
+          <span className="text-[#afafaf]/70">Welcome to The Codeverse Hub.</span>
         </div>
         <div className="flex items-start gap-2">
           <span className="text-green-400/70 shrink-0">$</span>
