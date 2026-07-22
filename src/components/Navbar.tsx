@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, Terminal } from "lucide-react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -13,12 +14,11 @@ const navLinks = [
 ];
 
 const moreLinks = [
-  { href: "/team", label: "Team & Contributors" },
+  { href: "/team", label: "Team" },
   { href: "/contributing", label: "Contribution Guide" },
   { href: "/pages/code-of-conduct", label: "Code of Conduct" },
   { href: "/pages/faq", label: "FAQ" },
   { href: "/pages/rules", label: "Server Rules" },
-  { href: "/pages/contributing", label: "Contributing to CVH" },
   { href: "/pages/how-to-ask", label: "How to Ask for Help" },
   { href: "/pages/moderation-guide", label: "Moderation Guide" },
   { href: "/pages/privacy-policy", label: "Privacy Policy" },
@@ -32,11 +32,16 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-[#0a0a0a] border-b border-white/[0.06]">
       <div className="flex items-center justify-between w-full h-14 px-4 md:px-6 max-w-7xl mx-auto">
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-md bg-[#7c3aed] flex items-center justify-center transition-transform duration-150 group-hover:scale-105">
-            <Terminal className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-white font-semibold text-base tracking-tight hidden sm:block">
+        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <Image
+            src="/logo.png"
+            alt="The Codeverse Hub"
+            width={28}
+            height={28}
+            className="rounded-md object-contain"
+            priority
+          />
+          <span className="text-white font-semibold text-sm tracking-tight hidden sm:block">
             CodeVerse Hub
           </span>
         </Link>
@@ -52,7 +57,6 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          {/* More dropdown */}
           <li className="relative">
             <button
               type="button"
@@ -65,12 +69,12 @@ export default function Navbar() {
               />
             </button>
             {isMoreOpen && (
-              <div className="absolute right-0 top-full mt-1.5 w-56 rounded-lg border border-white/[0.08] bg-[#0d0d0d] shadow-xl py-1.5 z-[60]">
+              <div className="absolute right-0 top-full mt-1.5 w-52 rounded-lg border border-white/[0.08] bg-[#0d0d0d] shadow-xl py-1.5 z-[60]">
                 {moreLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="block px-4 py-2 text-sm text-white/60 hover:text-white hover:bg-white/[0.04] transition-colors duration-150"
+                    className="block px-4 py-1.5 text-sm text-white/60 hover:text-white hover:bg-white/[0.04] transition-colors duration-150"
                     onClick={() => setIsMoreOpen(false)}
                   >
                     {link.label}
@@ -91,7 +95,6 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1"
@@ -115,7 +118,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-200 ease-in-out ${
           isOpen ? "max-h-[700px]" : "max-h-0"
@@ -133,7 +135,6 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          {/* Mobile: More section */}
           <li className="pt-3 pb-1 px-5 text-[11px] font-semibold tracking-widest text-white/30 uppercase">
             More
           </li>

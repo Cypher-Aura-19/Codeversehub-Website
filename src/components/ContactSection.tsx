@@ -67,22 +67,20 @@ export default function ContactSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            Get in{" "}
-            <span className="cvh-gradient-text">Touch</span>
+            Get in <span className="cvh-gradient-text">Touch</span>
           </h2>
           <p className="text-white/40 text-base md:text-lg max-w-2xl mx-auto">
-            Have a question, want to collaborate, or interested in contributing to
-            our open-source projects? Our inbox is always open.
+            Questions, collaborations, or just want to say hi. Our inbox is open.
           </p>
         </div>
 
         <div className="w-full max-w-4xl mx-auto grid gap-3 mb-8 md:grid-cols-3">
           <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3">
             <p className="text-[11px] font-semibold tracking-widest text-[#a78bfa]/80 uppercase mb-1">
-              Community Support
+              Community
             </p>
             <p className="text-sm text-white/60">
-              Get help with CodeVerse Hub, bots, and community tools.
+              Questions about the server, bots, or community tools.
             </p>
           </div>
           <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3">
@@ -90,7 +88,7 @@ export default function ContactSection() {
               Partnerships
             </p>
             <p className="text-sm text-white/60">
-              Reach out for events, collaborations, and sponsorships.
+              Events, collaborations, sponsorships.
             </p>
           </div>
           <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3">
@@ -98,7 +96,7 @@ export default function ContactSection() {
               Open Source
             </p>
             <p className="text-sm text-white/60">
-              Ask about contributing to our GitHub projects, including this site.
+              Contributing to our GitHub projects, including this site.
             </p>
           </div>
         </div>
@@ -117,14 +115,10 @@ export default function ContactSection() {
                     className="flex items-center gap-4 p-4 rounded-lg border border-white/[0.06] bg-white/[0.01] hover:border-[#8b5cf6]/30 hover:bg-[#8b5cf6]/[0.03] transition-all duration-200 group"
                   >
                     <div className="w-11 h-11 rounded-lg bg-[#8b5cf6]/10 flex items-center justify-center group-hover:bg-[#8b5cf6]/20 transition-colors duration-200">
-                      <span className="text-[#8b5cf6]">
-                        <Icon />
-                      </span>
+                      <span className="text-[#8b5cf6]"><Icon /></span>
                     </div>
                     <div>
-                      <p className="text-white/40 text-[11px] uppercase tracking-wider font-medium">
-                        {method.label}
-                      </p>
+                      <p className="text-white/40 text-[11px] uppercase tracking-wider font-medium">{method.label}</p>
                       <p className="text-white font-medium text-sm">{method.value}</p>
                     </div>
                   </a>
@@ -137,98 +131,32 @@ export default function ContactSection() {
             {submitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-8">
                 <CheckCircle className="w-14 h-14 text-green-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Message Sent!
-                </h3>
-                <p className="text-white/50 text-sm">
-                  We&apos;ll get back to you as soon as possible.
-                </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="mt-6 text-sm text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150"
-                >
+                <h3 className="text-xl font-bold text-white mb-2">Sent!</h3>
+                <p className="text-white/50 text-sm">We will get back to you.</p>
+                <button onClick={() => setSubmitted(false)} className="mt-6 text-sm text-[#a78bfa] hover:text-[#c4b5fd] transition-colors duration-150">
                   Send another message
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-3.5">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-white/60 text-sm mb-1.5 font-medium"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Your full name"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
-                  />
+                  <label htmlFor="name" className="block text-white/60 text-sm mb-1.5 font-medium">Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Your full name" className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150" />
                 </div>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-white/60 text-sm mb-1.5 font-medium"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="your@email.com"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
-                  />
+                  <label htmlFor="email" className="block text-white/60 text-sm mb-1.5 font-medium">Email</label>
+                  <input type="email" id="email" name="email" required placeholder="your@email.com" className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150" />
                 </div>
                 <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-white/60 text-sm mb-1.5 font-medium"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                    placeholder="What is this about?"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150"
-                  />
+                  <label htmlFor="subject" className="block text-white/60 text-sm mb-1.5 font-medium">Subject</label>
+                  <input type="text" id="subject" name="subject" required placeholder="What is this about?" className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150" />
                 </div>
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-white/60 text-sm mb-1.5 font-medium"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    placeholder="How can we help you?"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150 resize-none"
-                  />
+                  <label htmlFor="message" className="block text-white/60 text-sm mb-1.5 font-medium">Message</label>
+                  <textarea id="message" name="message" rows={4} required placeholder="How can we help you?" className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder-white/25 focus:border-[#8b5cf6]/50 focus:ring-1 focus:ring-[#8b5cf6]/30 outline-none transition-colors duration-150 resize-none" />
                 </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="cvh-btn-primary w-full text-sm"
-                >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="w-4 h-4" />
-                    </>
-                  )}
+                <button type="submit" disabled={isSubmitting} className="cvh-btn-primary w-full text-sm">
+                  {isSubmitting ? "Sending..." : <><Send className="w-4 h-4" /> Send Message</>}
                 </button>
               </form>
             )}

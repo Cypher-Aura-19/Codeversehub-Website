@@ -3,7 +3,6 @@
 export default function About() {
   return (
     <section className="min-h-screen bg-black flex flex-col items-center justify-center py-20 md:py-24 px-4">
-      {/* Label */}
       <span className="cvh-label mb-8">
         Who we are
       </span>
@@ -15,39 +14,32 @@ export default function About() {
 
       <div className="max-w-4xl mx-auto space-y-6 md:space-y-8 text-center">
         <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
-          We&apos;re a community of developers who{" "}
+          We are a community of developers who actually{" "}
           <span className="cvh-gradient-text font-semibold">
             build real software
           </span>
           .
         </div>
         <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
-          From Discord bots used by thousands to{" "}
+          Discord bots used by thousands.{" "}
           <span className="cvh-gradient-text font-semibold">
             Linux distributions
           </span>
-          {" "}and developer tools.
+          . Developer tools. Web platforms.
         </div>
         <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
           Beginners ship their{" "}
           <span className="cvh-gradient-text font-semibold">
             first PR
           </span>
-          .
-        </div>
-        <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
-          Seniors{" "}
-          <span className="cvh-gradient-text font-semibold">
-            maintain production projects
-          </span>
-          .
+          . Seniors maintain production projects.
         </div>
         <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white/25 hover:text-white/40 transition-colors duration-300 cursor-default">
           Developers from{" "}
           <span className="cvh-gradient-text font-semibold">
             50+ countries
           </span>
-          {" "}building the future of open source.
+          . One shared mission: build things that matter.
         </div>
       </div>
 

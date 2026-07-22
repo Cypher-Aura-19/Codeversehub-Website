@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { JetBrains_Mono, Oxanium, Inter } from "next/font/google";
 import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -8,10 +8,17 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const oxanium = Oxanium({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-space-grotesk",
+  variable: "--font-oxanium",
+  weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
   weight: ["400", "500", "600", "700"],
 });
 
@@ -19,7 +26,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://thecodeversehub.tech";
 const siteName = "The Codeverse Hub";
 const siteDescription =
-  "The Codeverse Hub is a community-driven open-source organization building real-world software. We maintain Discord bots, Linux distributions, developer tools, and more.";
+  "A developer community that builds real open-source software. Discord bots, Linux distros, developer tools, and more.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -114,7 +121,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${jetbrainsMono.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${jetbrainsMono.variable} ${oxanium.variable} ${inter.variable}`}>
       <body className="font-sans antialiased bg-black text-white">
         <script
           type="application/ld+json"

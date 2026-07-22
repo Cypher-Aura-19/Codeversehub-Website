@@ -65,10 +65,10 @@ export default function Projects() {
             Open Source
           </span>
           <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            Our Projects on GitHub
+            What we build
           </h2>
           <p className="text-white/40 text-base md:text-lg max-w-2xl mx-auto">
-            We build and maintain open-source software. Every project welcomes contributions.
+            Every project here accepts contributions. Pick one, open a PR, and become a maintainer.
           </p>
         </div>
 

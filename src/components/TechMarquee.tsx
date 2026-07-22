@@ -58,10 +58,8 @@ function MarqueeTrack({
 
   return (
     <div className="relative overflow-hidden py-2">
-      {/* Fade edges */}
       <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-black to-transparent pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-black to-transparent pointer-events-none" />
-
       <div className="flex gap-3 w-max">
         <div className={`flex gap-3 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
           {chips}
@@ -81,14 +79,14 @@ export default function TechMarquee() {
     <section className="bg-black py-20 md:py-24 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto mb-10 text-center">
         <span className="cvh-label mb-5">
-          Every stack, every language
+          Languages and tools
         </span>
         <h2 className="cvh-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
-          No matter what you code in
+          Pick your stack
         </h2>
         <p className="text-white/40 text-base md:text-lg max-w-xl mx-auto">
-          We have developers who work with every major language and framework.
-          You&apos;ll always find someone who gets it.
+          Python, Rust, Go, TypeScript. We have developers who work in every major language.
+          You will always find someone who speaks your stack.
         </p>
       </div>
 
