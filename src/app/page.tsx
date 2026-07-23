@@ -162,6 +162,11 @@ export default function Home() {
           <Features />
         </ScrollReveal>
 
+        {/* Technologies */}
+        <ScrollReveal delay={450}>
+          <TechMarquee />
+        </ScrollReveal>
+
         {/* About The CodeVerse Hub expanded mission and philosophy section */}
         <ScrollReveal delay={200}>
           <AboutDetails />
@@ -185,11 +190,6 @@ export default function Home() {
         {/* Open Source how to contribute section */}
         <ScrollReveal delay={400}>
           <OpenSourceSection />
-        </ScrollReveal>
-
-        {/* Technologies */}
-        <ScrollReveal delay={450}>
-          <TechMarquee />
         </ScrollReveal>
 
         {/* FAQ expanded useful questions */}
