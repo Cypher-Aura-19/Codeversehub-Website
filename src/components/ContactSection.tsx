@@ -1,13 +1,18 @@
 "use client";
 
-import { Mail, Github, ExternalLink } from "lucide-react";
+import { useState, useCallback } from "react";
+import { useForm, ValidationError } from "@formspree/react";
+import { Mail, Github, ExternalLink, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { LINKS } from "@/lib/constants";
+
+const FORMSPREE_FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || "mdkvwgln";
 
 const contactMethods = [
   {
     icon: Mail,
     label: "Email",
     value: "contact@thecodeversehub.tech",
-    href: "mailto:contact@thecodeversehub.tech",
+    href: LINKS.EMAIL,
   },
   {
     icon: () => (
@@ -17,17 +22,98 @@ const contactMethods = [
     ),
     label: "Discord",
     value: "The CodeVerse Hub",
-    href: "https://discord.gg/3xKFvKhuGR",
+    href: LINKS.DISCORD,
   },
   {
     icon: Github,
     label: "GitHub",
     value: "@TheCodeVerseHub",
-    href: "https://github.com/TheCodeVerseHub/",
+    href: LINKS.GITHUB_ORG,
   },
 ];
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
+function validateForm(data: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}): FormErrors {
+  const errors: FormErrors = {};
+
+  if (!data.name.trim()) {
+    errors.name = "Name is required";
+  } else if (data.name.trim().length < 2) {
+    errors.name = "Name must be at least 2 characters";
+  }
+
+  if (!data.email.trim()) {
+    errors.email = "Email is required";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
+    errors.email = "Please enter a valid email address";
+  }
+
+  if (!data.subject.trim()) {
+    errors.subject = "Subject is required";
+  } else if (data.subject.trim().length < 3) {
+    errors.subject = "Subject must be at least 3 characters";
+  }
+
+  if (!data.message.trim()) {
+    errors.message = "Message is required";
+  } else if (data.message.trim().length < 20) {
+    errors.message = "Message must be at least 20 characters";
+  }
+
+  return errors;
+}
+
+const inputClasses =
+  "w-full px-3.5 py-2.5 rounded-lg bg-[rgba(255,255,255,0.04)] border border-[#1a1a1a] text-white text-sm placeholder-[#666666] focus:border-[#22d3ee]/50 focus:ring-1 focus:ring-[#22d3ee]/30 outline-none transition-all duration-150";
+
+const inputErrorClasses =
+  "w-full px-3.5 py-2.5 rounded-lg bg-[rgba(255,255,255,0.04)] border border-red-500/40 text-white text-sm placeholder-[#666666] focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 outline-none transition-all duration-150";
+
 export default function ContactSection() {
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [fsState, fsHandleSubmit, fsReset] = useForm(FORMSPREE_FORM_ID);
+
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (fsState.submitting) return;
+
+      const formData = new FormData(e.currentTarget);
+
+      const data = {
+        name: (formData.get("name") as string) || "",
+        email: (formData.get("email") as string) || "",
+        subject: (formData.get("subject") as string) || "",
+        message: (formData.get("message") as string) || "",
+      };
+
+      const validationErrors = validateForm(data);
+      setErrors(validationErrors);
+      if (Object.keys(validationErrors).length > 0) return;
+
+      fsHandleSubmit(e);
+    },
+    [fsState.submitting, fsHandleSubmit]
+  );
+
+  const handleReset = useCallback(() => {
+    setErrors({});
+    fsReset();
+  }, [fsReset]);
+
+  const succeeded = fsState.succeeded;
+
   return (
     <section className="section-spacing">
       <div className="section-container">
@@ -41,32 +127,240 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="grid gap-4 max-w-lg mx-auto">
-          {contactMethods.map((method) => {
-            const Icon = method.icon;
-            return (
-              <a
-                key={method.label}
-                href={method.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card p-5 flex items-center gap-4 group"
-              >
-                <div className="w-11 h-11 flex items-center justify-center shrink-0 border border-[#1a1a1a] bg-[rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-110">
-                  <Icon className="w-5 h-5 text-[#ffffff]" />
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] max-w-4xl mx-auto">
+          {/* Contact methods */}
+          <div className="space-y-4">
+            {contactMethods.map((method) => {
+              const Icon = method.icon;
+              return (
+                <a
+                  key={method.label}
+                  href={method.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card p-5 flex items-center gap-4 group"
+                >
+                  <div className="w-11 h-11 flex items-center justify-center shrink-0 border border-[#1a1a1a] bg-[rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-110">
+                    <Icon className="w-5 h-5 text-[#ffffff]" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-[0.8125rem] font-semibold text-white group-hover:text-[#ffffff] transition-colors duration-200">
+                      {method.label}
+                    </h3>
+                    <p className="text-[0.75rem] text-[#666666] mt-0.5 truncate font-mono">
+                      {method.value}
+                    </p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-[#666666] ml-auto shrink-0 transition-all duration-200 group-hover:text-[#ffffff] group-hover:translate-x-0.5" />
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Contact form */}
+          <div className="card p-6 md:p-7">
+            {succeeded ? (
+              <div className="flex flex-col items-center justify-center text-center py-8">
+                <CheckCircle className="w-12 h-12 text-green-400 mb-4" />
+                <h3 className="font-heading text-lg font-semibold text-white mb-1">
+                  Message sent
+                </h3>
+                <p className="text-[#666666] text-sm max-w-xs">
+                  Thanks for reaching out. We&apos;ll get back to you soon.
+                </p>
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="mt-5 text-sm text-[#22d3ee] hover:text-[#67e8f9] transition-colors duration-150 focus-visible:outline-1 focus-visible:outline-white focus-visible:outline-offset-2"
+                >
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                {/* Name */}
+                <div>
+                  <label
+                    htmlFor="contact-name"
+                    className="block text-[#afafaf] text-xs font-medium mb-1.5"
+                  >
+                    Full Name <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    required
+                    autoComplete="name"
+                    placeholder="Your full name"
+                    className={errors.name ? inputErrorClasses : inputClasses}
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "contact-name-error" : undefined}
+                  />
+                  <ValidationError
+                    prefix="Name"
+                    field="name"
+                    errors={fsState.errors}
+                    className="text-red-400 text-xs mt-1"
+                  />
+                  {errors.name && (
+                    <p
+                      id="contact-name-error"
+                      className="text-red-400 text-xs mt-1 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <AlertCircle className="w-3 h-3 shrink-0" />
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-[0.8125rem] font-semibold text-white group-hover:text-[#ffffff] transition-colors duration-200">
-                    {method.label}
-                  </h3>
-                  <p className="text-[0.75rem] text-[#666666] mt-0.5 truncate font-mono">
-                    {method.value}
-                  </p>
+
+                {/* Email */}
+                <div>
+                  <label
+                    htmlFor="contact-email"
+                    className="block text-[#afafaf] text-xs font-medium mb-1.5"
+                  >
+                    Email Address <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    className={errors.email ? inputErrorClasses : inputClasses}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "contact-email-error" : undefined}
+                  />
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={fsState.errors}
+                    className="text-red-400 text-xs mt-1"
+                  />
+                  {errors.email && (
+                    <p
+                      id="contact-email-error"
+                      className="text-red-400 text-xs mt-1 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <AlertCircle className="w-3 h-3 shrink-0" />
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
-                <ExternalLink className="w-4 h-4 text-[#666666] ml-auto shrink-0 transition-all duration-200 group-hover:text-[#ffffff] group-hover:translate-x-0.5" />
-              </a>
-            );
-          })}
+
+                {/* Subject */}
+                <div>
+                  <label
+                    htmlFor="contact-subject"
+                    className="block text-[#afafaf] text-xs font-medium mb-1.5"
+                  >
+                    Subject <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-subject"
+                    name="subject"
+                    required
+                    placeholder="What is this about?"
+                    className={errors.subject ? inputErrorClasses : inputClasses}
+                    aria-invalid={!!errors.subject}
+                    aria-describedby={errors.subject ? "contact-subject-error" : undefined}
+                  />
+                  <ValidationError
+                    prefix="Subject"
+                    field="subject"
+                    errors={fsState.errors}
+                    className="text-red-400 text-xs mt-1"
+                  />
+                  {errors.subject && (
+                    <p
+                      id="contact-subject-error"
+                      className="text-red-400 text-xs mt-1 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <AlertCircle className="w-3 h-3 shrink-0" />
+                      {errors.subject}
+                    </p>
+                  )}
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-[#afafaf] text-xs font-medium mb-1.5"
+                  >
+                    Message <span className="text-red-400">*</span>
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    required
+                    rows={5}
+                    autoComplete="off"
+                    placeholder="How can we help you? (min. 20 characters)"
+                    className={
+                      errors.message ? inputErrorClasses : inputClasses
+                    }
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "contact-message-error" : undefined}
+                  />
+                  <ValidationError
+                    prefix="Message"
+                    field="message"
+                    errors={fsState.errors}
+                    className="text-red-400 text-xs mt-1"
+                  />
+                  {errors.message && (
+                    <p
+                      id="contact-message-error"
+                      className="text-red-400 text-xs mt-1 flex items-center gap-1"
+                      role="alert"
+                    >
+                      <AlertCircle className="w-3 h-3 shrink-0" />
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
+
+                {/* Formspree form-level error */}
+                {fsState.errors &&
+                  Array.isArray(fsState.errors) &&
+                  fsState.errors.length > 0 &&
+                  !fsState.errors[0]?.field && (
+                    <div className="rounded-lg border border-red-500/20 bg-red-500/[0.04] px-4 py-3">
+                      <p className="text-red-400 text-sm flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4 shrink-0" />
+                        {fsState.errors[0].message || "Submission failed"}
+                      </p>
+                    </div>
+                  )}
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={fsState.submitting}
+                  className="btn-primary w-full h-11 text-[0.8125rem] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {fsState.submitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Send message
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>

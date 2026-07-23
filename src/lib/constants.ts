@@ -15,6 +15,9 @@ export const COMMUNITY = {
   COUNTRY_COUNT: "50+",
 } as const;
 
+/** Formspree contact form endpoint */
+export const FORMSPREE_ENDPOINT = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || "mdkvwgln"}`;
+
 /** External links used across the site */
 export const LINKS = {
   DISCORD: "https://discord.gg/3xKFvKhuGR",

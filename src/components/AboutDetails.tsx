@@ -7,9 +7,9 @@ import { Target, Users, Code2, GitPullRequest, BookOpen } from "lucide-react";
 const pillars = [
   {
     icon: Target,
-    title: "Mission-Driven",
+    title: "Our Mission",
     description:
-      "We exist to make open-source contribution accessible to every developer. Whether you are writing your first line of code or your thousandth PR, we provide the structure, mentorship, and community to help you grow.",
+      "Build a community where developers of every skill level are welcomed and can participate in open-source contributions with us.",
   },
   {
     icon: Users,
@@ -21,7 +21,7 @@ const pillars = [
     icon: Code2,
     title: "Production Software",
     description:
-      "We do not build toy projects. Our repositories include Discord bots serving thousands of users, Linux distributions, developer tooling, and web applications. Every contribution has real-world impact.",
+      "Our repositories include Discord bots serving thousands of users, Linux distributions, developer tooling, and web applications. Every contribution has an impact.",
   },
   {
     icon: GitPullRequest,
@@ -39,7 +39,10 @@ const pillars = [
 
 export default function AboutDetails() {
   return (
-    <section className="section-spacing" aria-labelledby="about-details-heading">
+    <section
+      className="section-spacing"
+      aria-labelledby="about-details-heading"
+    >
       <div className="section-divider mb-0" />
       <div className="section-container pt-16 md:pt-20">
         <div className="max-w-4xl mx-auto">
@@ -65,38 +68,24 @@ export default function AboutDetails() {
           {/* Main content */}
           <div className="space-y-6 mb-14">
             <p className="text-base md:text-lg text-[#666666] leading-relaxed">
-              The CodeVerse Hub is an open-source community built around a
-              single belief: the best way to learn software development is to
-              build real software with real people. We are a Discord-based
-              developer community where programmers from over 50 countries
-              collaborate on GitHub, review each other&apos;s code, and ship
-              production-grade open-source projects together.
+              The CodeVerse Hub is an open-source developer community where
+              people of all skill levels collaborate on real-world projects,
+              contribute to GitHub repositories, and grow together through
+              hands-on experience.
             </p>
+
             <p className="text-base md:text-lg text-[#666666] leading-relaxed">
-              Our mission is to bridge the gap between learning to code and
-              contributing to professional software. Unlike tutorials that
-              isolate you in a sandbox, we drop you into real repositories with
-              real issues, real code reviews, and real maintainers. You learn
-              Git, GitHub workflows, CI/CD pipelines, code review etiquette, and
-              software architecture by doing it—alongside developers who have
-              been in your shoes.
+              We believe the best way to learn software development is by
+              building real software. From your first pull request to leading
+              projects, you'll gain practical experience with Git, code reviews,
+              CI/CD, and modern development workflows alongside a supportive
+              global community.
             </p>
+
             <p className="text-base md:text-lg text-[#666666] leading-relaxed">
-              What makes us different is our emphasis on mentorship through
-              contribution. Beginners are paired with experienced contributors
-              who guide them through their first pull request. Study groups form
-              organically around topics like web development, Linux systems
-              programming, AI and machine learning, and competitive programming.
-              Experienced developers find opportunities to lead projects, review
-              code, and give back to the community that helped them grow.
-            </p>
-            <p className="text-base md:text-lg text-[#666666] leading-relaxed">
-              We maintain projects across the full stack—from Python-based
-              Discord bots and TypeScript web applications to Lua-configured
-              Linux distributions and Rust developer tools. Every repository is
-              open for contribution. Every contributor is treated as a
-              colleague. Every line of code you ship makes the community
-              stronger.
+              Whether you're a beginner or an experienced developer, you'll find
+              opportunities to learn, contribute, mentor others, and build
+              impactful open-source software together.
             </p>
           </div>
 
@@ -105,12 +94,9 @@ export default function AboutDetails() {
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
               return (
-                <div
-                  key={pillar.title}
-                  className="card p-6 group"
-                >
+                <div key={pillar.title} className="card p-6 group">
                   <div className="w-10 h-10 flex items-center justify-center mb-4 border border-[#1a1a1a] bg-[rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-110">
-                    <Icon className="w-5 h-5 text-white" />
+                    <Icon className="w-5 h-5 text-[#22d3ee]" />
                   </div>
                   <h3 className="font-heading text-sm font-semibold text-white mb-2">
                     {pillar.title}

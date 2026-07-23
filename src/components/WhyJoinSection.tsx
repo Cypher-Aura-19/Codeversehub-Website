@@ -103,7 +103,7 @@ export default function WhyJoinSection() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 flex items-center justify-center shrink-0 border border-[#1a1a1a] bg-[rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-110">
-                      <Icon className="w-5 h-5 text-white" />
+                      <Icon className="w-5 h-5 text-[#22d3ee]" />
                     </div>
                     <div className="min-w-0">
                       <h3 className="font-heading text-sm font-semibold text-white mb-1.5">
