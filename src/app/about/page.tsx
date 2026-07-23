@@ -64,7 +64,7 @@ export default function AboutPage() {
           <span className="cvh-label mb-4">About</span>
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
             We build open-source software. <br />
-            <span className="cvh-gradient-text">Together.</span>
+            <span className="text-[#22d3ee]">Together.</span>
           </h1>
           <p className="text-white/50 text-base md:text-lg max-w-3xl leading-relaxed">
             The Codeverse Hub is a community-driven open-source organization. We build real projects,

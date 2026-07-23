@@ -71,7 +71,7 @@ export default function Home() {
             <span className="text-[0.6875rem] font-mono text-[#afafaf] tracking-wider">
               OPEN SOURCE COMMUNITY
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-white" style={{ animation: "glow-pulse 2s ease-in-out infinite" }} />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#22d3ee]" style={{ animation: "glow-pulse 2s ease-in-out infinite" }} />
           </div>
 
           {/* Heading */}
@@ -98,7 +98,7 @@ export default function Home() {
               direction="left"
               yoyo={true}
             />{" "}
-            <span className="text-white">Together.</span>
+            <span className="text-[#22d3ee]">Together.</span>
           </h1>
 
           {/* Expanded hero description */}
@@ -222,7 +222,7 @@ export default function Home() {
                     >
                       <summary className="flex items-center justify-between text-sm sm:text-base font-medium text-white hover:text-[#afafaf] transition-colors duration-150 list-none">
                         <span className="flex items-center gap-3">
-                          <HelpCircle className="w-4 h-4 text-[#666666] shrink-0" />
+                          <HelpCircle className="w-4 h-4 text-[#22d3ee] shrink-0" />
                           {item.q}
                         </span>
                         <ChevronDown className="w-4 h-4 text-[#666666] shrink-0 transition-transform duration-200 group-open:rotate-180" />

@@ -24,8 +24,8 @@ import {
     Calendar,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import Navbar from "../../../components/Navbar";
-import Footer from "../../../components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import DocSidebar from "./DocSidebar";
 
 const contentDirectory = path.join(process.cwd(), "content", "pages");

@@ -165,8 +165,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
       if (copyWidth > 0) {
         baseX.set(wrap(-copyWidth, 0, baseX.get()));
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [copyWidth, containerWidth]);
+    }, [copyWidth, containerWidth, baseX]);
 
     return (
       <div

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Wrench } from "lucide-react";
-import Navbar from "../../components/Navbar";
+import Navbar from "@/components/Navbar";
 
 interface Resource {
     title: string;

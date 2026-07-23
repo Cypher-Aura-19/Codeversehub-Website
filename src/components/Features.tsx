@@ -64,7 +64,7 @@ export default function Features() {
               yoyo={true}
             />
             <br />
-            <span className="text-[#afafaf]">for developers</span>
+            <span className="text-[#22d3ee]">for developers</span>
           </h2>
           <p className="text-[#666666] text-base md:text-lg max-w-xl mx-auto leading-relaxed">
             Every feature, every channel, every project exists to help you grow as an engineer.
