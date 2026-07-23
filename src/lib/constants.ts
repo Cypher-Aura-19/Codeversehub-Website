@@ -4,15 +4,15 @@
  */
 export const COMMUNITY = {
   /** Estimated active community members */
-  MEMBER_COUNT: "500+",
+  MEMBER_COUNT: "1900+",
   /** Number of GitHub repositories */
   REPO_COUNT: "15+",
   /** Total GitHub stars across all repos */
-  STAR_COUNT: "60+",
+  STAR_COUNT: "70+",
   /** Total GitHub forks across all repos */
-  FORK_COUNT: "50+",
+  FORK_COUNT: "30+",
   /** Number of countries with community members */
-  COUNTRY_COUNT: "50+",
+  COUNTRY_COUNT: "70+",
 } as const;
 
 /** Formspree contact form endpoint */
