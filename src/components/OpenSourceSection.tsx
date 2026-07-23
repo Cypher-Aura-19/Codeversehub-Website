@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import ShinyText from "@/components/ShinyText";
-import { GitBranch, GitPullRequest, GitMerge, Search, Shield, Users } from "lucide-react";
+import {
+  GitBranch,
+  GitPullRequest,
+  GitMerge,
+  Search,
+  Shield,
+  Users,
+} from "lucide-react";
 
 const steps = [
   {
@@ -42,7 +49,7 @@ const principles = [
     icon: Users,
     title: "Mentorship",
     description:
-      "Experienced contributors review your code with the goal of teaching, not gatekeeping. We document review guidelines so everyone understands what is expected.",
+      "Experienced contributors review your code with the goal of teaching. We document review guidelines so everyone understands what is expected.",
   },
   {
     icon: GitPullRequest,
@@ -79,18 +86,14 @@ export default function OpenSourceSection() {
           {/* Why open source matters */}
           <div className="mb-14 space-y-6">
             <p className="text-base md:text-lg text-[#666666] leading-relaxed">
-              Open-source software is how the modern internet is built. Linux
-              runs the cloud. Python powers AI. React drives the web. Every
-              major technology you use exists because developers collaborated in
-              the open, shared their work, and improved each other&apos;s code.
+              Open source at The CodeVerse Hub is different, we build and
+              maintain real projects while welcoming contributions from
+              everyone, from beginners to experienced developers. Our mentors
+              guide first-time contributors through the open-source journey,
+              making it easier to get started. Start contributing to CVH today!
             </p>
             <p className="text-base md:text-lg text-[#666666] leading-relaxed">
-              At The CodeVerse Hub, open source is not just a licensing choice—it
-              is our culture. Every repository we maintain is MIT or Apache
-              licensed. Every contribution, from a one-line documentation fix to
-              a new feature, is equally valued. We believe the best software
-              emerges when diverse perspectives come together around a shared
-              goal.
+              We Review Each and Every PR!
             </p>
           </div>
 
@@ -103,10 +106,7 @@ export default function OpenSourceSection() {
               {steps.map((step) => {
                 const Icon = step.icon;
                 return (
-                  <div
-                    key={step.title}
-                    className="card p-6 group"
-                  >
+                  <div key={step.title} className="card p-6 group">
                     <div className="w-10 h-10 flex items-center justify-center mb-4 border border-[#1a1a1a] bg-[rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-110">
                       <Icon className="w-5 h-5 text-[#22d3ee]" />
                     </div>
