@@ -15,7 +15,7 @@ export default function JoinCTA() {
 
             <span className="relative z-10 section-label mb-6">Get Involved</span>
             <h2 className="relative z-10 heading-lg text-3xl sm:text-4xl md:text-5xl text-white mb-5 mt-5">
-              Ready to ship?
+              Ready to <span className="text-[#22d3ee]">ship</span>?
             </h2>
             <p className="relative z-10 text-[#666666] text-base md:text-lg max-w-lg mx-auto leading-relaxed mb-10">
               No gatekeeping. No fake guru culture. Just developers building

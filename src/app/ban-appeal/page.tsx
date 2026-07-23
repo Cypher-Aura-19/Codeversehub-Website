@@ -142,7 +142,7 @@ export default function BanAppealPage() {
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 md:px-6 py-16 md:py-20">
         <header className="text-center mb-10">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
-            Ban <span className="cvh-gradient-text">Appeal</span>
+            Ban <span className="text-[#22d3ee]">Appeal</span>
           </h1>
           <p className="mt-4 text-white/50 max-w-2xl mx-auto">
             Fill out the form below. After you submit, it will be sent to our

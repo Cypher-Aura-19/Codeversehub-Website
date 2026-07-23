@@ -189,7 +189,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-8 h-8 text-[#666666] hover:text-white hover:bg-[rgba(255,255,255,0.05)] transition-all duration-150 focus-visible:outline-1 focus-visible:outline-white focus-visible:outline-offset-2"
+                  className="inline-flex items-center justify-center w-8 h-8 text-[#666666] hover:text-[#22d3ee] hover:bg-[rgba(34,211,238,0.05)] transition-all duration-150 focus-visible:outline-1 focus-visible:outline-white focus-visible:outline-offset-2"
                   aria-label={link.name}
                   title={link.name}
                 >

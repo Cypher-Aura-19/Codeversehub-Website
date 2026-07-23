@@ -88,7 +88,7 @@ export default function TechMarquee() {
       <div className="section-container mb-12 text-center">
         <span className="section-label mb-6">Languages & Tools</span>
         <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl mb-4 mt-5 text-white">
-          Pick your stack
+          Pick your <span className="text-[#22d3ee]">stack</span>
         </h2>
         <p className="text-[#666666] text-base md:text-lg max-w-xl mx-auto leading-relaxed">
           Python, Rust, Go, TypeScript. Whatever you build in, you will find

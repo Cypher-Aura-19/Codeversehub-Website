@@ -76,7 +76,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-4 mb-20">
           <div className="cvh-card p-8">
             <div className="w-11 h-11 rounded-lg bg-[rgba(255,255,255,0.06)] flex items-center justify-center mb-4">
-              <Target className="w-5 h-5 text-[#ffffff]" />
+              <Target className="w-5 h-5 text-[#22d3ee]" />
             </div>
             <h2 className="text-xl font-bold text-white mb-3">Mission</h2>
             <p className="text-white/50 leading-relaxed">
@@ -86,7 +86,7 @@ export default function AboutPage() {
           </div>
           <div className="cvh-card p-8">
             <div className="w-11 h-11 rounded-lg bg-[rgba(255,255,255,0.06)] flex items-center justify-center mb-4">
-              <Eye className="w-5 h-5 text-[#ffffff]" />
+              <Eye className="w-5 h-5 text-[#22d3ee]" />
             </div>
             <h2 className="text-xl font-bold text-white mb-3">Vision</h2>
             <p className="text-white/50 leading-relaxed">
