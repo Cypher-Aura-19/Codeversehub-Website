@@ -5,7 +5,10 @@ import Navbar from "@/components/Navbar";
 import Stats from "@/components/Stats";
 import Features from "@/components/Features";
 import Projects from "@/components/Projects";
-import About from "@/components/About";
+import AboutDetails from "@/components/AboutDetails";
+import WhyJoinSection from "@/components/WhyJoinSection";
+import WhoIsForSection from "@/components/WhoIsForSection";
+import OpenSourceSection from "@/components/OpenSourceSection";
 import JoinCTA from "@/components/JoinCTA";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -13,16 +16,52 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ShinyText from "@/components/ShinyText";
 import TechMarquee from "@/components/TechMarquee";
 import HeroBackground from "@/components/HeroBackground";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle, ExternalLink } from "lucide-react";
+
+const faqItems = [
+  {
+    q: "Is The CodeVerse Hub free?",
+    a: "Yes. The CodeVerse Hub is completely free to join. There are no paid tiers, subscriptions, or hidden costs. Every channel, project, and resource is accessible to all members.",
+  },
+  {
+    q: "Do I need experience to join?",
+    a: "No. We welcome absolute beginners. Our good-first-issue labels, mentorship program, and study groups are specifically designed to help newcomers make their first open-source contribution.",
+  },
+  {
+    q: "How do I contribute to a project?",
+    a: "Join our Discord, introduce yourself, and browse our GitHub repositories. Each repo has a contributing guide. Pick an issue tagged with 'good first issue', fork the repo, and submit a pull request. Maintainers will guide you through the process.",
+  },
+  {
+    q: "What technologies are used?",
+    a: "Our community works across Python, TypeScript, JavaScript, Rust, Go, Lua, and more. We build with React, Next.js, Node.js, Django, FastAPI, and Svelte on the web side; maintain Linux distributions on the systems side; and use tools like Docker, PostgreSQL, Redis, and GraphQL across projects.",
+  },
+  {
+    q: "Can I showcase my own projects?",
+    a: "Absolutely. We have a dedicated project-showcase channel where members share what they are building. Get feedback, find collaborators, and promote your work to a community of developers who care about quality software.",
+  },
+  {
+    q: "How do code reviews work?",
+    a: "When you submit a pull request, maintainers and community members review your code inline on GitHub. You receive line-by-line feedback on logic, style, performance, and best practices. Reviews are constructive and focused on helping you improve.",
+  },
+  {
+    q: "Can beginners really contribute to open source?",
+    a: "Yes. Most of our projects have issues specifically tagged for first-time contributors. We provide guidance on Git workflows, commit conventions, and the PR lifecycle. Many of our active maintainers started with zero open-source experience.",
+  },
+  {
+    q: "How do I become a maintainer?",
+    a: "Maintainers are elected from active contributors. Consistently submit quality PRs, participate in code reviews, help other contributors, and demonstrate understanding of the project. When you are ready, the community will nominate and vote on new maintainers.",
+  },
+];
 
 export default function Home() {
   return (
     <div className="bg-[#050505]">
       {/* ─── HERO ──────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-10">
+      <header className="relative min-h-screen flex items-center justify-center overflow-hidden z-10">
         {/* 10-layer background */}
         <HeroBackground />
 
+        {/* Navigation */}
         <Navbar />
 
         {/* Main hero content */}
@@ -62,11 +101,14 @@ export default function Home() {
             <span className="text-white">Together.</span>
           </h1>
 
-          {/* Description */}
-          <p className="text-[#666666] text-sm sm:text-base md:text-lg leading-relaxed max-w-[600px] mx-auto mt-8">
-            The CodeVerse Hub is a community of developers building real
-            open-source software. We review your code, ship your PRs, and take
-            you from your first commit to your first maintainer merge.
+          {/* Expanded hero description */}
+          <p className="text-[#666666] text-sm sm:text-base md:text-lg leading-relaxed max-w-[650px] mx-auto mt-8">
+            The CodeVerse Hub is a developer community where programmers of all
+            skill levels collaborate on open-source software. We build Discord
+            bots, Linux distributions, web applications, and developer
+            tools—together, on GitHub, through real pull requests and thorough
+            code reviews. Beginners ship their first PR. Experienced engineers
+            mentor, maintain, and lead. Everyone grows.
           </p>
 
           {/* Buttons */}
@@ -98,34 +140,124 @@ export default function Home() {
           </span>
           <ChevronDown className="w-3.5 h-3.5 text-[#666666]" />
         </div>
-      </section>
+      </header>
 
-      {/* ─── REST OF SECTIONS ─────────────────────────── */}
-      <ScrollReveal>
-        <Stats />
-      </ScrollReveal>
-      <ScrollReveal delay={100}>
-        <div className="section-divider" />
-      </ScrollReveal>
-      <ScrollReveal delay={150}>
-        <Features />
-      </ScrollReveal>
-      <ScrollReveal delay={200}>
-        <Projects />
-      </ScrollReveal>
-      <ScrollReveal delay={250}>
-        <TechMarquee />
-      </ScrollReveal>
-      <ScrollReveal delay={300}>
-        <About />
-      </ScrollReveal>
-      <ScrollReveal delay={350}>
-        <JoinCTA />
-      </ScrollReveal>
-      <ScrollReveal delay={400}>
-        <ContactSection />
-      </ScrollReveal>
-      <ScrollReveal delay={450}>
+      {/* ─── MAIN CONTENT ──────────────────────────────── */}
+      <main>
+        <ScrollReveal>
+          <Stats />
+        </ScrollReveal>
+
+        <ScrollReveal delay={100}>
+          <div className="section-divider" />
+        </ScrollReveal>
+
+        <ScrollReveal delay={150}>
+          <Features />
+        </ScrollReveal>
+
+        {/* About The CodeVerse Hub — expanded mission and philosophy section */}
+        <ScrollReveal delay={200}>
+          <AboutDetails />
+        </ScrollReveal>
+
+        {/* Projects — expanded showcase with descriptive text */}
+        <ScrollReveal delay={250}>
+          <Projects />
+        </ScrollReveal>
+
+        {/* Why Join — benefits section */}
+        <ScrollReveal delay={300}>
+          <WhyJoinSection />
+        </ScrollReveal>
+
+        {/* Who Is This For — audience section */}
+        <ScrollReveal delay={350}>
+          <WhoIsForSection />
+        </ScrollReveal>
+
+        {/* Open Source — how to contribute section */}
+        <ScrollReveal delay={400}>
+          <OpenSourceSection />
+        </ScrollReveal>
+
+        {/* Technologies */}
+        <ScrollReveal delay={450}>
+          <TechMarquee />
+        </ScrollReveal>
+
+        {/* FAQ — expanded useful questions */}
+        <ScrollReveal delay={500}>
+          <section className="section-spacing" aria-labelledby="faq-heading">
+            <div className="section-divider mb-0" />
+            <div className="section-container pt-16 md:pt-20">
+              <div className="max-w-3xl mx-auto">
+                <div className="text-center mb-14">
+                  <span className="section-label mb-6">FAQ</span>
+                  <h2
+                    id="faq-heading"
+                    className="heading-lg text-3xl sm:text-4xl md:text-5xl mb-4 mt-5"
+                  >
+                    <ShinyText
+                      text="Frequently Asked Questions"
+                      shineColor="#ffffff"
+                      color="#ffffff"
+                      speed={5}
+                      spread={150}
+                      direction="left"
+                      yoyo={true}
+                    />
+                  </h2>
+                  <p className="text-[#666666] text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+                    Everything you need to know about joining and contributing to
+                    The CodeVerse Hub.
+                  </p>
+                </div>
+
+                <div className="divide-y divide-[#1a1a1a]">
+                  {faqItems.map((item) => (
+                    <details
+                      key={item.q}
+                      className="group py-5 cursor-pointer"
+                    >
+                      <summary className="flex items-center justify-between text-sm sm:text-base font-medium text-white hover:text-[#afafaf] transition-colors duration-150 list-none">
+                        <span className="flex items-center gap-3">
+                          <HelpCircle className="w-4 h-4 text-[#666666] shrink-0" />
+                          {item.q}
+                        </span>
+                        <ChevronDown className="w-4 h-4 text-[#666666] shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                      </summary>
+                      <p className="mt-3 text-[0.8125rem] text-[#666666] leading-relaxed pl-7">
+                        {item.a}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+
+                <div className="text-center mt-10">
+                  <Link
+                    href="/pages/faq"
+                    className="btn-ghost text-[0.8125rem] inline-flex items-center gap-1.5"
+                  >
+                    View full FAQ
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        <ScrollReveal delay={550}>
+          <JoinCTA />
+        </ScrollReveal>
+
+        <ScrollReveal delay={600}>
+          <ContactSection />
+        </ScrollReveal>
+      </main>
+
+      <ScrollReveal delay={650}>
         <Footer />
       </ScrollReveal>
     </div>

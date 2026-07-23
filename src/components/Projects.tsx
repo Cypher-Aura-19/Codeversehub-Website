@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import ShinyText from "@/components/ShinyText";
 import Link from "next/link";
-import { ArrowRight, Star, GitFork, ExternalLink } from "lucide-react";
+import { ArrowRight, Star, GitFork, ExternalLink, Globe, Bot, Wrench } from "lucide-react";
 
 interface Repo {
   id: number;
@@ -78,6 +78,27 @@ const FallbackRepos: Repo[] = [
   },
 ];
 
+const projectCategories = [
+  {
+    icon: Bot,
+    title: "Discord Bots",
+    description:
+      "Production-grade bots handling moderation, leveling, reaction roles, and utilities for thousands of users. Built with Python and modern async patterns.",
+  },
+  {
+    icon: Globe,
+    title: "Web Applications",
+    description:
+      "Full-stack applications using TypeScript, React, Next.js, and Node.js. From community dashboards to developer tools—real UIs, real APIs, real users.",
+  },
+  {
+    icon: Wrench,
+    title: "Developer Tooling",
+    description:
+      "CLI tools, libraries, and infrastructure projects that make other developers' lives easier. CI/CD pipelines, automation scripts, and shared utilities.",
+  },
+];
+
 export default function Projects() {
   const [repos, setRepos] = useState<Repo[]>(FallbackRepos);
 
@@ -100,12 +121,15 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="section-spacing">
+    <section className="section-spacing" aria-labelledby="projects-heading">
       <div className="section-divider mb-0" />
       <div className="section-container pt-16 md:pt-20">
-        <div className="text-center mb-16">
-          <span className="section-label mb-6">Open Source</span>
-          <h2 className="heading-lg text-3xl sm:text-4xl md:text-5xl mb-4 mt-5">
+        <div className="text-center mb-14">
+          <span className="section-label mb-6">Projects</span>
+          <h2
+            id="projects-heading"
+            className="heading-lg text-3xl sm:text-4xl md:text-5xl mb-4 mt-5"
+          >
             <ShinyText
               text="What we build"
               shineColor="#ffffff"
@@ -116,11 +140,40 @@ export default function Projects() {
               yoyo={true}
             />
           </h2>
-          <p className="text-[#666666] text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-            Every project accepts contributions. Pick one, open a PR.
-          </p>
         </div>
 
+        {/* Project categories description */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <p className="text-base md:text-lg text-[#666666] leading-relaxed text-center mb-10">
+            Our projects span across multiple domains of software development.
+            Each repository is open for contribution, with active maintainers
+            ready to review your code and guide your first pull request.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-3 max-w-3xl mx-auto mb-12">
+            {projectCategories.map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <div
+                  key={cat.title}
+                  className="card p-6 group text-center"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center mx-auto mb-4 border border-[#1a1a1a] bg-[rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-110">
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="font-heading text-sm font-semibold text-white mb-2">
+                    {cat.title}
+                  </h3>
+                  <p className="text-[0.75rem] text-[#666666] leading-relaxed">
+                    {cat.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Repo cards */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto mb-12">
           {repos.slice(0, 6).map((repo) => (
             <a
