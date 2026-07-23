@@ -1,6 +1,7 @@
 import { getRepos } from "@/lib/github";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://thecodeversehub.tech";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://thecodeversehub.tech";
 
 export const revalidate = 3600;
 
@@ -10,7 +11,10 @@ export async function GET() {
 
     const items = repos
       .filter((r) => !r.archived)
-      .sort((a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime())
+      .sort(
+        (a, b) =>
+          new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime(),
+      )
       .slice(0, 20)
       .map(
         (repo) => `
@@ -28,7 +32,7 @@ export async function GET() {
     const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>The Codeverse Hub — Latest Updates</title>
+    <title>The Codeverse Hub Latest Updates</title>
     <link>${siteUrl}</link>
     <description>Open-source project updates from The Codeverse Hub</description>
     <language>en-us</language>
@@ -45,13 +49,21 @@ export async function GET() {
       },
     });
   } catch {
-    return new Response("<rss version='2.0'><channel><title>Error</title></channel></rss>", {
-      headers: { "Content-Type": "application/rss+xml" },
-      status: 500,
-    });
+    return new Response(
+      "<rss version='2.0'><channel><title>Error</title></channel></rss>",
+      {
+        headers: { "Content-Type": "application/rss+xml" },
+        status: 500,
+      },
+    );
   }
 }
 
 function escapeXml(s: string): string {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
 }

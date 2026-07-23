@@ -3,7 +3,15 @@
 import { useEffect, useState } from "react";
 import ShinyText from "@/components/ShinyText";
 import Link from "next/link";
-import { ArrowRight, Star, GitFork, ExternalLink, Globe, Bot, Wrench } from "lucide-react";
+import {
+  ArrowRight,
+  Star,
+  GitFork,
+  ExternalLink,
+  Globe,
+  Bot,
+  Wrench,
+} from "lucide-react";
 
 interface Repo {
   id: number;
@@ -89,7 +97,7 @@ const projectCategories = [
     icon: Globe,
     title: "Web Applications",
     description:
-      "Full-stack applications using TypeScript, React, Next.js, and Node.js. From community dashboards to developer tools—real UIs, real APIs, real users.",
+      "Full-stack applications using TypeScript, React, Next.js, and Node.js. From community dashboards to developer tools, real UIs, real APIs, real users.",
   },
   {
     icon: Wrench,
@@ -111,9 +119,9 @@ export default function Projects() {
             data
               .filter((r: Repo) => !r.name.includes("."))
               .sort(
-                (a: Repo, b: Repo) => b.stargazers_count - a.stargazers_count
+                (a: Repo, b: Repo) => b.stargazers_count - a.stargazers_count,
               )
-              .slice(0, 6)
+              .slice(0, 6),
           );
         }
       })
@@ -154,10 +162,7 @@ export default function Projects() {
             {projectCategories.map((cat) => {
               const Icon = cat.icon;
               return (
-                <div
-                  key={cat.title}
-                  className="card p-6 group text-center"
-                >
+                <div key={cat.title} className="card p-6 group text-center">
                   <div className="w-10 h-10 flex items-center justify-center mx-auto mb-4 border border-[#1a1a1a] bg-[rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-110">
                     <Icon className="w-5 h-5 text-[#22d3ee]" />
                   </div>
@@ -208,7 +213,9 @@ export default function Projects() {
                   {repo.forks_count}
                 </span>
                 {repo.language && (
-                  <span className="ml-auto text-[0.6875rem] font-mono">{repo.language}</span>
+                  <span className="ml-auto text-[0.6875rem] font-mono">
+                    {repo.language}
+                  </span>
                 )}
               </div>
             </a>

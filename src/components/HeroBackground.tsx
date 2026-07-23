@@ -21,34 +21,144 @@ function BlueprintDecorations() {
 
       {/* Top-left corner bracket */}
       <g opacity="0.15">
-        <path d="M 40 80 L 40 40 L 80 40" fill="none" stroke="#ffffff" strokeWidth="1" />
-        <line x1="40" y1="40" x2="55" y2="40" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="40" y1="40" x2="40" y2="55" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="40" y1="60" x2="46" y2="60" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="40" y1="100" x2="46" y2="100" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="40" y1="140" x2="44" y2="140" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="60" y1="40" x2="60" y2="46" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="100" y1="40" x2="100" y2="46" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="140" y1="40" x2="140" y2="44" stroke="#ffffff" strokeWidth="0.5" />
+        <path
+          d="M 40 80 L 40 40 L 80 40"
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth="1"
+        />
+        <line
+          x1="40"
+          y1="40"
+          x2="55"
+          y2="40"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="40"
+          y1="40"
+          x2="40"
+          y2="55"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="40"
+          y1="60"
+          x2="46"
+          y2="60"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="40"
+          y1="100"
+          x2="46"
+          y2="100"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="40"
+          y1="140"
+          x2="44"
+          y2="140"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="60"
+          y1="40"
+          x2="60"
+          y2="46"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="100"
+          y1="40"
+          x2="100"
+          y2="46"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="140"
+          y1="40"
+          x2="140"
+          y2="44"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
       </g>
 
       {/* Top-right corner bracket */}
       <g opacity="0.12">
-        <path d="M 100% 80 L 100% 40 L calc(100% - 40) 40" fill="none" stroke="#ffffff" strokeWidth="1" />
-        <line x1="100%" y1="60" x2="calc(100% - 6)" y2="60" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="100%" y1="100" x2="calc(100% - 6)" y2="100" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="calc(100% - 20)" y1="40" x2="calc(100% - 20)" y2="46" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="calc(100% - 60)" y1="40" x2="calc(100% - 60)" y2="46" stroke="#ffffff" strokeWidth="0.5" />
+        <path
+          d="M 100% 80 L 100% 40 L calc(100% - 40) 40"
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth="1"
+        />
+        <line
+          x1="100%"
+          y1="60"
+          x2="calc(100% - 6)"
+          y2="60"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="100%"
+          y1="100"
+          x2="calc(100% - 6)"
+          y2="100"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="calc(100% - 20)"
+          y1="40"
+          x2="calc(100% - 20)"
+          y2="46"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
+        <line
+          x1="calc(100% - 60)"
+          y1="40"
+          x2="calc(100% - 60)"
+          y2="46"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+        />
       </g>
 
       {/* Top edge: horizontal measurement line */}
       <g opacity="0.08">
-        <line x1="20%" y1="30" x2="80%" y2="30" stroke="url(#deco-fade)" strokeWidth="0.5" strokeDasharray="4 8" />
+        <line
+          x1="20%"
+          y1="30"
+          x2="80%"
+          y2="30"
+          stroke="url(#deco-fade)"
+          strokeWidth="0.5"
+          strokeDasharray="4 8"
+        />
       </g>
 
       {/* Left edge: vertical measurement line */}
       <g opacity="0.06">
-        <line x1="30" y1="20%" x2="30" y2="80%" stroke="url(#deco-fade)" strokeWidth="0.5" strokeDasharray="4 8" />
+        <line
+          x1="30"
+          y1="20%"
+          x2="30"
+          y2="80%"
+          stroke="url(#deco-fade)"
+          strokeWidth="0.5"
+          strokeDasharray="4 8"
+        />
       </g>
 
       {/* Scattered tiny crosses */}
@@ -67,7 +177,7 @@ function BlueprintDecorations() {
         <line x1="75.15%" y1="87.7%" x2="75.15%" y2="88.3%" />
       </g>
 
-      {/* Wireframe squares — top-right area */}
+      {/* Wireframe squares top-right area */}
       <g opacity="0.06" stroke="#ffffff" strokeWidth="0.5" fill="none">
         <rect x="80%" y="15%" width="40" height="40" />
         <rect x="81.5%" y="16.5%" width="25" height="25" />
@@ -153,20 +263,116 @@ function SVGWaves() {
 function FloatingShapes() {
   const shapes = useMemo(
     () => [
-      { type: "square", x: "8%", y: "20%", size: 14, anim: "float-drift-1", dur: "18s", delay: "0s" },
-      { type: "diamond", x: "92%", y: "25%", size: 10, anim: "float-drift-2", dur: "20s", delay: "2s" },
-      { type: "cross", x: "15%", y: "75%", size: 12, anim: "float-drift-3", dur: "22s", delay: "1s" },
-      { type: "hexagon", x: "85%", y: "70%", size: 11, anim: "float-drift-1", dur: "19s", delay: "3s" },
-      { type: "square", x: "70%", y: "15%", size: 9, anim: "float-drift-2", dur: "21s", delay: "0.5s" },
-      { type: "cross", x: "30%", y: "85%", size: 10, anim: "float-drift-3", dur: "17s", delay: "2.5s" },
-      { type: "diamond", x: "50%", y: "10%", size: 8, anim: "float-drift-1", dur: "23s", delay: "1.5s" },
-      { type: "hexagon", x: "60%", y: "88%", size: 12, anim: "float-drift-2", dur: "20s", delay: "4s" },
-      { type: "square", x: "42%", y: "92%", size: 10, anim: "float-drift-3", dur: "16s", delay: "0.8s" },
-      { type: "cross", x: "95%", y: "50%", size: 9, anim: "float-drift-1", dur: "24s", delay: "3.5s" },
-      { type: "diamond", x: "5%", y: "55%", size: 11, anim: "float-drift-2", dur: "18s", delay: "2.2s" },
-      { type: "hexagon", x: "35%", y: "12%", size: 8, anim: "float-drift-3", dur: "22s", delay: "1.2s" },
+      {
+        type: "square",
+        x: "8%",
+        y: "20%",
+        size: 14,
+        anim: "float-drift-1",
+        dur: "18s",
+        delay: "0s",
+      },
+      {
+        type: "diamond",
+        x: "92%",
+        y: "25%",
+        size: 10,
+        anim: "float-drift-2",
+        dur: "20s",
+        delay: "2s",
+      },
+      {
+        type: "cross",
+        x: "15%",
+        y: "75%",
+        size: 12,
+        anim: "float-drift-3",
+        dur: "22s",
+        delay: "1s",
+      },
+      {
+        type: "hexagon",
+        x: "85%",
+        y: "70%",
+        size: 11,
+        anim: "float-drift-1",
+        dur: "19s",
+        delay: "3s",
+      },
+      {
+        type: "square",
+        x: "70%",
+        y: "15%",
+        size: 9,
+        anim: "float-drift-2",
+        dur: "21s",
+        delay: "0.5s",
+      },
+      {
+        type: "cross",
+        x: "30%",
+        y: "85%",
+        size: 10,
+        anim: "float-drift-3",
+        dur: "17s",
+        delay: "2.5s",
+      },
+      {
+        type: "diamond",
+        x: "50%",
+        y: "10%",
+        size: 8,
+        anim: "float-drift-1",
+        dur: "23s",
+        delay: "1.5s",
+      },
+      {
+        type: "hexagon",
+        x: "60%",
+        y: "88%",
+        size: 12,
+        anim: "float-drift-2",
+        dur: "20s",
+        delay: "4s",
+      },
+      {
+        type: "square",
+        x: "42%",
+        y: "92%",
+        size: 10,
+        anim: "float-drift-3",
+        dur: "16s",
+        delay: "0.8s",
+      },
+      {
+        type: "cross",
+        x: "95%",
+        y: "50%",
+        size: 9,
+        anim: "float-drift-1",
+        dur: "24s",
+        delay: "3.5s",
+      },
+      {
+        type: "diamond",
+        x: "5%",
+        y: "55%",
+        size: 11,
+        anim: "float-drift-2",
+        dur: "18s",
+        delay: "2.2s",
+      },
+      {
+        type: "hexagon",
+        x: "35%",
+        y: "12%",
+        size: 8,
+        anim: "float-drift-3",
+        dur: "22s",
+        delay: "1.2s",
+      },
     ],
-    []
+    [],
   );
 
   return (
@@ -216,8 +422,22 @@ function FloatingShapes() {
           const c = s.size / 2;
           return (
             <g key={i} style={style}>
-              <line x1={-c} y1={0} x2={c} y2={0} stroke="rgba(255,255,255,0.09)" strokeWidth="0.5" />
-              <line x1={0} y1={-c} x2={0} y2={c} stroke="rgba(255,255,255,0.09)" strokeWidth="0.5" />
+              <line
+                x1={-c}
+                y1={0}
+                x2={c}
+                y2={0}
+                stroke="rgba(255,255,255,0.09)"
+                strokeWidth="0.5"
+              />
+              <line
+                x1={0}
+                y1={-c}
+                x2={0}
+                y2={c}
+                stroke="rgba(255,255,255,0.09)"
+                strokeWidth="0.5"
+              />
             </g>
           );
         }
@@ -267,7 +487,11 @@ function CursorSpotlight() {
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden" style={{ zIndex: 9 }}>
+    <div
+      ref={containerRef}
+      className="absolute inset-0 overflow-hidden"
+      style={{ zIndex: 9 }}
+    >
       <div
         ref={spotlightRef}
         className="cursor-spotlight"

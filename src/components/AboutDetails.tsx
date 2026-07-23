@@ -77,14 +77,14 @@ export default function AboutDetails() {
             <p className="text-base md:text-lg text-[#666666] leading-relaxed">
               We believe the best way to learn software development is by
               building real software. From your first pull request to leading
-              projects, you'll gain practical experience with Git, code reviews,
-              CI/CD, and modern development workflows alongside a supportive
-              global community.
+              projects, you will gain practical experience with Git, code
+              reviews, CI/CD, and modern development workflows alongside a
+              supportive global community.
             </p>
 
             <p className="text-base md:text-lg text-[#666666] leading-relaxed">
-              Whether you're a beginner or an experienced developer, you'll find
-              opportunities to learn, contribute, mentor others, and build
+              Whether you are a beginner or an experienced developer, you will
+              find opportunities to learn, contribute, mentor others, and build
               impactful open-source software together.
             </p>
           </div>
