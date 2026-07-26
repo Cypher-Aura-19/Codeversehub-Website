@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
@@ -93,7 +94,10 @@ async function getPageContent(slug: string | undefined) {
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data, content } = matter(fileContents);
 
-        const processedContent = await remark().use(html).process(content);
+        const processedContent = await remark()
+            .use(remarkGfm)
+            .use(html)
+            .process(content);
         const rawHtml = processedContent.toString();
         const { toc, processedHtml } = extractToc(rawHtml);
 
